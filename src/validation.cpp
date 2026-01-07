@@ -3081,7 +3081,7 @@ bool AcceptBlockHeader(const CBlock& block, CValidationState& state, CBlockIndex
  * Also, check that there are no in-block double spends.
  */
 static bool CheckInBlockDoubleSpends(const CBlock& block, int nHeight, CValidationState& state,
-                                     std::unordered_set<COutPoint, SaltedOutpointHasher>& spent_outpoints,
+                                     boost::unordered_set<COutPoint, SaltedOutpointHasher>& spent_outpoints,
                                      std::set<CBigNum>& spent_serials)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
@@ -3136,7 +3136,7 @@ static bool CheckInBlockDoubleSpends(const CBlock& block, int nHeight, CValidati
     // to ensure that it was unspent before this block.
     // The coinstake requires special treatment: its input cannot be the output of another in-block
     // transaction (due to nStakeMinDepth), and no in-block tx can spend its outputs (due to nCoinbaseMaturity).
-    std::unordered_set<uint256> inblock_txes;
+    boost::unordered_set<uint256> inblock_txes;
     for (size_t i = 2; i < block.vtx.size(); i++) {
         // coinbase/coinstake outputs cannot be spent inside the same block
         inblock_txes.insert(block.vtx[i]->GetHash());
@@ -3169,7 +3169,7 @@ static bool CheckInBlockDoubleSpends(const CBlock& block, int nHeight, CValidati
  * Remove from the outpoints set, any coin that was created in the fork (we don't
  * need to check that it was unspent on the active chain before the split).
  */
-static bool IsUnspentOnFork(std::unordered_set<COutPoint, SaltedOutpointHasher>& outpoints,
+static bool IsUnspentOnFork(boost::unordered_set<COutPoint, SaltedOutpointHasher>& outpoints,
                             const std::set<CBigNum>& serials,
                             const CBlockIndex* startIndex, CValidationState& state, const CBlockIndex*& pindexFork)
 {
@@ -3235,7 +3235,7 @@ static bool IsUnspentOnFork(std::unordered_set<COutPoint, SaltedOutpointHasher>&
  * blocks. At the end, return true if the set is empty (all outpoints are spent), and false
  * otherwise (some outpoint is unspent).
  */
-static bool IsSpentOnActiveChain(std::unordered_set<COutPoint, SaltedOutpointHasher>& outpoints, const CBlockIndex* pindexFork)
+static bool IsSpentOnActiveChain(boost::unordered_set<COutPoint, SaltedOutpointHasher>& outpoints, const CBlockIndex* pindexFork)
 {
     assert(chainActive.Contains(pindexFork));
     const int height_start = pindexFork->nHeight + 1;
@@ -3312,7 +3312,7 @@ static bool AcceptBlock(const CBlock& block, CValidationState& state, CBlockInde
         bool isBlockFromFork = pindexPrev != nullptr && chainActive.Tip() != pindexPrev;
 
         // Collect spent_outpoints and check for in-block double spends
-        std::unordered_set<COutPoint, SaltedOutpointHasher> spent_outpoints;
+        boost::unordered_set<COutPoint, SaltedOutpointHasher> spent_outpoints;
         std::set<CBigNum> spent_serials;
         if (!CheckInBlockDoubleSpends(block, nHeight, state, spent_outpoints, spent_serials)) {
             return false;

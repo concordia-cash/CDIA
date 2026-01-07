@@ -11,7 +11,7 @@
 #include <mutex>
 #include <stdexcept>
 #include <stdint.h>
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 /**
  * OS-dependent allocation and deallocation of locked/pinned memory pages.
@@ -94,14 +94,14 @@ private:
     /** Map to enable O(log(n)) best-fit allocation, as it's sorted by size */
     SizeToChunkSortedMap size_to_free_chunk;
 
-    typedef std::unordered_map<char*, SizeToChunkSortedMap::const_iterator> ChunkToSizeMap;
+    typedef boost::unordered_map<char*, SizeToChunkSortedMap::const_iterator> ChunkToSizeMap;
     /** Map from begin of free chunk to its node in size_to_free_chunk */
     ChunkToSizeMap chunks_free;
     /** Map from end of free chunk to its node in size_to_free_chunk */
     ChunkToSizeMap chunks_free_end;
 
     /** Map from begin of used chunk to its size */
-    std::unordered_map<char*, size_t> chunks_used;
+    boost::unordered_map<char*, size_t> chunks_used;
 
     /** Base address of arena */
     char* base;

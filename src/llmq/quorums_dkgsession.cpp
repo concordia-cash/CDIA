@@ -446,7 +446,7 @@ void CDKGSession::VerifyConnectionAndMinProtoVersions()
 {
     CDKGLogger logger(*this, __func__);
 
-    std::unordered_map<uint256, int, StaticSaltedHasher> protoMap;
+    boost::unordered_map<uint256, int, StaticSaltedHasher> protoMap;
     g_connman->ForEachNode([&](const CNode* pnode) {
         if (pnode->verifiedProRegTxHash.IsNull()) {
             return;

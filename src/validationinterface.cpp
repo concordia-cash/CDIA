@@ -16,7 +16,7 @@
 
 #include <future>
 #include <list>
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 #include <boost/signals2/signal.hpp>
 
 struct ValidationInterfaceConnections {
@@ -57,7 +57,7 @@ struct MainSignalsInstance {
     /** Notifies listeners of updated deterministic masternode list */
     boost::signals2::signal<void (bool undo, const CDeterministicMNList& oldMNList, const CDeterministicMNListDiff& diff)> NotifyMasternodeListChanged;
 
-    std::unordered_map<CValidationInterface*, ValidationInterfaceConnections> m_connMainSignals;
+    boost::unordered_map<CValidationInterface*, ValidationInterfaceConnections> m_connMainSignals;
 
     // We are not allowed to assume the scheduler only runs in one thread,
     // but must ensure all callbacks happen in-order, so we end up creating

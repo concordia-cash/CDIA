@@ -17,7 +17,7 @@
 
 #include <algorithm>
 #include <limits>
-#include <unordered_set>
+#include <boost/unordered_set.hpp>
 
 namespace llmq
 {
@@ -509,8 +509,8 @@ bool CSigningManager::PreVerifyRecoveredSig(NodeId nodeId, const CRecoveredSig& 
 
 void CSigningManager::CollectPendingRecoveredSigsToVerify(
     size_t maxUniqueSessions,
-    std::unordered_map<NodeId, std::list<CRecoveredSig>>& retSigShares,
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums)
+    boost::unordered_map<NodeId, std::list<CRecoveredSig>>& retSigShares,
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums)
 {
     {
         LOCK(cs);
@@ -518,7 +518,7 @@ void CSigningManager::CollectPendingRecoveredSigsToVerify(
             return;
         }
 
-        std::unordered_set<std::pair<NodeId, uint256>, StaticSaltedHasher> uniqueSignHashes;
+        boost::unordered_set<std::pair<NodeId, uint256>, StaticSaltedHasher> uniqueSignHashes;
         llmq::utils::IterateNodesRandom(pendingRecoveredSigs, [&]() { return uniqueSignHashes.size() < maxUniqueSessions; }, [&](NodeId nodeId, std::list<CRecoveredSig>& ns) {
             if (ns.empty()) {
                 return false;
@@ -572,8 +572,8 @@ void CSigningManager::CollectPendingRecoveredSigsToVerify(
 
 bool CSigningManager::ProcessPendingRecoveredSigs(CConnman& connman)
 {
-    std::unordered_map<NodeId, std::list<CRecoveredSig>> recSigsByNode;
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
+    boost::unordered_map<NodeId, std::list<CRecoveredSig>> recSigsByNode;
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
 
     CollectPendingRecoveredSigsToVerify(32, recSigsByNode, quorums);
     if (recSigsByNode.empty()) {
@@ -608,7 +608,7 @@ bool CSigningManager::ProcessPendingRecoveredSigs(CConnman& connman)
 
     LogPrint(BCLog::LLMQ, "CSigningManager::%s -- verified recovered sig(s). count=%d, vt=%d, nodes=%d\n", __func__, verifyCount, verifyTimer.count(), recSigsByNode.size());
 
-    std::unordered_set<uint256, StaticSaltedHasher> processed;
+    boost::unordered_set<uint256, StaticSaltedHasher> processed;
     for (auto& p : recSigsByNode) {
         NodeId nodeId = p.first;
         auto& v = p.second;

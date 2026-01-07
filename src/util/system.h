@@ -32,7 +32,7 @@
 #include <set>
 #include <stdint.h>
 #include <string>
-#include <unordered_set>
+#include <boost/unordered_set.hpp>
 #include <utility>
 #include <vector>
 

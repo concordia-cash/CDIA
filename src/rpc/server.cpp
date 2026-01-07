@@ -26,7 +26,7 @@
 #include <boost/algorithm/string/split.hpp>
 
 #include <memory> // for unique_ptr
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 static std::atomic<bool> g_rpc_running{false};
 static bool fRPCInWarmup = true;
@@ -452,7 +452,7 @@ static inline JSONRPCRequest transformNamedArguments(const JSONRPCRequest& in, c
     // there is an unknown one.
     const std::vector<std::string>& keys = in.params.getKeys();
     const std::vector<UniValue>& values = in.params.getValues();
-    std::unordered_map<std::string, const UniValue*> argsIn;
+    boost::unordered_map<std::string, const UniValue*> argsIn;
     for (size_t i=0; i<keys.size(); ++i) {
         argsIn[keys[i]] = &values[i];
     }

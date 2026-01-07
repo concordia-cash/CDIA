@@ -20,8 +20,8 @@
 
 #include <mutex>
 #include <thread>
-#include <unordered_map>
-#include <unordered_set>
+#include <boost/unordered/unordered_map.hpp>
+#include <boost/unordered_set.hpp>
 
 class CEvoDB;
 class CScheduler;
@@ -138,7 +138,7 @@ template <typename T>
 class SigShareMap
 {
 private:
-    std::unordered_map<uint256, std::unordered_map<uint16_t, T>, StaticSaltedHasher> internalMap;
+    boost::unordered_map<uint256, boost::unordered_map<uint16_t, T>, StaticSaltedHasher> internalMap;
 
 public:
     bool Add(const SigShareKey& k, const T& v)
@@ -229,7 +229,7 @@ public:
         return internalMap.empty();
     }
 
-    const std::unordered_map<uint16_t, T>* GetAllForSignHash(const uint256& signHash)
+    const boost::unordered_map<uint16_t, T>* GetAllForSignHash(const uint256& signHash)
     {
         auto it = internalMap.find(signHash);
         if (it == internalMap.end()) {
@@ -310,9 +310,9 @@ public:
         CSigSharesInv knows;
     };
     // TODO limit number of sessions per node
-    std::unordered_map<uint256, Session, StaticSaltedHasher> sessions;
+    boost::unordered_map<uint256, Session, StaticSaltedHasher> sessions;
 
-    std::unordered_map<uint32_t, Session*> sessionByRecvId;
+    boost::unordered_map<uint32_t, Session*> sessionByRecvId;
     uint32_t nextSendSessionId{1};
 
     SigShareMap<CSigShare> pendingIncomingSigShares;
@@ -362,12 +362,12 @@ private:
     CThreadInterrupt interruptSigningShare;
 
     SigShareMap<CSigShare> sigShares;
-    std::unordered_map<uint256, CSignedSession, StaticSaltedHasher> signedSessions;
+    boost::unordered_map<uint256, CSignedSession, StaticSaltedHasher> signedSessions;
 
     // stores time of last receivedSigShare. Used to detect timeouts
-    std::unordered_map<uint256, int64_t, StaticSaltedHasher> timeSeenForSessions;
+    boost::unordered_map<uint256, int64_t, StaticSaltedHasher> timeSeenForSessions;
 
-    std::unordered_map<NodeId, CSigSharesNodeState> nodeStates;
+    boost::unordered_map<NodeId, CSigSharesNodeState> nodeStates;
     SigShareMap<std::pair<NodeId, int64_t>> sigSharesRequested;
     SigShareMap<bool> sigSharesToAnnounce;
 
@@ -412,13 +412,13 @@ private:
     bool PreVerifyBatchedSigShares(NodeId nodeId, const CSigSharesNodeState::SessionInfo& session, const CBatchedSigShares& batchedSigShares, bool& retBan);
 
     void CollectPendingSigSharesToVerify(size_t maxUniqueSessions,
-        std::unordered_map<NodeId, std::vector<CSigShare>>& retSigShares,
-        std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums);
+        boost::unordered_map<NodeId, std::vector<CSigShare>>& retSigShares,
+        boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums);
     bool ProcessPendingSigShares(CConnman& connman);
 
     void ProcessPendingSigSharesFromNode(NodeId nodeId,
         const std::vector<CSigShare>& sigShares,
-        const std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& quorums,
+        const boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& quorums,
         CConnman& connman);
 
     void ProcessSigShare(NodeId nodeId, const CSigShare& sigShare, CConnman& connman, const CQuorumCPtr& quorum);
@@ -435,10 +435,10 @@ private:
     void BanNode(NodeId nodeId);
 
     bool SendMessages();
-    void CollectSigSharesToRequest(std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToRequest);
-    void CollectSigSharesToSend(std::unordered_map<NodeId, std::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>>& sigSharesToSend);
-    void CollectSigSharesToSend(std::unordered_map<NodeId, std::vector<CSigShare>>& sigSharesToSend, const std::vector<CNode*>& vNodes);
-    void CollectSigSharesToAnnounce(std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToAnnounce);
+    void CollectSigSharesToRequest(boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToRequest);
+    void CollectSigSharesToSend(boost::unordered_map<NodeId, boost::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>>& sigSharesToSend);
+    void CollectSigSharesToSend(boost::unordered_map<NodeId, std::vector<CSigShare>>& sigSharesToSend, const std::vector<CNode*>& vNodes);
+    void CollectSigSharesToAnnounce(boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToAnnounce);
     bool SignPendingSigShares();
     void WorkThreadMain();
 };

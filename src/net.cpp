@@ -39,7 +39,7 @@
 #endif
 
 #include <cstdint>
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 #include <math.h>
 
@@ -1320,7 +1320,7 @@ void CConnman::SocketEvents(std::set<SOCKET>& recv_set, std::set<SOCKET>& send_s
         return;
     }
 
-    std::unordered_map<SOCKET, struct pollfd> pollfds;
+    boost::unordered_map<SOCKET, struct pollfd> pollfds;
     for (SOCKET socket_id : recv_select_set) {
         pollfds[socket_id].fd = socket_id;
         pollfds[socket_id].events |= POLLIN;

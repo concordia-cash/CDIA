@@ -14,7 +14,7 @@
 #include "sync.h"
 #include "unordered_lru_cache.h"
 
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 namespace llmq
 {
@@ -118,7 +118,7 @@ private:
     CRecoveredSigsDb db;
 
     // Incoming and not verified yet
-    std::unordered_map<NodeId, std::list<CRecoveredSig>> pendingRecoveredSigs;
+    boost::unordered_map<NodeId, std::list<CRecoveredSig>> pendingRecoveredSigs;
 
     // must be protected by cs
     FastRandomContext rnd;
@@ -146,8 +146,8 @@ private:
     bool PreVerifyRecoveredSig(NodeId nodeId, const CRecoveredSig& recoveredSig, bool& retBan);
 
     void CollectPendingRecoveredSigsToVerify(size_t maxUniqueSessions,
-        std::unordered_map<NodeId, std::list<CRecoveredSig>>& retSigShares,
-        std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums);
+        boost::unordered_map<NodeId, std::list<CRecoveredSig>>& retSigShares,
+        boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums);
     bool ProcessPendingRecoveredSigs(CConnman& connman); // called from the worker thread of CSigSharesManager
     void ProcessRecoveredSig(NodeId nodeId, const CRecoveredSig& recoveredSig, const CQuorumCPtr& quorum, CConnman& connman);
     void Cleanup(); // called from the worker thread of CSigSharesManager

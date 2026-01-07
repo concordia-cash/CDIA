@@ -158,6 +158,7 @@ bool CBudgetProposal::CheckStrings()
     if (strURL != SanitizeString(strURL)) {
         strInvalid = "Proposal URL contains illegal characters.";
     }
+    return false;
 }
 
 bool CBudgetProposal::IsWellFormed(const CAmount& nTotalBudget)

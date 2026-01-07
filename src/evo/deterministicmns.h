@@ -21,7 +21,7 @@
 #include <immer/map.hpp>
 #include <immer/map_transient.hpp>
 
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 class CBlock;
 class CBlockIndex;
@@ -563,8 +563,8 @@ public:
 private:
     CEvoDB& evoDb;
 
-    std::unordered_map<uint256, CDeterministicMNList, StaticSaltedHasher> mnListsCache;
-    std::unordered_map<uint256, CDeterministicMNListDiff, StaticSaltedHasher> mnListDiffsCache;
+    boost::unordered_map<uint256, CDeterministicMNList, StaticSaltedHasher> mnListsCache;
+    boost::unordered_map<uint256, CDeterministicMNListDiff, StaticSaltedHasher> mnListDiffsCache;
     const CBlockIndex* tipIndex{nullptr};
 
 public:

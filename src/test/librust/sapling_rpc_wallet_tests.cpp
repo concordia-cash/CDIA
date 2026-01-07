@@ -20,7 +20,7 @@
 #include "sapling/address.h"
 #include "sapling/sapling_operation.h"
 
-#include <unordered_set>
+#include <boost/unordered_set.hpp>
 
 #include <boost/test/unit_test.hpp>
 
@@ -203,7 +203,7 @@ BOOST_AUTO_TEST_CASE(rpc_wallet_sapling_importexport)
     BOOST_CHECK((int) arr.size() == n1);
 
     // Put addresses into a set
-    std::unordered_set<std::string> myaddrs;
+    boost::unordered_set<std::string> myaddrs;
     for (const UniValue& element : arr.getValues()) {
         myaddrs.insert(element.get_str());
     }
@@ -225,7 +225,7 @@ BOOST_AUTO_TEST_CASE(rpc_wallet_sapling_importexport)
     BOOST_CHECK((int) arr.size() == numAddrs);
 
     // Create a set from them
-    std::unordered_set<std::string> listaddrs;
+    boost::unordered_set<std::string> listaddrs;
     for (const UniValue& element : arr.getValues()) {
         listaddrs.insert(element.get_str());
     }

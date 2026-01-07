@@ -17,7 +17,7 @@
 #include <atomic>
 #include <map>
 #include <string>
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 #include <vector>
 
 #include <db_cxx.h>
@@ -43,7 +43,7 @@ public:
     std::unique_ptr<DbEnv> dbenv;
     std::map<std::string, int> mapFileUseCount;
     std::map<std::string, Db*> mapDb;
-    std::unordered_map<std::string, WalletDatabaseFileId> m_fileids;
+    boost::unordered_map<std::string, WalletDatabaseFileId> m_fileids;
     std::condition_variable_any m_db_in_use;
 
     explicit BerkeleyEnvironment(const fs::path& env_directory);

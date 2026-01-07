@@ -123,8 +123,8 @@ struct BlockHasher {
 extern CScript COINBASE_FLAGS;
 extern RecursiveMutex cs_main;
 extern CTxMemPool mempool;
-typedef std::unordered_map<uint256, CBlockIndex*, BlockHasher> BlockMap;
-typedef std::unordered_multimap<uint256, CBlockIndex*, BlockHasher> PrevBlockMap;
+typedef boost::unordered_map<uint256, CBlockIndex*, BlockHasher> BlockMap;
+typedef boost::unordered_multimap<uint256, CBlockIndex*, BlockHasher> PrevBlockMap;
 extern BlockMap mapBlockIndex;
 extern PrevBlockMap mapPrevBlockIndex;
 extern uint64_t nLastBlockTx;

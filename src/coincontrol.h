@@ -12,7 +12,7 @@
 #include "primitives/transaction.h"
 #include "sapling/address.h"
 #include "script/standard.h"
-#include <unordered_set>
+#include <boost/unordered_set.hpp>
 
 class OutPointWrapper {
 public:
@@ -106,7 +106,7 @@ private:
         }
     };
 
-    std::unordered_set<OutPointWrapper, SimpleOutpointHash> setSelected;
+    boost::unordered_set<OutPointWrapper, SimpleOutpointHash> setSelected;
 };
 
 #endif // PIVX_COINCONTROL_H

@@ -19,7 +19,7 @@
 #include <assert.h>
 #include <stdint.h>
 
-#include <unordered_map>
+#include <boost/unordered/unordered_map.hpp>
 
 /**
  * A UTXO entry.
@@ -171,10 +171,10 @@ struct CNullifiersCacheEntry
     CNullifiersCacheEntry() : entered(false), flags(0) {}
 };
 
-typedef std::unordered_map<uint256, CAnchorsSaplingCacheEntry, SaltedIdHasher> CAnchorsSaplingMap;
-typedef std::unordered_map<uint256, CNullifiersCacheEntry, SaltedIdHasher> CNullifiersMap;
+typedef boost::unordered_map<uint256, CAnchorsSaplingCacheEntry, SaltedIdHasher> CAnchorsSaplingMap;
+typedef boost::unordered_map<uint256, CNullifiersCacheEntry, SaltedIdHasher> CNullifiersMap;
 
-typedef std::unordered_map<COutPoint, CCoinsCacheEntry, SaltedOutpointHasher> CCoinsMap;
+typedef boost::unordered_map<COutPoint, CCoinsCacheEntry, SaltedOutpointHasher> CCoinsMap;
 
 /** Cursor for iterating over CoinsView state */
 class CCoinsViewCursor

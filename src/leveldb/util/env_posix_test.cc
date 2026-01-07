@@ -10,7 +10,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
-#include <unordered_set>
+#include <boost/unordered_set.hpp>
 #include <vector>
 
 #include "leveldb/env.h"
@@ -85,7 +85,7 @@ void GetMaxFileDescriptor(int* result_fd) {
 // Iterates through all possible FDs and returns the currently open ones.
 //
 // Returns void so the implementation can use ASSERT_EQ.
-void GetOpenFileDescriptors(std::unordered_set<int>* open_fds) {
+void GetOpenFileDescriptors(boost::unordered_set<int>* open_fds) {
   int max_fd = 0;
   GetMaxFileDescriptor(&max_fd);
 
@@ -110,8 +110,8 @@ void GetOpenFileDescriptors(std::unordered_set<int>* open_fds) {
 //
 // Returns void so the implementation can use ASSERT_EQ.
 void GetNewlyOpenedFileDescriptor(
-    const std::unordered_set<int>& baseline_open_fds, int* result_fd) {
-  std::unordered_set<int> open_fds;
+    const boost::unordered_set<int>& baseline_open_fds, int* result_fd) {
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
   for (int fd : baseline_open_fds) {
     ASSERT_EQ(1, open_fds.count(fd))
@@ -125,7 +125,7 @@ void GetNewlyOpenedFileDescriptor(
 
 // Check that a fork()+exec()-ed child process does not have an extra open FD.
 void CheckCloseOnExecDoesNotLeakFDs(
-    const std::unordered_set<int>& baseline_open_fds) {
+    const boost::unordered_set<int>& baseline_open_fds) {
   // Prepare the argument list for the child process.
   // execv() wants mutable buffers.
   char switch_buffer[sizeof(kTestCloseOnExecSwitch)];
@@ -214,7 +214,7 @@ TEST(EnvPosixTest, TestOpenOnRead) {
 #if HAVE_O_CLOEXEC
 
 TEST(EnvPosixTest, TestCloseOnExecSequentialFile) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;
@@ -231,7 +231,7 @@ TEST(EnvPosixTest, TestCloseOnExecSequentialFile) {
 }
 
 TEST(EnvPosixTest, TestCloseOnExecRandomAccessFile) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;
@@ -259,7 +259,7 @@ TEST(EnvPosixTest, TestCloseOnExecRandomAccessFile) {
 }
 
 TEST(EnvPosixTest, TestCloseOnExecWritableFile) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;
@@ -276,7 +276,7 @@ TEST(EnvPosixTest, TestCloseOnExecWritableFile) {
 }
 
 TEST(EnvPosixTest, TestCloseOnExecAppendableFile) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;
@@ -293,7 +293,7 @@ TEST(EnvPosixTest, TestCloseOnExecAppendableFile) {
 }
 
 TEST(EnvPosixTest, TestCloseOnExecLockFile) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;
@@ -310,7 +310,7 @@ TEST(EnvPosixTest, TestCloseOnExecLockFile) {
 }
 
 TEST(EnvPosixTest, TestCloseOnExecLogger) {
-  std::unordered_set<int> open_fds;
+  boost::unordered_set<int> open_fds;
   GetOpenFileDescriptors(&open_fds);
 
   std::string test_dir;

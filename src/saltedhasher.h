@@ -8,7 +8,7 @@
 #include "crypto/siphash.h"
 #include "uint256.h"
 
-/** Helper classes for std::unordered_map and std::unordered_set hashing */
+/** Helper classes for boost::unordered_map and boost::unordered_set hashing */
 
 template<typename T> struct SaltedHasherImpl;
 

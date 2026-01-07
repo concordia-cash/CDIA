@@ -543,7 +543,7 @@ bool CSigSharesManager::PreVerifyBatchedSigShares(NodeId nodeId, const CSigShare
         return false;
     }
 
-    std::unordered_set<uint16_t> dupMembers;
+    boost::unordered_set<uint16_t> dupMembers;
 
     for (size_t i = 0; i < batchedSigShares.sigShares.size(); i++) {
         auto quorumMember = batchedSigShares.sigShares[i].first;
@@ -568,8 +568,8 @@ bool CSigSharesManager::PreVerifyBatchedSigShares(NodeId nodeId, const CSigShare
 
 void CSigSharesManager::CollectPendingSigSharesToVerify(
     size_t maxUniqueSessions,
-    std::unordered_map<NodeId, std::vector<CSigShare>>& retSigShares,
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums)
+    boost::unordered_map<NodeId, std::vector<CSigShare>>& retSigShares,
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& retQuorums)
 {
     {
         LOCK(cs);
@@ -583,7 +583,7 @@ void CSigSharesManager::CollectPendingSigSharesToVerify(
         // invalid, making batch verification fail and revert to per-share verification, which in turn would slow down
         // the whole verification process
 
-        std::unordered_set<std::pair<NodeId, uint256>, StaticSaltedHasher> uniqueSignHashes;
+        boost::unordered_set<std::pair<NodeId, uint256>, StaticSaltedHasher> uniqueSignHashes;
         llmq::utils::IterateNodesRandom(nodeStates, [&]() { return uniqueSignHashes.size() < maxUniqueSessions; }, [&](NodeId nodeId, CSigSharesNodeState& ns) {
             if (ns.pendingIncomingSigShares.Empty()) {
                 return false;
@@ -627,8 +627,8 @@ void CSigSharesManager::CollectPendingSigSharesToVerify(
 
 bool CSigSharesManager::ProcessPendingSigShares(CConnman& connman)
 {
-    std::unordered_map<NodeId, std::vector<CSigShare>> sigSharesByNodes;
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
+    boost::unordered_map<NodeId, std::vector<CSigShare>> sigSharesByNodes;
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
 
     CollectPendingSigSharesToVerify(32, sigSharesByNodes, quorums);
     if (sigSharesByNodes.empty()) {
@@ -701,7 +701,7 @@ bool CSigSharesManager::ProcessPendingSigShares(CConnman& connman)
 // It's ensured that no duplicates are passed to this method
 void CSigSharesManager::ProcessPendingSigSharesFromNode(NodeId nodeId,
     const std::vector<CSigShare>& sigShares,
-    const std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& quorums,
+    const boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher>& quorums,
     CConnman& connman)
 {
     LOCK(cs);
@@ -853,7 +853,7 @@ CDeterministicMNCPtr CSigSharesManager::SelectMemberForRecovery(const CQuorumCPt
 }
 
 // TODO unused
-void CSigSharesManager::CollectSigSharesToRequest(std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToRequest)
+void CSigSharesManager::CollectSigSharesToRequest(boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToRequest)
 {
     AssertLockHeld(cs);
 
@@ -950,7 +950,7 @@ void CSigSharesManager::CollectSigSharesToRequest(std::unordered_map<NodeId, std
 }
 
 // TODO: unused
-void CSigSharesManager::CollectSigSharesToSend(std::unordered_map<NodeId, std::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>>& sigSharesToSend)
+void CSigSharesManager::CollectSigSharesToSend(boost::unordered_map<NodeId, boost::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>>& sigSharesToSend)
 {
     AssertLockHeld(cs);
 
@@ -1002,11 +1002,11 @@ void CSigSharesManager::CollectSigSharesToSend(std::unordered_map<NodeId, std::u
     }
 }
 
-void CSigSharesManager::CollectSigSharesToSend(std::unordered_map<NodeId, std::vector<CSigShare>>& sigSharesToSend, const std::vector<CNode*>& vNodes)
+void CSigSharesManager::CollectSigSharesToSend(boost::unordered_map<NodeId, std::vector<CSigShare>>& sigSharesToSend, const std::vector<CNode*>& vNodes)
 {
     AssertLockHeld(cs);
 
-    std::unordered_map<uint256, CNode*> proTxToNode;
+    boost::unordered_map<uint256, CNode*> proTxToNode;
     for (const auto& pnode : vNodes) {
         if (pnode->verifiedProRegTxHash.IsNull()) {
             continue;
@@ -1043,11 +1043,11 @@ void CSigSharesManager::CollectSigSharesToSend(std::unordered_map<NodeId, std::v
 }
 
 // TODO unused
-void CSigSharesManager::CollectSigSharesToAnnounce(std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToAnnounce)
+void CSigSharesManager::CollectSigSharesToAnnounce(boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>>& sigSharesToAnnounce)
 {
     AssertLockHeld(cs);
 
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, std::unordered_set<NodeId>, StaticSaltedHasher> quorumNodesMap;
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, boost::unordered_set<NodeId>, StaticSaltedHasher> quorumNodesMap;
 
     this->sigSharesToAnnounce.ForEach([&](const SigShareKey& sigShareKey, bool) {
         auto& signHash = sigShareKey.first;
@@ -1097,11 +1097,11 @@ void CSigSharesManager::CollectSigSharesToAnnounce(std::unordered_map<NodeId, st
 
 bool CSigSharesManager::SendMessages()
 {
-    std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>> sigSharesToRequest;
-    std::unordered_map<NodeId, std::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>> sigShareBatchesToSend;
-    std::unordered_map<NodeId, std::vector<CSigShare>> sigSharesToSend;
-    std::unordered_map<NodeId, std::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>> sigSharesToAnnounce;
-    std::unordered_map<NodeId, std::vector<CSigSesAnn>> sigSessionAnnouncements;
+    boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>> sigSharesToRequest;
+    boost::unordered_map<NodeId, boost::unordered_map<uint256, CBatchedSigShares, StaticSaltedHasher>> sigShareBatchesToSend;
+    boost::unordered_map<NodeId, std::vector<CSigShare>> sigSharesToSend;
+    boost::unordered_map<NodeId, boost::unordered_map<uint256, CSigSharesInv, StaticSaltedHasher>> sigSharesToAnnounce;
+    boost::unordered_map<NodeId, std::vector<CSigSesAnn>> sigSessionAnnouncements;
 
     auto addSigSesAnnIfNeeded = [&](NodeId nodeId, const uint256& signHash) {
         auto& nodeState = nodeStates[nodeId];
@@ -1291,7 +1291,7 @@ void CSigSharesManager::Cleanup()
     // loop through all sig shares again to find the ones belonging to the inactive quorums. We then delete the
     // sessions belonging to the sig shares. At the same time, we use this map as a cache when we later need to resolve
     // quorumHash -> quorumPtr (as GetQuorum() requires cs_main, leading to deadlocks with cs held)
-    std::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
+    boost::unordered_map<std::pair<Consensus::LLMQType, uint256>, CQuorumCPtr, StaticSaltedHasher> quorums;
 
     {
         LOCK(cs);
@@ -1313,7 +1313,7 @@ void CSigSharesManager::Cleanup()
     {
         // Now delete sessions which are for inactive quorums
         LOCK(cs);
-        std::unordered_set<uint256, StaticSaltedHasher> inactiveQuorumSessions;
+        boost::unordered_set<uint256, StaticSaltedHasher> inactiveQuorumSessions;
         sigShares.ForEach([&](const SigShareKey& k, const CSigShare& sigShare) {
             if (!quorums.count(std::make_pair((Consensus::LLMQType)sigShare.llmqType, sigShare.quorumHash))) {
                 inactiveQuorumSessions.emplace(sigShare.GetSignHash());
@@ -1328,7 +1328,7 @@ void CSigSharesManager::Cleanup()
         LOCK(cs);
 
         // Remove sessions which were successfully recovered
-        std::unordered_set<uint256, StaticSaltedHasher> doneSessions;
+        boost::unordered_set<uint256, StaticSaltedHasher> doneSessions;
         sigShares.ForEach([&](const SigShareKey& k, const CSigShare& sigShare) {
             if (doneSessions.count(sigShare.GetSignHash())) {
                 return;
@@ -1342,7 +1342,7 @@ void CSigSharesManager::Cleanup()
         }
 
         // Remove sessions which timed out
-        std::unordered_set<uint256, StaticSaltedHasher> timeoutSessions;
+        boost::unordered_set<uint256, StaticSaltedHasher> timeoutSessions;
         for (auto& p : timeSeenForSessions) {
             auto& signHash = p.first;
             int64_t lastSeenTime = p.second;
@@ -1385,7 +1385,7 @@ void CSigSharesManager::Cleanup()
     }
 
     // Find node states for peers that disappeared from CConnman
-    std::unordered_set<NodeId> nodeStatesToDelete;
+    boost::unordered_set<NodeId> nodeStatesToDelete;
     for (auto& p : nodeStates) {
         nodeStatesToDelete.emplace(p.first);
     }
@@ -1426,7 +1426,7 @@ void CSigSharesManager::RemoveBannedNodeStates()
     // Called regularly to cleanup local node states for banned nodes
 
     LOCK2(cs, cs_main);
-    std::unordered_set<NodeId> toRemove;
+    boost::unordered_set<NodeId> toRemove;
     for (auto it = nodeStates.begin(); it != nodeStates.end();) {
         if (IsBanned(it->first)) {
             // re-request sigshares from other nodes

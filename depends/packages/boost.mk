@@ -1,8 +1,8 @@
 package=boost
-$(package)_version=1.81.0
+$(package)_version=1.88.0
 $(package)_download_path=https://archives.boost.io/release/$($(package)_version)/source/
 $(package)_file_name=boost_$(subst .,_,$($(package)_version)).tar.bz2
-$(package)_sha256_hash=71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
+$(package)_sha256_hash=46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b
 $(package)_dependencies=native_b2
 
 define $(package)_set_vars

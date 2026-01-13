@@ -77,7 +77,7 @@ WORKDIR /
 ENTRYPOINT ["bash"]
 
 # Build it with:
-# docker build --build-arg CPU_CORES=<num_cores> -t concordia-cash/linux-x64-builder -f Dockerfile.linux-x64-builder .
+# docker build --build-arg CPU_CORES=<num_cores> -t concordiacash/linux-x64-builder -f Dockerfile.linux-x64-builder .
 # Publish with:
 # docker login
-# docker push concordia-cash/linux-x64-builder:latest
+# docker push concordiacash/linux-x64-builder:latest

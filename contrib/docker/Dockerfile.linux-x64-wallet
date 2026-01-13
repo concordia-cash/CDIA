@@ -1,4 +1,4 @@
-FROM concordia-cash/linux-x64-builder:latest
+FROM concordiacash/linux-x64-builder@sha256:e5efdafd07196b7f82b3380d90d76129b666d953c07360fe0f5ca79a6f613a81
 
 
 # ARG for specifying the number of cores

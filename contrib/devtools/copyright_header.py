@@ -17,7 +17,7 @@ import os
 
 EXCLUDE = [
     # auto generated:
-    'src/qt/pivxstrings.cpp',
+    'src/qt/concordiastrings.cpp',
     'src/chainparamsseeds.h',
     # other external copyrights:
     'src/ctpl_stl.h',

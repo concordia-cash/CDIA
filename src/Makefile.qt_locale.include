@@ -1,18 +1,18 @@
 QT_TS = \
-  qt/locale/pivx_bn.ts \
-  qt/locale/pivx_de.ts \
-  qt/locale/pivx_en.ts \
-  qt/locale/pivx_es.ts \
-  qt/locale/pivx_es_ES.ts \
-  qt/locale/pivx_fa.ts \
-  qt/locale/pivx_fr_FR.ts \
-  qt/locale/pivx_hr_HR.ts \
-  qt/locale/pivx_it.ts \
-  qt/locale/pivx_ko_KR.ts \
-  qt/locale/pivx_nl.ts \
-  qt/locale/pivx_pl.ts \
-  qt/locale/pivx_ru.ts \
-  qt/locale/pivx_sv.ts \
-  qt/locale/pivx_tr.ts \
-  qt/locale/pivx_zh_CN.ts \
-  qt/locale/pivx_zh_TW.ts
+  qt/locale/concordia_bn.ts \
+  qt/locale/concordia_de.ts \
+  qt/locale/concordia_en.ts \
+  qt/locale/concordia_es.ts \
+  qt/locale/concordia_es_ES.ts \
+  qt/locale/concordia_fa.ts \
+  qt/locale/concordia_fr_FR.ts \
+  qt/locale/concordia_hr_HR.ts \
+  qt/locale/concordia_it.ts \
+  qt/locale/concordia_ko_KR.ts \
+  qt/locale/concordia_nl.ts \
+  qt/locale/concordia_pl.ts \
+  qt/locale/concordia_ru.ts \
+  qt/locale/concordia_sv.ts \
+  qt/locale/concordia_tr.ts \
+  qt/locale/concordia_zh_CN.ts \
+  qt/locale/concordia_zh_TW.ts

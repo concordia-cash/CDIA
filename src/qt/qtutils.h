@@ -5,7 +5,7 @@
 #ifndef PIVX_QT_QTUTILS_H
 #define PIVX_QT_QTUTILS_H
 
-#include "pivxgui.h"
+#include "concordiagui.h"
 
 #include <QAbstractAnimation>
 #include <QColor>

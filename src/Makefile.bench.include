@@ -13,7 +13,7 @@ GENERATED_BENCH_FILES = $(RAW_BENCH_FILES:.raw=.raw.h)
 
 bench_bench_pivx_SOURCES = \
   $(RAW_BENCH_FILES) \
-  bench/bench_pivx.cpp \
+  bench/bench_concordia.cpp \
   bench/bench.cpp \
   bench/bench.h \
   bench/Examples.cpp \

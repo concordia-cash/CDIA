@@ -4,11 +4,11 @@ Sample init scripts and service configuration for pivxd
 Sample scripts and configuration files for systemd, Upstart and OpenRC
 can be found in the contrib/init folder.
 
-    contrib/init/pivxd.service:    systemd service unit configuration
-    contrib/init/pivxd.openrc:     OpenRC compatible SysV style init script
-    contrib/init/pivxd.openrcconf: OpenRC conf.d file
-    contrib/init/pivxd.conf:       Upstart service configuration file
-    contrib/init/pivxd.init:       CentOS compatible SysV style init script
+    contrib/init/concordiad.service:    systemd service unit configuration
+    contrib/init/concordiad.openrc:     OpenRC compatible SysV style init script
+    contrib/init/concordiad.openrcconf: OpenRC conf.d file
+    contrib/init/concordiad.conf:       Upstart service configuration file
+    contrib/init/concordiad.init:       CentOS compatible SysV style init script
 
 Service User
 ---------------------------------
@@ -44,7 +44,7 @@ This allows for running pivxd without having to do any manual configuration.
 relative to the data directory. `wallet` *only* supports relative paths.
 
 For an example configuration file that describes the configuration settings,
-see contrib/debian/examples/pivx.conf.
+see contrib/debian/examples/concordia.conf.
 
 Paths
 ---------------------------------

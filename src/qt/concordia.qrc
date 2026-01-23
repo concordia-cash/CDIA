@@ -22,10 +22,10 @@
     <qresource prefix="/">
         <file alias="bg-splash">res/images/bg-splash.svg</file>
         <file alias="bg-splash-png">res/images/bg-splash.png</file>
-        <file alias="img-logo-pivx-png">res/images/img-logo-pivx.png</file>
-        <file alias="img-logo-pivx-2x">res/images/img-logo-pivx@2x.png</file>
-        <file alias="img-logo-pivx-3x">res/images/img-logo-pivx@3x.png</file>
-        <file alias="img-nav-logo-pivx">res/images/img-nav-logo-pivx.png</file>
+        <file alias="img-logo-concordia-png">res/images/img-logo-concordia.png</file>
+        <file alias="img-logo-concordia-2x">res/images/img-logo-concordia@2x.png</file>
+        <file alias="img-logo-concordia-3x">res/images/img-logo-concordia@3x.png</file>
+        <file alias="img-nav-logo-concordia">res/images/img-nav-logo-concordia.png</file>
         <file alias="img-qr-test-big">res/images/img-qr-test-big.png</file>
         <file alias="img-qr-test">res/images/img-qr-test.png</file>
         <file alias="img-welcome-step1">res/images/img-welcome-step1.png</file>
@@ -189,7 +189,7 @@
         <file alias="ic-arrow-drop-up-purple">res/images/ic-arrow-drop-up-purple.svg</file>
         <file alias="bg-welcome-2x">res/images/bg-welcome@2x.jpg</file>
         <file alias="bg-welcome-3x">res/images/bg-welcome@3x.jpg</file>
-        <file alias="img-logo-pivx">res/images/img-logo-pivx.svg</file>
+        <file alias="img-logo-concordia">res/images/img-logo-concordia.svg</file>
         <file alias="bg-welcome-svg">res/images/bg-welcome.svg</file>
         <file alias="bg-welcome-container">res/images/bg-welcome-container.svg</file>
         <file alias="bg-welcome">res/images/bg-welcome.png</file>

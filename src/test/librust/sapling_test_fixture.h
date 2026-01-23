@@ -5,7 +5,7 @@
 #ifndef PIVX_TEST_LIBRUST_SAPLING_TEST_FIXTURE_H
 #define PIVX_TEST_LIBRUST_SAPLING_TEST_FIXTURE_H
 
-#include "test/test_pivx.h"
+#include "test/test_concordia.h"
 
 /**
  * Testing setup that configures a complete environment for Sapling testing.

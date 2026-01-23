@@ -7,6 +7,14 @@ reset-files.bash
 *.tar.gz
 
 *.exe
+src/concordia
+src/concordiad
+src/concordia-cli
+src/concordia-tx
+src/bench/bench_concordia
+src/test/test_concordia
+src/test/test_concordia_fuzzy
+src/qt/test/test_concordia-qt
 src/pivx
 src/pivxd
 src/pivx-cli
@@ -61,8 +69,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/pivx-config.h
-src/config/pivx-config.h.in
+src/config/concordia-config.h
+src/config/concordia-config.h.in
 src/config/stamp-h1
 src/obj
 share/setup.nsi
@@ -89,6 +97,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 .pivx
+.concordia
 *.a
 *.pb.cc
 *.pb.h
@@ -113,6 +122,7 @@ src/qt/test/moc*.cpp
 *.qm
 Makefile
 pivx-qt
+concordia-qt
 PIVX-Qt.app
 background.tiff*
 
@@ -125,6 +135,7 @@ vendor/
 # Unit-tests
 Makefile.test
 pivx-qt_test
+concordia-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -141,6 +152,7 @@ build
 *.gcno
 /*.info
 test_pivx.coverage/
+test_concordia.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -172,6 +184,8 @@ ui_*
 build*
 pivxd.*
 pivxd-new-gui.*
+concordiad.*
+concordiad-new-gui.*
 /cov-int/
 
 cppcheck.txt

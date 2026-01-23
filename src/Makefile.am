@@ -113,11 +113,11 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += pivxd
+  bin_PROGRAMS += concordiad
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += pivx-cli pivx-tx
+  bin_PROGRAMS += concordia-cli concordia-tx
 endif
 
 LIBSAPLING_H = \
@@ -138,7 +138,7 @@ LIBSAPLING_H = \
   sapling/sapling_operation.h
 
 .PHONY: FORCE cargo-build check-symbols check-security
-# pivx core #
+# concordia core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrdb.h \
@@ -349,7 +349,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between pivxd and pivx-qt
+# server: shared between concordiad and concordia-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -439,7 +439,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between pivxd and pivx-qt, but only linked
+# wallet: shared between concordiad and concordia-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -534,7 +534,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.cpp \
   zpiv/zpivmodule.cpp
 
-# common: shared between pivxd, and pivx-qt and non-server tools
+# common: shared between concordiad, and concordia-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -653,7 +653,7 @@ libsapling_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between pivx-cli and pivx-qt
+# cli: shared between concordia-cli and concordia-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -664,16 +664,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# pivxd binary #
-pivxd_SOURCES = pivxd.cpp
-pivxd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-pivxd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pivxd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# concordiad binary #
+concordiad_SOURCES = concordiad.cpp
+concordiad_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+concordiad_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+concordiad_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pivxd_SOURCES += pivxd-res.rc
+concordiad_SOURCES += concordiad-res.rc
 endif
-pivxd_LDADD = \
+concordiad_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -690,19 +690,19 @@ pivxd_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-pivxd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
+concordiad_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
 
-# pivx-cli binary #
-pivx_cli_SOURCES = pivx-cli.cpp
-pivx_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-pivx_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pivx_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# concordia-cli binary #
+concordia_cli_SOURCES = concordia-cli.cpp
+concordia_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+concordia_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+concordia_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pivx_cli_SOURCES += pivx-cli-res.rc
+concordia_cli_SOURCES += concordia-cli-res.rc
 endif
 
-pivx_cli_LDADD = \
+concordia_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
@@ -711,20 +711,20 @@ pivx_cli_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-pivx_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
+concordia_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
 #
 
-# pivx-tx binary #
-pivx_tx_SOURCES = pivx-tx.cpp
-pivx_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-pivx_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pivx_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# concordia-tx binary #
+concordia_tx_SOURCES = concordia-tx.cpp
+concordia_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+concordia_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+concordia_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pivx_tx_SOURCES += pivx-tx-res.rc
+concordia_tx_SOURCES += concordia-tx-res.rc
 endif
 
-pivx_tx_LDADD = \
+concordia_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -735,7 +735,7 @@ pivx_tx_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-pivx_tx_LDADD += $(BOOST_LIBS) $(BLS_LIBS)
+concordia_tx_LDADD += $(BOOST_LIBS) $(BLS_LIBS)
 #
 
 # bitcoinconsensus library #
@@ -811,12 +811,12 @@ EXTRA_DIST = $(CTAES_DIST) rust
 EXTRA_DIST += $(IMMER_DIST)
 
 
-config/pivx-config.h: config/stamp-h1
+config/concordia-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/pivx-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/concordia-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/pivx-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/pivx-config.h.in
+$(top_srcdir)/$(subdir)/config/concordia-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/concordia-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

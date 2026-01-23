@@ -10,7 +10,7 @@
 #include "utilstrencodings.h"
 #include "util/string.h"
 #include "utilmoneystr.h"
-#include "test/test_pivx.h"
+#include "test/test_concordia.h"
 #include "util/vector.h"
 
 #include <stdint.h>

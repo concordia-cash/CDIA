@@ -24,18 +24,18 @@ URL:		https://pivx.org/
 Source0:	https://pivx.org/bin/pivx-core-%{version}/pivx-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
-Source10:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/debian/examples/pivx.conf
+Source10:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/debian/examples/concordia.conf
 
 #man pages
-Source20:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/pivxd.1
-Source21:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/pivx-cli.1
-Source22:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/pivx-qt.1
+Source20:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/concordiad.1
+Source21:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/concordia-cli.1
+Source22:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/doc/man/concordia-qt.1
 
 #selinux
-Source30:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/pivx.te
+Source30:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/concordia.te
 # Source31 - what about pivx-tx and bench_pivx ???
-Source31:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/pivx.fc
-Source32:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/pivx.if
+Source31:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/concordia.fc
+Source32:	https://raw.githubusercontent.com/pivx-project/pivx/v%{version}/contrib/rpm/concordia.if
 
 Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg
 
@@ -243,7 +243,7 @@ done
 
 %if %{_buildqt}
 # qt icons
-install -D -p share/pixmaps/pivx.ico %{buildroot}%{_datadir}/pixmaps/pivx.ico
+install -D -p share/pixmaps/concordia.ico %{buildroot}%{_datadir}/pixmaps/pivx.ico
 install -p share/pixmaps/nsis-header.bmp %{buildroot}%{_datadir}/pixmaps/
 install -p share/pixmaps/nsis-wizard.bmp %{buildroot}%{_datadir}/pixmaps/
 install -p %{SOURCE100} %{buildroot}%{_datadir}/pixmaps/pivx.svg
@@ -300,10 +300,10 @@ touch -a -m -t 201511100546 %{buildroot}%{_datadir}/kde4/services/pivx-core.prot
 %endif
 
 # man pages
-install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/pivxd.1
-install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/pivx-cli.1
+install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/concordiad.1
+install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/concordia-cli.1
 %if %{_buildqt}
-install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/pivx-qt.1
+install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/concordia-qt.1
 %endif
 
 # nuke these, we do extensive testing of binaries in %%check before packaging
@@ -384,7 +384,7 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_datadir}/pixmaps/*.svg
 %attr(0644,root,root) %{_datadir}/pixmaps/*.png
 %attr(0644,root,root) %{_datadir}/pixmaps/*.xpm
-%attr(0644,root,root) %{_mandir}/man1/pivx-qt.1*
+%attr(0644,root,root) %{_mandir}/man1/concordia-qt.1*
 %endif
 
 %files libs
@@ -414,7 +414,7 @@ rm -rf %{buildroot}
 %dir %attr(0750,pivx,pivx) %{_localstatedir}/lib/pivx
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/sysconfig/pivx
 %attr(0644,root,root) %{_datadir}/selinux/*/*.pp
-%attr(0644,root,root) %{_mandir}/man1/pivxd.1*
+%attr(0644,root,root) %{_mandir}/man1/concordiad.1*
 
 %files utils
 %defattr(-,root,root,-)
@@ -423,7 +423,7 @@ rm -rf %{buildroot}
 %attr(0755,root,root) %{_bindir}/pivx-cli
 %attr(0755,root,root) %{_bindir}/pivx-tx
 %attr(0755,root,root) %{_bindir}/bench_pivx
-%attr(0644,root,root) %{_mandir}/man1/pivx-cli.1*
+%attr(0644,root,root) %{_mandir}/man1/concordia-cli.1*
 
 
 

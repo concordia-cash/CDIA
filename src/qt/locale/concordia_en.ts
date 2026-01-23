@@ -2496,7 +2496,7 @@ Address: %4
         <translation>%1 ms</translation>
     </message>
     <message>
-        <location filename="../pivx.cpp" line="+540"/>
+        <location filename="../concordia.cpp" line="+540"/>
         <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>

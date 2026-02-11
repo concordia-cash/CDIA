@@ -91,12 +91,12 @@
         <translation>Mottagar adresser</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Det här är dina PIVX adresser för att skicka betalningar. Kontrollera alltid summan och mottagaradressen före du sänder mynt.</translation>
+        <source>These are your Concordia Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Det här är dina Concordia Cash adresser för att skicka betalningar. Kontrollera alltid summan och mottagaradressen före du sänder mynt.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Det här är dina PIVX adresser för att ta emot betalningar. Det är rekomenderat att använda en ny mottagaradress för varje transaktion.</translation>
+        <source>These are your Concordia Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Det här är dina Concordia Cash adresser för att ta emot betalningar. Det är rekomenderat att använda en ny mottagaradress för varje transaktion.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -812,8 +812,8 @@ Den startar automatiskt så snart plånboken har tillräckligt många bekräftel
         <translation>Redigera skickande adress</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>Den inmatade adressen "%1" är ej en giltig PIVX adress.</translation>
+        <source>The entered address "%1" is not a valid Concordia Cash address.</source>
+        <translation>Den inmatade adressen "%1" är ej en giltig Concordia Cash adress.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1278,8 +1278,8 @@ Adress: %4
         <translation>Kan ej starta pivx: klicka-för-att-betala hanterare</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid PIVX address or malformed URI parameters.</source>
-        <translation>URI kunde ej analyseras! Detta kan orsakas av en ogiltig PIVX adress eller felproducerade URI parametrar.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Concordia Cash address or malformed URI parameters.</source>
+        <translation>URI kunde ej analyseras! Detta kan orsakas av en ogiltig Concordia Cash adress eller felproducerade URI parametrar.</translation>
     </message>
 </context>
 <context>
@@ -1338,8 +1338,8 @@ Adress: %4
         <translation>Inget</translation>
     </message>
     <message>
-        <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
-        <translation>Ett fel inträffade. PIVX kan inte längre köras säkert och kommer att stängas ned för tillfället.</translation>
+        <source>A fatal error occurred. Concordia Cash can no longer continue safely and will quit.</source>
+        <translation>Ett fel inträffade. Concordia Cash kan inte längre köras säkert och kommer att stängas ned för tillfället.</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -1445,8 +1445,8 @@ Adress: %4
         <translation>Blockchain</translation>
     </message>
     <message>
-        <source>Open the PIVX debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Öppna PIVX felsökningslogg från den nuvarande data katalogen. Detta kan ta några sekunder för stora logg filer.</translation>
+        <source>Open the Concordia Cash debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Öppna Concordia Cash felsökningslogg från den nuvarande data katalogen. Detta kan ta några sekunder för stora logg filer.</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -1633,8 +1633,8 @@ Adress: %4
         <translation>Ut:</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Välkommen till PIVX RPC konsol.</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>Välkommen till Concordia Cash RPC konsol.</translation>
     </message>
     <message>
         <source>&amp;Disconnect Node</source>
@@ -1998,8 +1998,8 @@ Adress: %4
 <context>
     <name>SettingsConsoleWidget</name>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Välkommen till PIVX RPC konsol.</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>Välkommen till Concordia Cash RPC konsol.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
@@ -2083,12 +2083,12 @@ Adress: %4
 <context>
     <name>SettingsFaqWidget</name>
     <message>
-        <source>1) What is PIVX?</source>
-        <translation>1) Vad är PIVX?</translation>
+        <source>1) What is Concordia Cash?</source>
+        <translation>1) Vad är Concordia Cash?</translation>
     </message>
     <message>
-        <source>What is PIVX?</source>
-        <translation>Vad är PIVX?</translation>
+        <source>What is Concordia Cash?</source>
+        <translation>Vad är Concordia Cash?</translation>
     </message>
     <message>
         <source>Why are my PIV unspendable?</source>
@@ -2152,8 +2152,8 @@ Adress: %4
         <translation>Meddelande</translation>
     </message>
     <message>
-        <source>PIVX address or contact label</source>
-        <translation>PIVX adress eller kontakttagg</translation>
+        <source>Concordia Cash address or contact label</source>
+        <translation>Concordia Cash adress eller kontakttagg</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -2321,8 +2321,8 @@ Adress: %4
         <translation>Hjälp</translation>
     </message>
     <message>
-        <source>About PIVX</source>
-        <translation>Om PIVX</translation>
+        <source>About Concordia Cash</source>
+        <translation>Om Concordia Cash</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -2641,8 +2641,8 @@ Adress: %4
         <translation>Välj ditt språk</translation>
     </message>
     <message>
-        <source>PIVX is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
-        <translation>PIVX är världens mest innovativa Proof of Stake blockkedjebaserad teknologi. Utvecklad av ett team av välerfarna utvecklare och kryptografer</translation>
+        <source>Concordia Cash is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
+        <translation>Concordia Cash är världens mest innovativa Proof of Stake blockkedjebaserad teknologi. Utvecklad av ett team av välerfarna utvecklare och kryptografer</translation>
     </message>
     <message>
         <source>What is a Masternode?</source>

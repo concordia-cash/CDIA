@@ -91,12 +91,12 @@
         <translation>Empfangsadressen</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dies sind ihre PIVX-Adressen zum Senden von Zahlungen. Bitte prüfen Sie den Betrag und die Empfangsadresse, bevor Sie PIV überweisen.</translation>
+        <source>These are your Concordia Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dies sind ihre Concordia Cash-Adressen zum Senden von Zahlungen. Bitte prüfen Sie den Betrag und die Empfangsadresse, bevor Sie PIV überweisen.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Das sind Ihre PIVX-Adressen zum Empfangen von Zahlungen. Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
+        <source>These are your Concordia Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Das sind Ihre Concordia Cash-Adressen zum Empfangen von Zahlungen. Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -1000,8 +1000,8 @@ Das Staking wird automatisch gestartet, sobald die Wallet genügend Bestätigung
         <translation>Zahlungsadresse bearbeiten</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>Die eingegebene Adresse "%1" ist keine gültige PIVX-Adresse.</translation>
+        <source>The entered address "%1" is not a valid Concordia Cash address.</source>
+        <translation>Die eingegebene Adresse "%1" ist keine gültige Concordia Cash-Adresse.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1176,8 +1176,8 @@ Noch %2 Blöcke.</translation>
         <translation>Da das Programm zum ersten Mal gestartet wird, können Sie wählen, wo %1 seine Daten speichern soll.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the PIVX block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 wird eine Kopie der PIVX-Blockchain heruntergeladen und gespeichert. In diesem Verzeichnis werden mindestens %2 GB an Daten gespeichert, die mit der Zeit wachsen. Das Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
+        <source>%1 will download and store a copy of the Concordia Cash block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 wird eine Kopie der Concordia Cash-Blockchain heruntergeladen und gespeichert. In diesem Verzeichnis werden mindestens %2 GB an Daten gespeichert, die mit der Zeit wachsen. Das Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1288,8 +1288,8 @@ Noch %2 Blöcke.</translation>
         <translation>Ungültige IP Adresse</translation>
     </message>
     <message>
-        <source>To create a PIVX Masternode you must dedicate %1 (the unit of PIVX) to the network (however, these coins are still yours and will never leave your possession).</source>
-        <translation>Um einen PIVX Masternode zu erstellen, müssen Sie %1 (die PIVX-Einheit) dem Netzwerk bereitstellen (diese Münzen gehören jedoch immer noch Ihnen und werden nie Ihren Besitz verlassen).</translation>
+        <source>To create a Concordia Cash Masternode you must dedicate %1 (the unit of Concordia Cash) to the network (however, these coins are still yours and will never leave your possession).</source>
+        <translation>Um einen Concordia Cash Masternode zu erstellen, müssen Sie %1 (die Concordia Cash-Einheit) dem Netzwerk bereitstellen (diese Münzen gehören jedoch immer noch Ihnen und werden nie Ihren Besitz verlassen).</translation>
     </message>
     <message>
         <source>You can deactivate the node and unlock the coins at any time.</source>
@@ -1589,8 +1589,8 @@ Sind sie sicher?</translation>
         <translation>URI öffnen</translation>
     </message>
     <message>
-        <source>Open PIVX URI</source>
-        <translation>PIVX URI öffnen</translation>
+        <source>Open Concordia Cash URI</source>
+        <translation>Concordia Cash URI öffnen</translation>
     </message>
     <message>
         <source>CANCEL</source>
@@ -1676,11 +1676,11 @@ Adresse: %4
     </message>
     <message>
         <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Kann PIVX nicht starten: click-to-pay Handler</translation>
+        <translation>Kann Concordia Cash nicht starten: click-to-pay Handler</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid PIVX address or malformed URI parameters.</source>
-        <translation>URI kann nicht analysiert werden! Dies kann durch eine ungültige PIVX-Adresse oder fehlerhafte URI-Parameter verursacht worden sein.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Concordia Cash address or malformed URI parameters.</source>
+        <translation>URI kann nicht analysiert werden! Dies kann durch eine ungültige Concordia Cash-Adresse oder fehlerhafte URI-Parameter verursacht worden sein.</translation>
     </message>
 </context>
 <context>
@@ -1787,8 +1787,8 @@ Adresse: %4
         <translation>Betrag</translation>
     </message>
     <message>
-        <source>Enter PIVX address (e.g. %1)</source>
-        <translation>PIVX Adresse eingeben (z.B. %1)</translation>
+        <source>Enter Concordia Cash address (e.g. %1)</source>
+        <translation>Concordia Cash Adresse eingeben (z.B. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1827,8 +1827,8 @@ Adresse: %4
         <translation>%1 Ms</translation>
     </message>
     <message>
-        <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
-        <translation>Ein fataler Fehler ist aufgetreten. PIVX kann nicht länger sicher fortfahren und wird geschlossen</translation>
+        <source>A fatal error occurred. Concordia Cash can no longer continue safely and will quit.</source>
+        <translation>Ein fataler Fehler ist aufgetreten. Concordia Cash kann nicht länger sicher fortfahren und wird geschlossen</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -2082,8 +2082,8 @@ Adresse: %4
         <translation>Blockchain</translation>
     </message>
     <message>
-        <source>Open the PIVX debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Öffne PIVX-Debug-Protokolldatei aus dem aktuellen Datenverzeichnis. Dies kann bei großen Protokolldateien einige Sekunden dauern.</translation>
+        <source>Open the Concordia Cash debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Öffne Concordia Cash-Debug-Protokolldatei aus dem aktuellen Datenverzeichnis. Dies kann bei großen Protokolldateien einige Sekunden dauern.</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -2266,8 +2266,8 @@ Adresse: %4
         <translation>Index neu aufbauen</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Willkommen in der PIVX RPC-Konsole.</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>Willkommen in der Concordia Cash RPC-Konsole.</translation>
     </message>
     <message>
         <source>Ban Node for</source>
@@ -2461,8 +2461,8 @@ versuchen Sie, die Brieftasche zu entsperren</translation>
         <translation>Betrag</translation>
     </message>
     <message>
-        <source>Instead of sharing only a PIVX address, you can create a payment request, bundling up more information</source>
-        <translation>Anstatt nur Ihre PIVX Adresse zu teilen, können Sie eine Zahlungsanweisung erstellen, die mehr Information enthält</translation>
+        <source>Instead of sharing only a Concordia Cash address, you can create a payment request, bundling up more information</source>
+        <translation>Anstatt nur Ihre Concordia Cash Adresse zu teilen, können Sie eine Zahlungsanweisung erstellen, die mehr Information enthält</translation>
     </message>
     <message>
         <source>COPY ADDRESS</source>
@@ -2544,7 +2544,7 @@ versuchen Sie, die Brieftasche zu entsperren</translation>
         <translation>Benutzerdefinierte Wechseladresse</translation>
     </message>
     <message>
-        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" PIVX address</source>
+        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" Concordia Cash address</source>
         <translation>Der verbleibende Betrag der Inputs minus der Outputs geht an die Wechseladresse</translation>
     </message>
     <message>
@@ -2691,8 +2691,8 @@ Möchten Sie fortfahren?</translation>
         <translation>Maximale Anzahl an Outputs erreicht</translation>
     </message>
     <message>
-        <source>Parse a PIVX URI</source>
-        <translation>Analysiere eine PIVX URI</translation>
+        <source>Parse a Concordia Cash URI</source>
+        <translation>Analysiere eine Concordia Cash URI</translation>
     </message>
     <message>
         <source>Invalid entry, previous entries must be valid before add a new one</source>
@@ -2944,9 +2944,9 @@ Vergewissern SIe sich, diese aufzuschreiben und sicher zu verwahren, andernfalls
         <translation>BIP 38 Werkzeug</translation>
     </message>
     <message>
-        <source>Encrypt your PIVX addresses (key pair actually) using BIP38 encryption.
+        <source>Encrypt your Concordia Cash addresses (key pair actually) using BIP38 encryption.
 Using this mechanism you can share your keys without middle-man risk, only need to store your passphrase safely</source>
-        <translation>Verschlüsseln Sie Ihre PIVX Adressen mit der Verschlüsselung nach BIP38 (Schlüsselpaare).
+        <translation>Verschlüsseln Sie Ihre Concordia Cash Adressen mit der Verschlüsselung nach BIP38 (Schlüsselpaare).
 Damit können Sie ihre Schlüssel sicher ohne Middle-Man Risiko teilen. Sie müssen nur Ihre Passphrase sicher aufbewahren.</translation>
     </message>
     <message>
@@ -2978,8 +2978,8 @@ Damit können Sie ihre Schlüssel sicher ohne Middle-Man Risiko teilen. Sie müs
         <translation>CHIFFRE ZUR ENTSCHLÜSSELUNG</translation>
     </message>
     <message>
-        <source>PIVX address</source>
-        <translation>PIVX Adresse</translation>
+        <source>Concordia Cash address</source>
+        <translation>Concordia Cash Adresse</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -3110,8 +3110,8 @@ Verify that you have installed a predetermined text editor.</source>
         <translation>Debug Datei konnte nicht geöffnet werden. Stellen Sie sicher, den vorher bestimmten Texteditor installiert zu haben.</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>Willkommen in der PIVX RPC-Konsole.</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>Willkommen in der Concordia Cash RPC-Konsole.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
@@ -3267,16 +3267,16 @@ Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte ver
 <context>
     <name>SettingsFaqWidget</name>
     <message>
-        <source>1) What is PIVX?</source>
-        <translation>1) Was ist PIVX?</translation>
+        <source>1) What is Concordia Cash?</source>
+        <translation>1) Was ist Concordia Cash?</translation>
     </message>
     <message>
         <source>2) Why are my PIV unspendable?</source>
         <translation>2) Wieso kann ich meine PIV nicht ausgeben?</translation>
     </message>
     <message>
-        <source>What is PIVX?</source>
-        <translation>Was ist PIVX</translation>
+        <source>What is Concordia Cash?</source>
+        <translation>Was ist Concordia Cash</translation>
     </message>
     <message>
         <source>Why are my PIV unspendable?</source>
@@ -3327,28 +3327,28 @@ Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte ver
         <translation>Hier können Sie mehr lesen</translation>
     </message>
     <message>
-        <source>PIVX is a form of digital online money using blockchain technology that can be easily transferred globally, instantly, and with near zero fees. PIVX incorporates market leading security &amp; privacy and is also the first PoS (Proof of Stake) Cryptocurrency to implement Sapling(SHIELD), a zk-SNARKs based privacy protocol.</source>
-        <translation>PIVX ist eine Form von digitalem Online-Geld, das die Blockchain-Technologie nutzt und einfach, weltweit, sofort und fast ohne Gebühren übertragen werden kann. PIVX bietet marktführende Sicherheit und Datenschutz und ist auch die erste PoS (Proof of Stake) Cryptocurrency, die Sapling(SHIELD), ein zk-SNARKs basiertes Datenschutzprotokoll, implementiert.</translation>
+        <source>Concordia Cash is a form of digital online money using blockchain technology that can be easily transferred globally, instantly, and with near zero fees. Concordia Cash incorporates market leading security &amp; privacy and is also the first PoS (Proof of Stake) Cryptocurrency to implement Sapling(SHIELD), a zk-SNARKs based privacy protocol.</source>
+        <translation>Concordia Cash ist eine Form von digitalem Online-Geld, das die Blockchain-Technologie nutzt und einfach, weltweit, sofort und fast ohne Gebühren übertragen werden kann. Concordia Cash bietet marktführende Sicherheit und Datenschutz und ist auch die erste PoS (Proof of Stake) Cryptocurrency, die Sapling(SHIELD), ein zk-SNARKs basiertes Datenschutzprotokoll, implementiert.</translation>
     </message>
     <message>
-        <source>PIVX utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of PIVX to participate in earning block rewards while securing the network with full node wallets, as well as to run Masternodes to create and vote on proposals.</source>
-        <translation>PIVX verwendet einen Proof of Stake (PoS)-Konsenssystem-Algorithmus, der es allen PIVX-Besitzern ermöglicht, an der Erwirtschaftung von Block-Belohnungen teilzunehmen und gleichzeitig das Netzwerk mit vollständigen Node-Wallets zu sichern sowie Masternodes zu betreiben, um Vorschläge zu erstellen und darüber abzustimmen.</translation>
+        <source>Concordia Cash utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of Concordia Cash to participate in earning block rewards while securing the network with full node wallets, as well as to run Masternodes to create and vote on proposals.</source>
+        <translation>Concordia Cash verwendet einen Proof of Stake (PoS)-Konsenssystem-Algorithmus, der es allen Concordia Cash-Besitzern ermöglicht, an der Erwirtschaftung von Block-Belohnungen teilzunehmen und gleichzeitig das Netzwerk mit vollständigen Node-Wallets zu sichern sowie Masternodes zu betreiben, um Vorschläge zu erstellen und darüber abzustimmen.</translation>
     </message>
     <message>
-        <source>Newly received PIVX requires 6 confirmations on the network to become eligible for spending which can take ~6 minutes.</source>
-        <translation>Ein neu erhaltenes PIVX erfordert 6 Bestätigungen im Netz, um um diese wieder auszugeben, was ~6 Minuten dauern kann.</translation>
+        <source>Newly received Concordia Cash requires 6 confirmations on the network to become eligible for spending which can take ~6 minutes.</source>
+        <translation>Ein neu erhaltenes Concordia Cash erfordert 6 Bestätigungen im Netz, um um diese wieder auszugeben, was ~6 Minuten dauern kann.</translation>
     </message>
     <message>
-        <source>Your PIVX wallet also needs to be completely synchronized to see and spend balances on the network.</source>
-        <translation>Ihre PIVX-Wallet muss ebenfalls vollständig synchronisiert sein, damit Sie Guthaben im Netzwerk sehen und ausgeben können.</translation>
+        <source>Your Concordia Cash wallet also needs to be completely synchronized to see and spend balances on the network.</source>
+        <translation>Ihre Concordia Cash-Wallet muss ebenfalls vollständig synchronisiert sein, damit Sie Guthaben im Netzwerk sehen und ausgeben können.</translation>
     </message>
     <message>
         <source>Make sure your wallet is completely synchronized and you are using the latest release.</source>
         <translation>Vergewissern Sie sich, dass Ihre Brieftasche vollständig synchronisiert ist und Sie die neueste Version verwenden.</translation>
     </message>
     <message>
-        <source>You must have a balance of PIVX with a minimum of 600 confirmations.</source>
-        <translation>Sie müssen über ein PIVX-Guthaben mit mindestens 600 Bestätigungen verfügen.</translation>
+        <source>You must have a balance of Concordia Cash with a minimum of 600 confirmations.</source>
+        <translation>Sie müssen über ein Concordia Cash-Guthaben mit mindestens 600 Bestätigungen verfügen.</translation>
     </message>
     <message>
         <source>Your wallet must stay online and be unlocked for staking purposes.</source>
@@ -3407,8 +3407,8 @@ Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte ver
         <translation>Masternode Vergünstigungen</translation>
     </message>
     <message>
-        <source>Participate in PIVX Governance</source>
-        <translation>An der PIVX-Governance teilnehmen</translation>
+        <source>Participate in Concordia Cash Governance</source>
+        <translation>An der Concordia Cash-Governance teilnehmen</translation>
     </message>
     <message>
         <source>Earn Masternode Rewards</source>
@@ -3419,8 +3419,8 @@ Es gab ein Problem bei dem Versuch die Adressen unter %1 zu speichern. Bitte ver
         <translation>Warenoption für zukünftigen Verkauf</translation>
     </message>
     <message>
-        <source>Help secure the PIVX network</source>
-        <translation>Helfe das PIVX-Netzwerk zu sichern</translation>
+        <source>Help secure the Concordia Cash network</source>
+        <translation>Helfe das Concordia Cash-Netzwerk zu sichern</translation>
     </message>
     <message>
         <source>Requirements:</source>
@@ -3601,8 +3601,8 @@ Sind Sie sicher?</translation>
         <translation>Nachricht</translation>
     </message>
     <message>
-        <source>PIVX address or contact label</source>
-        <translation>PIVX Adresse oder Kontaktbezeichnung</translation>
+        <source>Concordia Cash address or contact label</source>
+        <translation>Concordia Cash Adresse oder Kontaktbezeichnung</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -3712,8 +3712,8 @@ Sind Sie sicher?</translation>
         <translation>Optionen des Node-Netzwerks anpassen</translation>
     </message>
     <message>
-        <source>Automatically open the PIVX client port on the router. This only works when your router supports NAT-PMP and it is enabled. The external port could be random.</source>
-        <translation>Automatisches Öffnen des PIVX-Client-Ports auf dem Router. Dies funktioniert nur, wenn Ihr Router NAT-PMP unterstützt und es aktiviert ist. Der externe Port kann zufällig sein.</translation>
+        <source>Automatically open the Concordia Cash client port on the router. This only works when your router supports NAT-PMP and it is enabled. The external port could be random.</source>
+        <translation>Automatisches Öffnen des Concordia Cash-Client-Ports auf dem Router. Dies funktioniert nur, wenn Ihr Router NAT-PMP unterstützt und es aktiviert ist. Der externe Port kann zufällig sein.</translation>
     </message>
     <message>
         <source>Map port using NAT-PMP</source>
@@ -3882,8 +3882,8 @@ Sind Sie sicher?</translation>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <source>About PIVX</source>
-        <translation>Über PIVX</translation>
+        <source>About Concordia Cash</source>
+        <translation>Über Concordia Cash</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -4546,20 +4546,20 @@ Wählen Sie weniger Eingänge über coin control aus.</translation>
         <translation>Wählen Sie Ihre Sprache</translation>
     </message>
     <message>
-        <source>PIVX is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
-        <translation>PIVX ist die innovativste, auf Proof of Stake Blockchain basierende Technologie. Es wurde von einem Team hoch erfahrener Entwickler und Kryptographen entwickelt.</translation>
+        <source>Concordia Cash is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
+        <translation>Concordia Cash ist die innovativste, auf Proof of Stake Blockchain basierende Technologie. Es wurde von einem Team hoch erfahrener Entwickler und Kryptographen entwickelt.</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - PIVX believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>Wie unser Manifestum sagt: Privatsphäre ist ein nicht-verhandelbares Menschenrecht; es garantiert Nuzern die Freiheit ihre Daten wann immer und mit wem auch immer zu teilen - PIVX galubt an diese Souveränität.</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - Concordia Cash believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>Wie unser Manifestum sagt: Privatsphäre ist ein nicht-verhandelbares Menschenrecht; es garantiert Nuzern die Freiheit ihre Daten wann immer und mit wem auch immer zu teilen - Concordia Cash galubt an diese Souveränität.</translation>
     </message>
     <message>
-        <source>The masternode network is PIVX's second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
-        <translation>Das Masternode Netzwerk ist PIVX zweite Schicht, die auf der Blockchain aufgesetzt wurde und unserer DAO ermöglicht, dezentrale Steuerung und einen Fiskus ermöglicht.</translation>
+        <source>The masternode network is Concordia Cash's second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
+        <translation>Das Masternode Netzwerk ist Concordia Cash zweite Schicht, die auf der Blockchain aufgesetzt wurde und unserer DAO ermöglicht, dezentrale Steuerung und einen Fiskus ermöglicht.</translation>
     </message>
     <message>
-        <source>How PIVX respects your privacy?</source>
-        <translation>Wie respektiert PIVX meine Privatsphäre?</translation>
+        <source>How Concordia Cash respects your privacy?</source>
+        <translation>Wie respektiert Concordia Cash meine Privatsphäre?</translation>
     </message>
     <message>
         <source>Welcome to

@@ -198,7 +198,7 @@ class MasternodeGovernanceBasicTest(PivxTier2TestFramework):
         self.log.info("preparing budget proposal..")
         firstProposal = Proposal(
             "super-cool",
-            "https://forum.pivx.org/t/test-proposal",
+            "https://github.com/concordia-cash/CDIA/discussions/categories/proposals",
             2,
             self.miner.getnewaddress(),
             300

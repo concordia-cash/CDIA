@@ -124,6 +124,7 @@ Makefile
 pivx-qt
 concordia-qt
 PIVX-Qt.app
+Concordia-Qt.app
 background.tiff*
 
 # Rust

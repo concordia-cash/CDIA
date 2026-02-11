@@ -1231,7 +1231,7 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
     <message>
         <location line="+67"/>
-        <source>The entered address &quot;%1&quot; is not a valid PIVX address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Concordia Cash address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1479,7 +1479,7 @@ Be part of the DAO.</source>
     </message>
     <message>
         <location line="+18"/>
-        <source>%1 will download and store a copy of the PIVX block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>%1 will download and store a copy of the Concordia Cash block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1707,7 +1707,7 @@ Be part of the DAO.</source>
     </message>
     <message>
         <location line="-123"/>
-        <source>To create a PIVX Masternode you must dedicate %1 (the unit of PIVX) to the network (however, these coins are still yours and will never leave your possession).</source>
+        <source>To create a Concordia Cash Masternode you must dedicate %1 (the unit of Concordia Cash) to the network (however, these coins are still yours and will never leave your possession).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2139,7 +2139,7 @@ STAKING</source>
     </message>
     <message>
         <location line="+45"/>
-        <source>Open PIVX URI</source>
+        <source>Open Concordia Cash URI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2264,7 +2264,7 @@ Address: %4
     </message>
     <message>
         <location line="+60"/>
-        <source>URI cannot be parsed! This can be caused by an invalid PIVX address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Concordia Cash address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2441,7 +2441,7 @@ Address: %4
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+136"/>
-        <source>Enter PIVX address (e.g. %1)</source>
+        <source>Enter Concordia Cash address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2497,7 +2497,7 @@ Address: %4
     </message>
     <message>
         <location filename="../concordia.cpp" line="+540"/>
-        <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Concordia Cash can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2890,7 +2890,7 @@ Address: %4
     </message>
     <message>
         <location line="+93"/>
-        <source>Open the PIVX debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the Concordia Cash debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3152,7 +3152,7 @@ Address: %4
     </message>
     <message>
         <location line="-42"/>
-        <source>Welcome to the PIVX RPC console.</source>
+        <source>Welcome to the Concordia Cash RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3466,7 +3466,7 @@ try unlocking the wallet</source>
     </message>
     <message>
         <location line="-43"/>
-        <source>Instead of sharing only a PIVX address, you can create a payment request, bundling up more information</source>
+        <source>Instead of sharing only a Concordia Cash address, you can create a payment request, bundling up more information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3570,7 +3570,7 @@ try unlocking the wallet</source>
     </message>
     <message>
         <location line="+72"/>
-        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the &quot;change&quot; PIVX address</source>
+        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the &quot;change&quot; Concordia Cash address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3760,7 +3760,7 @@ Do you want to continue?</source>
     </message>
     <message>
         <location line="-227"/>
-        <source>Parse a PIVX URI</source>
+        <source>Parse a Concordia Cash URI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4058,7 +4058,7 @@ Remember to write it down and store it safely, otherwise you might lose access t
     </message>
     <message>
         <location line="+7"/>
-        <source>Encrypt your PIVX addresses (key pair actually) using BIP38 encryption.
+        <source>Encrypt your Concordia Cash addresses (key pair actually) using BIP38 encryption.
 Using this mechanism you can share your keys without middle-man risk, only need to store your passphrase safely</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4105,7 +4105,7 @@ Using this mechanism you can share your keys without middle-man risk, only need 
     </message>
     <message>
         <location line="+77"/>
-        <source>PIVX address</source>
+        <source>Concordia Cash address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4272,7 +4272,7 @@ Verify that you have installed a predetermined text editor.</source>
     </message>
     <message>
         <location line="+138"/>
-        <source>Welcome to the PIVX RPC console.</source>
+        <source>Welcome to the Concordia Cash RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4477,7 +4477,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     <name>SettingsFaqWidget</name>
     <message>
         <location filename="../pivx/settings/forms/settingsfaqwidget.ui" line="+166"/>
-        <source>1) What is PIVX?</source>
+        <source>1) What is Concordia Cash?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4492,7 +4492,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+18"/>
-        <source>What is PIVX?</source>
+        <source>What is Concordia Cash?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4582,22 +4582,22 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location filename="../pivx/settings/settingsfaqwidget.cpp" line="+77"/>
-        <source>PIVX is a form of digital online money using blockchain technology that can be easily transferred globally, instantly, and with near zero fees. PIVX incorporates market leading security &amp; privacy and is also the first PoS (Proof of Stake) Cryptocurrency to implement Sapling(SHIELD), a zk-SNARKs based privacy protocol.</source>
+        <source>Concordia Cash is a form of digital online money using blockchain technology that can be easily transferred globally, instantly, and with near zero fees. Concordia Cash incorporates market leading security &amp; privacy and is also the first PoS (Proof of Stake) Cryptocurrency to implement Sapling(SHIELD), a zk-SNARKs based privacy protocol.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>PIVX utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of PIVX to participate in earning block rewards while securing the network with full node wallets, as well as to run Masternodes to create and vote on proposals.</source>
+        <source>Concordia Cash utilizes a Proof of Stake (PoS) consensus system algorithm, allowing all owners of Concordia Cash to participate in earning block rewards while securing the network with full node wallets, as well as to run Masternodes to create and vote on proposals.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>Newly received PIVX requires 6 confirmations on the network to become eligible for spending which can take ~6 minutes.</source>
+        <source>Newly received Concordia Cash requires 6 confirmations on the network to become eligible for spending which can take ~6 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Your PIVX wallet also needs to be completely synchronized to see and spend balances on the network.</source>
+        <source>Your Concordia Cash wallet also needs to be completely synchronized to see and spend balances on the network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4607,7 +4607,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+1"/>
-        <source>You must have a balance of PIVX with a minimum of 600 confirmations.</source>
+        <source>You must have a balance of Concordia Cash with a minimum of 600 confirmations.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4682,7 +4682,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+2"/>
-        <source>Participate in PIVX Governance</source>
+        <source>Participate in Concordia Cash Governance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4697,7 +4697,7 @@ There was an error trying to save the address list to %1. Please try again.</sou
     </message>
     <message>
         <location line="+1"/>
-        <source>Help secure the PIVX network</source>
+        <source>Help secure the Concordia Cash network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4980,7 +4980,7 @@ Are you sure?
     </message>
     <message>
         <location line="-62"/>
-        <source>PIVX address or contact label</source>
+        <source>Concordia Cash address or contact label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5146,7 +5146,7 @@ Are you sure?
     </message>
     <message>
         <location line="+62"/>
-        <source>Automatically open the PIVX client port on the router. This only works when your router supports NAT-PMP and it is enabled. The external port could be random.</source>
+        <source>Automatically open the Concordia Cash client port on the router. This only works when your router supports NAT-PMP and it is enabled. The external port could be random.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5404,7 +5404,7 @@ Are you sure?
     </message>
     <message>
         <location line="+31"/>
-        <source>About PIVX</source>
+        <source>About Concordia Cash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6343,22 +6343,22 @@ Select fewer inputs with coin control.</source>
     </message>
     <message>
         <location line="+116"/>
-        <source>PIVX is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
+        <source>Concordia Cash is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - PIVX believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - Concordia Cash believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+83"/>
-        <source>The masternode network is PIVX&apos;s second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
+        <source>The masternode network is Concordia Cash&apos;s second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-103"/>
-        <source>How PIVX respects your privacy?</source>
+        <source>How Concordia Cash respects your privacy?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

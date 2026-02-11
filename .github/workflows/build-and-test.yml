@@ -2,7 +2,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-name: CI Actions for PIVX
+name: CI Actions for Concordia Cash
 
 on: [push, pull_request]
 jobs:
@@ -489,7 +489,7 @@ jobs:
       - name: Extract Artifact Archive
         run: tar -xvf native-${{ matrix.config.os }}-built.tar
 
-      - name: Install PIVX Params
+      - name: Install Concordia Cash Params
         run: |
           cd build/pivx-${{ matrix.config.os }}/params/
           ./install-params.sh
@@ -878,7 +878,7 @@ jobs:
       - name: Extract Artifact Archive
         run: tar -xvf ${{ matrix.config.host }}-built.tar
 
-      - name: Install PIVX Params
+      - name: Install Concordia Cash Params
         run: |
           cd build/pivx-${{ matrix.config.host }}/params/
           ./install-params.sh

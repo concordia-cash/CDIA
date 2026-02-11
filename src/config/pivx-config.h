@@ -366,10 +366,10 @@
 #define PACKAGE_BUGREPORT "https://github.com/pivx-project/pivx/issues"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "PIVX Core"
+#define PACKAGE_NAME "Concordia Cash Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "PIVX Core 5.6.99"
+#define PACKAGE_STRING "Concordia Cash Core 5.6.99"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "pivx"

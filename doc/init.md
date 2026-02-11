@@ -84,9 +84,9 @@ OpenRC).
 ### macOS
 
 Binary:              `/usr/local/bin/pivxd`
-Configuration file:  `~/Library/Application Support/PIVX/pivx.conf`
-Data directory:      `~/Library/Application Support/PIVX`
-Lock file:           `~/Library/Application Support/PIVX/.lock`
+Configuration file:  `~/Library/Application Support/CDIA/pivx.conf`
+Data directory:      `~/Library/Application Support/CDIA`
+Lock file:           `~/Library/Application Support/CDIA/.lock`
 
 Installing Service Configuration
 -----------------------------------

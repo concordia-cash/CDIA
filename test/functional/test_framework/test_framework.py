@@ -663,7 +663,7 @@ class PivxTestFramework():
         for i in range(self.num_nodes):
             initialize_datadir(self.options.tmpdir, i)
 
-    # PIVX Specific TestFramework
+    # Concordia Cash Specific TestFramework
     def init_dummy_key(self):
         self.DUMMY_KEY = ECKey()
         self.DUMMY_KEY.generate()

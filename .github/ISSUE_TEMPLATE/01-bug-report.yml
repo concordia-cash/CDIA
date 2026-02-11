@@ -35,8 +35,8 @@ body:
   - type: dropdown
     id: version
     attributes:
-      label: PIVX Core Wallet Version
-      description: What version of the PIVX Core wallet are you using?
+      label: Concordia Cash Core Wallet Version
+      description: What version of the Concordia Cash Core wallet are you using?
       multiple: false
       options:
         - 5.6.1 (Latest Release)

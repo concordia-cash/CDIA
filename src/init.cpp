@@ -708,7 +708,7 @@ void ThreadImport(const std::vector<fs::path>& vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that PIVX is running in a usable environment with all
+ *  Ensure that Concordia Cash is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -968,7 +968,7 @@ void InitLogging()
 #else
     version_string += " (release build)";
 #endif
-    LogPrintf("PIVX version %s\n", version_string);
+    LogPrintf("Concordia Cash version %s\n", version_string);
 }
 
 bool AppInitParameterInteraction()
@@ -1137,7 +1137,7 @@ bool AppInitParameterInteraction()
 
 static bool LockDataDirectory(bool probeOnly)
 {
-    // Make sure only a single PIVX process is using the data directory.
+    // Make sure only a single Concordia Cash process is using the data directory.
     fs::path datadir = GetDataDir();
     if (!DirIsWritable(datadir)) {
         return UIError(strprintf(_("Cannot write to data directory '%s'; check permissions."), datadir.string()));
@@ -1202,9 +1202,9 @@ bool AppInitMain()
     // Warn about relative -datadir path.
     if (gArgs.IsArgSet("-datadir") && !fs::path(gArgs.GetArg("-datadir", "")).is_absolute()) {
         LogPrintf("Warning: relative datadir option '%s' specified, which will be interpreted relative to the " /* Continued */
-                  "current working directory '%s'. This is fragile because if PIVX is started in the future " /* Continued */
+                  "current working directory '%s'. This is fragile because if Concordia Cash is started in the future " /* Continued */
                   "from a different location. It will be unable to locate the current data files. There could " /* Continued */
-                  "also be data loss if PIVX is started while in a temporary directory.\n",
+                  "also be data loss if Concordia Cash is started while in a temporary directory.\n",
             gArgs.GetArg("-datadir", ""), fs::current_path().string());
     }
 
@@ -1467,7 +1467,7 @@ bool AppInitMain()
                 pcoinscatcher.reset();
                 pblocktree.reset(new CBlockTreeDB(nBlockTreeDBCache, false, fReset));
 
-                //PIVX specific: zerocoin and spork DB's
+                //Concordia Cash specific: zerocoin and spork DB's
                 zerocoinDB.reset(new CZerocoinDB(0, false, fReindex));
                 pSporkDB.reset(new CSporkDB(0, false, false));
                 accumulatorCache.reset(new AccumulatorCache(zerocoinDB.get()));
@@ -1481,7 +1481,7 @@ bool AppInitMain()
                 // End loop if shutdown was requested
                 if (ShutdownRequested()) break;
 
-                // PIVX: load previous sessions sporks if we have them.
+                // Concordia Cash: load previous sessions sporks if we have them.
                 uiInterface.InitMessage(_("Loading sporks..."));
                 sporkManager.LoadSporksFromDB();
 

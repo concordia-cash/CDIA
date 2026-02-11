@@ -608,7 +608,7 @@ class CBlockHeader:
         self.calc_sha256()
         return self.sha256
 
-    # PIVX
+    # Concordia Cash
     def solve_stake(self, stakeInputs, prevModifier):
         target0 = uint256_from_compact(self.nBits)
         loop = True
@@ -1574,7 +1574,7 @@ class msg_witness_blocktxn(msg_blocktxn):
         return r
 
 
-# PIVX Classes
+# Concordia Cash Classes
 class Masternode(object):
     __slots__ = ("idx", "owner", "operator_pk", "voting", "ipport", "payee", "operator_sk", "proTx", "collateral")
 

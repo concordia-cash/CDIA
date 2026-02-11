@@ -5,7 +5,7 @@ Release Process
 
 ### Before every release candidate
 
-* Update translations see [translation_process.md](https://github.com/concordia-cash/CDIA/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations (ping Fuzzbawls on Discord) see [translation_process.md](https://github.com/concordia-cash/CDIA/blob/master/doc/translation_process.md#synchronising-translations).
 * Update manpages, see [gen-manpages.sh](https://github.com/pivx-project/pivx/blob/master/contrib/devtools/README.md#gen-manpagessh).
 * Update release candidate version in `configure.ac` (`CLIENT_VERSION_RC`)
 
@@ -50,7 +50,7 @@ Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
     git clone https://github.com/pivx-project/gitian.sigs.git
-    git clone https://github.com/pivx-project/pivx-detached-sigs.git
+    https://github.com/concordia-cash/CDIA-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     git clone https://github.com/concordia-cash/CDIA.git
 

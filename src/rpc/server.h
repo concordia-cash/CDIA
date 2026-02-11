@@ -141,7 +141,7 @@ public:
 };
 
 /**
- * PIVX RPC command dispatcher.
+ * Concordia Cash RPC command dispatcher.
  */
 class CRPCTable
 {

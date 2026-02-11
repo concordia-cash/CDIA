@@ -622,7 +622,7 @@ class FullBlockTest(PivxTestFramework):
         self.send_blocks([b53], False)
         self.save_spendable_output()
 
-        # PIVX: timestamp checks disabled for regtest
+        # Concordia Cash: timestamp checks disabled for regtest
 
         # valid timestamp
         self.move_tip(53)
@@ -1220,7 +1220,7 @@ class FullBlockTest(PivxTestFramework):
         if reconnect:
             self.reconnect_p2p()
 
-    # PIVX
+    # Concordia Cash
     # create a block with a tx spending a given out, and lots of txes spending the outputs created
     # in the first one. Keep the tx size under 150 kB limit.
     def create_sized_block(self, block, spend, block_size):

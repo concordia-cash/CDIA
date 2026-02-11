@@ -82,7 +82,7 @@ const char * const PIVX_CONF_FILENAME = "pivx.conf";
 const char * const PIVX_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
-// PIVX only features
+// Concordia Cash only features
 // Masternode
 std::atomic<bool> fMasterNode{false};
 
@@ -532,13 +532,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\PIVX
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\PIVX
-// Mac: ~/Library/Application Support/PIVX
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\CDIA
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\CDIA
+// Mac: ~/Library/Application Support/CDIA
 // Unix: ~/.pivx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVX";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "CDIA";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -550,7 +550,7 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectories(pathRet);
-    return pathRet / "PIVX";
+    return pathRet / "CDIA";
 #else
     // Unix
     return pathRet / ".pivx";
@@ -567,13 +567,13 @@ static RecursiveMutex csPathCached;
 static fs::path ZC_GetBaseParamsDir()
 {
     // Copied from GetDefaultDataDir and adapter for zcash params.
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\PIVXParams
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\PIVXParams
-    // Mac: ~/Library/Application Support/PIVXParams
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\CDIA
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\CDIA
+    // Mac: ~/Library/Application Support/CDIA
     // Unix: ~/.pivx-params
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVXParams";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "CDIA";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -585,7 +585,7 @@ static fs::path ZC_GetBaseParamsDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectories(pathRet);
-    return pathRet / "PIVXParams";
+    return pathRet / "CDIA";
 #else
     // Unix
     return pathRet / ".pivx-params";

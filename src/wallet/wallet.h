@@ -844,7 +844,7 @@ public:
 
     /**
      * Return list of available coins and locked coins grouped by non-change output address.
-     * PIVX: group coins by pair <CTxDestination, Optional<CTxDestination>>. The optional destination
+     * Concordia Cash: group coins by pair <CTxDestination, Optional<CTxDestination>>. The optional destination
      * is reserved for the staker address in case of P2CS.
      */
     std::map<std::pair<CTxDestination, Optional<CTxDestination>>, std::vector<COutput>> ListCoins() const;

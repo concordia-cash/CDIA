@@ -68,11 +68,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>選擇要匯出PIVX幣的位址</translation>
+        <translation>選擇要匯出Concordia Cash幣的位址</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>選擇要接收PIVX幣的位址</translation>
+        <translation>選擇要接收Concordia Cash幣的位址</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -87,12 +87,12 @@
         <translation>接收的位址</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>這是你用來付款的 PIVX 位址, 送出前, 請務必確認金額及接收位址是否正確.</translation>
+        <source>These are your Concordia Cash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>這是你用來付款的 Concordia Cash 位址, 送出前, 請務必確認金額及接收位址是否正確.</translation>
     </message>
     <message>
-        <source>These are your PIVX addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>這是你用來接收款項的 PIVX 位址, 建議你每次付款都使用新的位址.</translation>
+        <source>These are your Concordia Cash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>這是你用來接收款項的 Concordia Cash 位址, 建議你每次付款都使用新的位址.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -907,8 +907,8 @@ It will start automatically as soon as the wallet has enough confirmations on an
         <translation>编辑发送地址</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid PIVX address.</source>
-        <translation>所输入的地址“%1”不是有效的PIVX地址。</translation>
+        <source>The entered address "%1" is not a valid Concordia Cash address.</source>
+        <translation>所输入的地址“%1”不是有效的Concordia Cash地址。</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1416,8 +1416,8 @@ Address: %4
         <translation>无法启动pivx:点击支付处理程序</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid PIVX address or malformed URI parameters.</source>
-        <translation>URI不能被解析!这可能是由无效的PIVX地址或格式错误的URI参数造成的。</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Concordia Cash address or malformed URI parameters.</source>
+        <translation>URI不能被解析!这可能是由无效的Concordia Cash地址或格式错误的URI参数造成的。</translation>
     </message>
 </context>
 <context>
@@ -1464,8 +1464,8 @@ Address: %4
         <translation>金额</translation>
     </message>
     <message>
-        <source>Enter PIVX address (e.g. %1)</source>
-        <translation>输入PIVX a地址(e.g. %1)</translation>
+        <source>Enter Concordia Cash address (e.g. %1)</source>
+        <translation>输入Concordia Cash a地址(e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1504,8 +1504,8 @@ Address: %4
         <translation>%1 毫秒</translation>
     </message>
     <message>
-        <source>A fatal error occurred. PIVX can no longer continue safely and will quit.</source>
-        <translation>发生了一个致命的错误。PIVX不能继续安全，将退出。</translation>
+        <source>A fatal error occurred. Concordia Cash can no longer continue safely and will quit.</source>
+        <translation>发生了一个致命的错误。Concordia Cash不能继续安全，将退出。</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
@@ -1687,8 +1687,8 @@ Address: %4
         <translation>区块链</translation>
     </message>
     <message>
-        <source>Open the PIVX debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>从当前数据目录打开PIVX调试日志文件。对于大型日志文件，这可能需要几秒钟。</translation>
+        <source>Open the Concordia Cash debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>从当前数据目录打开Concordia Cash调试日志文件。对于大型日志文件，这可能需要几秒钟。</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -1895,8 +1895,8 @@ Address: %4
         <translation>出：</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>欢迎访问PIVX RPC控制台</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>欢迎访问Concordia Cash RPC控制台</translation>
     </message>
     <message>
         <source>&amp;Disconnect Node</source>
@@ -2135,8 +2135,8 @@ Address: %4
         <translation>自定义更改地址</translation>
     </message>
     <message>
-        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" PIVX address</source>
-        <translation>输入值减去输出值所得的值的其余部分归为“更改”PIVX地址</translation>
+        <source>The remainder of the value resultant from the inputs minus the outputs value goes to the "change" Concordia Cash address</source>
+        <translation>输入值减去输出值所得的值的其余部分归为“更改”Concordia Cash地址</translation>
     </message>
     <message>
         <source>SAVE</source>
@@ -2413,8 +2413,8 @@ These coins will no longer be cold-staked.</source>
         <translation>解密钥匙</translation>
     </message>
     <message>
-        <source>PIVX address</source>
-        <translation>PIVX地址</translation>
+        <source>Concordia Cash address</source>
+        <translation>Concordia Cash地址</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -2534,8 +2534,8 @@ Verify that you have installed a predetermined text editor.</source>
 确认您已经安装了预定的文本编辑器</translation>
     </message>
     <message>
-        <source>Welcome to the PIVX RPC console.</source>
-        <translation>欢迎访问PIVX RPC控制台</translation>
+        <source>Welcome to the Concordia Cash RPC console.</source>
+        <translation>欢迎访问Concordia Cash RPC控制台</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
@@ -2687,16 +2687,16 @@ There was an error trying to save the address list to %1. Please try again.</sou
 <context>
     <name>SettingsFaqWidget</name>
     <message>
-        <source>1) What is PIVX?</source>
-        <translation>1）什么是PIVX?</translation>
+        <source>1) What is Concordia Cash?</source>
+        <translation>1）什么是Concordia Cash?</translation>
     </message>
     <message>
         <source>2) Why are my PIV unspendable?</source>
         <translation>2) 我的PIV为什么不能用？</translation>
     </message>
     <message>
-        <source>What is PIVX?</source>
-        <translation>PIVX是什么?</translation>
+        <source>What is Concordia Cash?</source>
+        <translation>Concordia Cash是什么?</translation>
     </message>
     <message>
         <source>Why are my PIV unspendable?</source>
@@ -2914,8 +2914,8 @@ Are you sure?
         <translation>消息 </translation>
     </message>
     <message>
-        <source>PIVX address or contact label</source>
-        <translation>PIVX 地址或者联系人标签</translation>
+        <source>Concordia Cash address or contact label</source>
+        <translation>Concordia Cash 地址或者联系人标签</translation>
     </message>
     <message>
         <source>Enter address</source>
@@ -3171,8 +3171,8 @@ Are you sure?
         <translation>常见问题</translation>
     </message>
     <message>
-        <source>About PIVX</source>
-        <translation>关于PIVX </translation>
+        <source>About Concordia Cash</source>
+        <translation>关于Concordia Cash </translation>
     </message>
     <message>
         <source>Settings</source>
@@ -3661,20 +3661,20 @@ backup will be created.
         <translation>选择语言</translation>
     </message>
     <message>
-        <source>PIVX is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
-        <translation>PIVX是世界上最先进的隐私保护技术，由经验丰富的开发人员和密码专家开发。</translation>
+        <source>Concordia Cash is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</source>
+        <translation>Concordia Cash是世界上最先进的隐私保护技术，由经验丰富的开发人员和密码专家开发。</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - PIVX believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;正如我们的宣言所说:隐私是一项不容协商的基本人权;它赋予用户随时随地与任何人共享数据的自由——PIVX相信自我主权&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;As our manifesto says: Privacy is a non-negotiable basic human right; it grants users the freedom to share their data whenever and with whomever they want - Concordia Cash believes in self sovereignty.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;正如我们的宣言所说:隐私是一项不容协商的基本人权;它赋予用户随时随地与任何人共享数据的自由——Concordia Cash相信自我主权&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>The masternode network is PIVX's second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
-        <translation>主节点网络是PIVX在区块链之上的第二层网络，它使我们的DAO能够提供去中心的治理。</translation>
+        <source>The masternode network is Concordia Cash's second layer network on top of the blockchain that enables our DAO to provide decentralized governance and a treasury.</source>
+        <translation>主节点网络是Concordia Cash在区块链之上的第二层网络，它使我们的DAO能够提供去中心的治理。</translation>
     </message>
     <message>
-        <source>How PIVX respects your privacy?</source>
-        <translation>PIVX 到底是怎么尊重你的隐私的？</translation>
+        <source>How Concordia Cash respects your privacy?</source>
+        <translation>Concordia Cash 到底是怎么尊重你的隐私的？</translation>
     </message>
     <message>
         <source>What is a Masternode?</source>

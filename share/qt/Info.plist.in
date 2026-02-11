@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>PIVX-Qt</string>
+  <string>Concordia-Qt</string>
 
   <key>CFBundleName</key>
-  <string>PIVX-Qt</string>
+  <string>Concordia-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.pivx.Pivx-Qt</string>
+  <string>io.pivx.Concordia-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>

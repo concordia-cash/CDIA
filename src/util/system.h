@@ -13,7 +13,7 @@
 #define PIVX_UTIL_SYSTEM_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/concordia-config.h"
 #endif
 
 #include "fs.h"
@@ -270,7 +270,7 @@ void SetThreadPriority(int nPriority);
 template <typename Callable>
 void TraceThread(const std::string name, Callable func)
 {
-    std::string s = "pivx-" + name;
+    std::string s = "concordia-" + name;
     util::ThreadRename(s.c_str());
     try {
         LogPrintf("%s thread start\n", name);

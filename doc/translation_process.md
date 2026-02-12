@@ -10,11 +10,11 @@ Multiple language support is critical in assisting Concordia Cash's global adopt
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:
-`pivx_xx_YY.ts or pivx_xx.ts`
+`concordia_xx_YY.ts or concordia_xx.ts`
 
-`src/qt/locale/concordia_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `pivx_en.ts`.
+`src/qt/locale/concordia_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `concordia_en.ts`.
 
-To automatically regenerate the `pivx_en.ts` file, run the following commands:
+To automatically regenerate the `concordia_en.ts` file, run the following commands:
 ```sh
 cd src/
 make translate
@@ -67,11 +67,11 @@ To assist in updating translations, we have created a script to help.
 2. `git add` new translations from `src/qt/locale/`
 3. Update `src/qt/concordia_locale.qrc` manually or via
 ```bash
-git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(pivx_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'
+git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(concordia_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'
 ```
 4. Update `src/Makefile.qt_locale.include` manually or via
 ```bash
-git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(pivx_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'
+git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(concordia_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'
 ```
 
 **Do not directly download translations** one by one from the Transifex website, as we do a few post-processing steps before committing the translations.
@@ -79,7 +79,7 @@ git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(pivx_\(.*\)\).ts/  qt
 ### Handling Plurals (in source files)
 When new plurals are added to the source file, it's important to do the following steps:
 
-1. Open `pivx_en.ts` in Qt Linguist (included in the Qt SDK)
+1. Open `concordia_en.ts` in Qt Linguist (included in the Qt SDK)
 2. Search for `%n`, which will take you to the parts in the translation that use plurals
 3. Look for empty `English Translation (Singular)` and `English Translation (Plural)` fields
 4. Add the appropriate strings for the singular and plural form of the base string
@@ -92,7 +92,7 @@ To create a new language template, you will need to edit the languages manifest 
 
 ```xml
 <qresource prefix="/translations">
-    <file alias="en">locale/pivx_en.qm</file>
+    <file alias="en">locale/concordia_en.qm</file>
     ...
 </qresource>
 ```

@@ -5,11 +5,11 @@
 
 from time import sleep
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import ConcordiaTestFramework
 from test_framework.util import set_node_times, assert_equal
 
 
-class PIVX_RPCSporkTest(PivxTestFramework):
+class PIVX_RPCSporkTest(ConcordiaTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

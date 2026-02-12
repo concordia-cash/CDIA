@@ -8,11 +8,11 @@ Test checking compatibility code between MN and DMN
 
 from decimal import Decimal
 
-from test_framework.test_framework import PivxTier2TestFramework
+from test_framework.test_framework import ConcordiaTier2TestFramework
 from test_framework.util import assert_equal
 
 
-class MasternodeCompatibilityTest(PivxTier2TestFramework):
+class MasternodeCompatibilityTest(ConcordiaTier2TestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

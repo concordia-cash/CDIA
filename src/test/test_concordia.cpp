@@ -3,7 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#define BOOST_TEST_MODULE Pivx Test Suite
+#define BOOST_TEST_MODULE Concordia Test Suite
 
 #include "test/test_concordia.h"
 
@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& os, const uint256& num)
 }
 
 BasicTestingSetup::BasicTestingSetup(const std::string& chainName)
-    : m_path_root{fs::temp_directory_path() / "test_pivx" / std::to_string(g_insecure_rand_ctx_temp_path.rand32())}
+    : m_path_root{fs::temp_directory_path() / "test_concordia" / std::to_string(g_insecure_rand_ctx_temp_path.rand32())}
 {
     ECC_Start();
     BLSInit();

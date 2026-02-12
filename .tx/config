@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[o:pivx-project:p:pivx-project-translations:r:qt-translation-60x]
-file_filter = src/qt/locale/pivx_<lang>.ts
+[o:concordia-cash:p:concordia-cash-translations:r:qt-translation-60x]
+file_filter = src/qt/locale/concordia_<lang>.ts
 source_file = src/qt/locale/concordia_en.ts
 source_lang = en

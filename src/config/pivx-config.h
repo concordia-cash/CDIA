@@ -1,5 +1,5 @@
-/* src/config/pivx-config.h.  Generated from pivx-config.h.in by configure.  */
-/* src/config/pivx-config.h.in.  Generated from configure.ac by autoheader.  */
+/* src/config/concordia-config.h.  Generated from concordia-config.h.in by configure.  */
+/* src/config/concordia-config.h.in.  Generated from configure.ac by autoheader.  */
 
 #ifndef PIV_CONFIG_H
 
@@ -363,7 +363,7 @@
 #define LT_OBJDIR ".libs/"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "https://github.com/pivx-project/pivx/issues"
+#define PACKAGE_BUGREPORT "https://github.com/concordia-cash/CDIA/issues"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "Concordia Cash Core"
@@ -372,10 +372,10 @@
 #define PACKAGE_STRING "Concordia Cash Core 5.6.99"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "pivx"
+#define PACKAGE_TARNAME "concordia"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://www.pivx.org/"
+#define PACKAGE_URL "https://concordia.cash/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "5.6.99"

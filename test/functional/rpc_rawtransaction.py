@@ -14,7 +14,7 @@ Test the following RPCs:
 
 from decimal import Decimal
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import ConcordiaTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -40,7 +40,7 @@ class multidict(dict):
 
 
 # Create one-input, one-output, no-fee transaction:
-class RawTransactionsTest(PivxTestFramework):
+class RawTransactionsTest(ConcordiaTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

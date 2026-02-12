@@ -9,7 +9,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/concordia-config.h"
 #endif
 
 #include "init.h"
@@ -111,7 +111,7 @@ CClientUIInterface uiInterface;  // Declared but not defined in guiinterface.h
 /**
  * The PID file facilities.
  */
-const char * const PIVX_PID_FILENAME = "pivx.pid";
+const char * const PIVX_PID_FILENAME = "concordia.pid";
 
 fs::path GetPidFile()
 {
@@ -209,7 +209,7 @@ void Shutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    util::ThreadRename("pivx-shutoff");
+    util::ThreadRename("concordia-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopHTTPRPC();
     StopREST();
@@ -634,7 +634,7 @@ struct CImportingNow {
 
 void ThreadImport(const std::vector<fs::path>& vImportFiles)
 {
-    util::ThreadRename("pivx-loadblk");
+    util::ThreadRename("concordia-loadblk");
     CImportingNow imp;
     ScheduleBatchPriority();
 

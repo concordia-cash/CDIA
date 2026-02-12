@@ -1108,14 +1108,14 @@ plånboken låst</translation>
 on a remote server to your clipboard.
 
 
-You will only have to paste the data in the pivx.conf file
+You will only have to paste the data in the concordia.conf file
 of your remote server and start it, then start the Masternode using
 this controller wallet (select the Masternode in the list and press "start").
 </source>
         <translation>Du är precis på väg att exportera nödvändig data för att köra en Masternode
 på en server.
 
-Du behöver bara infoga data i filen pivx.conf
+Du behöver bara infoga data i filen concordia.conf
 på din server och starta den och starta sedan Masternode med
 denna plånbok (välj Masternode i listan och tryck på "start").</translation>
     </message>
@@ -1274,8 +1274,8 @@ Adress: %4
         <translation>Ogiltig betalningsadress %1</translation>
     </message>
     <message>
-        <source>Cannot start pivx: click-to-pay handler</source>
-        <translation>Kan ej starta pivx: klicka-för-att-betala hanterare</translation>
+        <source>Cannot start concordia: click-to-pay handler</source>
+        <translation>Kan ej starta concordia: klicka-för-att-betala hanterare</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid Concordia Cash address or malformed URI parameters.</source>
@@ -2654,7 +2654,7 @@ Adress: %4
     </message>
 </context>
 <context>
-    <name>pivx-core</name>
+    <name>concordia-core</name>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
         <translation>Distribuerad under MIT mjukvarulicensen, se medföljande fil COPYING eller &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>

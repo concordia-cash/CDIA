@@ -6,13 +6,13 @@
 
 import random
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import ConcordiaTestFramework
 from test_framework.util import (
     assert_equal,
 )
 
 
-class BlockIndexStatsTest(PivxTestFramework):
+class BlockIndexStatsTest(ConcordiaTestFramework):
 
     def set_test_params(self):
         self.num_nodes = 2

@@ -7,11 +7,11 @@
 
 import os
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import ConcordiaTestFramework
 from test_framework.test_node import ErrorMatch
 
 
-class LoggingTest(PivxTestFramework):
+class LoggingTest(ConcordiaTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

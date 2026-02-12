@@ -1412,7 +1412,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    util::ThreadRename("pivx-scriptch");
+    util::ThreadRename("concordia-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2848,10 +2848,10 @@ bool CheckWork(const CBlock& block, const CBlockIndex* const pindexPrev)
     }
 
     if (block.nBits != nBitsRequired) {
-        // Pivx Specific reference to the block with the wrong threshold was used.
+        // Concordia Specific reference to the block with the wrong threshold was used.
         const Consensus::Params& consensus = Params().GetConsensus();
-        if ((block.nTime == (uint32_t) consensus.nPivxBadBlockTime) &&
-                (block.nBits == (uint32_t) consensus.nPivxBadBlockBits)) {
+        if ((block.nTime == (uint32_t) consensus.nConcordiaBadBlockTime) &&
+                (block.nBits == (uint32_t) consensus.nConcordiaBadBlockBits)) {
             // accept CDIA block minted with incorrect proof of work threshold
             return true;
         }

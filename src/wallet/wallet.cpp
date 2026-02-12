@@ -8,7 +8,7 @@
 #include "optional.h"
 #include "validation.h"
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/concordia-config.h"
 #endif
 
 #include "wallet/wallet.h"
@@ -3135,7 +3135,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend,
                 if (nChange > 0) {
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-pivx-address
+                    // change transaction isn't always pay-to-concordia-address
                     bool combineChange = false;
 
                     // coin control: send change to custom address

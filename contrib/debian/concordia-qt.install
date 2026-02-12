@@ -1,6 +1,6 @@
-usr/local/bin/pivx-qt usr/bin
+usr/local/bin/concordia-qt usr/bin
 share/pixmaps/concordia32.xpm usr/share/pixmaps
 share/pixmaps/concordia16.xpm usr/share/pixmaps
 share/pixmaps/concordia128.png usr/share/pixmaps
-debian/pivx-qt.desktop usr/share/applications
-debian/pivx-qt.protocol usr/share/kde4/services/
+debian/concordia-qt.desktop usr/share/applications
+debian/concordia-qt.protocol usr/share/kde4/services/

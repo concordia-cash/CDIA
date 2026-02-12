@@ -13,7 +13,7 @@ static const int MODEL_UPDATE_DELAY = 1000;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* Pivx GUI -- Size of icons in status bar */
+/* Concordia GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -50,7 +50,7 @@ static const int MAX_URI_LENGTH = 255;
 
 
 #define QAPP_ORG_NAME "CDIA"
-#define QAPP_ORG_DOMAIN "pivx.org"
+#define QAPP_ORG_DOMAIN "concordia.cash"
 #define QAPP_APP_NAME_DEFAULT "Concordia-Qt"
 #define QAPP_APP_NAME_TESTNET "Concordia-Qt-testnet"
 

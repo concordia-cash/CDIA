@@ -27,7 +27,7 @@ import xml.etree.ElementTree as ET
 # Name of transifex tool
 TX = 'tx'
 # Name of source language file without extension
-SOURCE_LANG = 'pivx_en'
+SOURCE_LANG = 'concordia_en'
 # Directory with locale files
 LOCALE_DIR = 'src/qt/locale'
 # Minimum number of non-numerus messages for translation to be considered at all
@@ -55,7 +55,7 @@ def remove_current_translations():
     """
     Remove current translations.
     We only want the active translations that are currently on transifex.
-    This leaves pivx_en.ts untouched.
+    This leaves concordia_en.ts untouched.
     """
     for (_, name) in all_ts_files():
         os.remove(name)
@@ -282,7 +282,7 @@ def update_build_systems():
     """
     Update build system and Qt resource descriptors.
     """
-    filename_lang = [re.match(r'((pivx_(.*)).ts)$', filename).groups() for (filename, filepath) in all_ts_files(include_source=True)]
+    filename_lang = [re.match(r'((concordia_(.*)).ts)$', filename).groups() for (filename, filepath) in all_ts_files(include_source=True)]
     filename_lang.sort(key=lambda x: x[0])
 
     # update qrc locales

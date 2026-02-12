@@ -14,7 +14,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.pivx.Concordia-Qt";
+        return @"io.concordia.Concordia-Qt";
     } else {
         return [self __bundleIdentifier];
     }

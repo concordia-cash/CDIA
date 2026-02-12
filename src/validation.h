@@ -12,7 +12,7 @@
 #define PIVX_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/concordia-config.h"
 #endif
 
 #include "amount.h"

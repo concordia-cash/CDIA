@@ -78,7 +78,7 @@ HEADERS += src/activemasternode.h \
            src/crypter.h \
            src/obfuscation-relay.h \
            src/obfuscation.h \
-           src/pivx-config.h \
+           src/concordia-config.h \
            src/db.h \
            src/eccryptoverify.h \
            src/ecwrapper.h \
@@ -131,7 +131,7 @@ HEADERS += src/activemasternode.h \
            src/wallet_ismine.h \
            src/walletdb.h \
            src/compat/sanity.h \
-           src/config/pivx-config.h \
+           src/config/concordia-config.h \
            src/crypto/common.h \
            src/crypto/hmac_sha256.h \
            src/crypto/hmac_sha512.h \
@@ -642,20 +642,20 @@ SOURCES += src/activemasternode.cpp \
            src/secp256k1/src/java/org_bitcoin_NativeSecp256k1.c
 RESOURCES += src/qt/concordia.qrc src/qt/concordia_locale.qrc
 
-TRANSLATIONS += src/qt/locale/pivx_bg.ts \
+TRANSLATIONS += src/qt/locale/concordia_bg.ts \
                 src/qt/locale/concordia_de.ts \
                 src/qt/locale/concordia_en.ts \
                 src/qt/locale/concordia_es.ts \
-                src/qt/locale/pivx_fi.ts \
-                src/qt/locale/pivx_fr.ts \
+                src/qt/locale/concordia_fi.ts \
+                src/qt/locale/concordia_fr.ts \
                 src/qt/locale/concordia_it.ts \
-                src/qt/locale/pivx_ja.ts \
+                src/qt/locale/concordia_ja.ts \
                 src/qt/locale/concordia_pl.ts \
-                src/qt/locale/pivx_pt.ts \
+                src/qt/locale/concordia_pt.ts \
                 src/qt/locale/concordia_ru.ts \
-                src/qt/locale/pivx_sk.ts \
+                src/qt/locale/concordia_sk.ts \
                 src/qt/locale/concordia_sv.ts \
-                src/qt/locale/pivx_vi.ts \
+                src/qt/locale/concordia_vi.ts \
                 src/qt/locale/concordia_zh_CN.ts \
                 src/qt/locale/concordia_zh_TW.ts
 

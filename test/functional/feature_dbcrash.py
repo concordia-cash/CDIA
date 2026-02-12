@@ -32,12 +32,12 @@ import random
 import time
 
 from test_framework.messages import COIN, COutPoint, CTransaction, CTxIn, CTxOut, ToHex
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import ConcordiaTestFramework
 from test_framework.util import assert_equal, create_confirmed_utxos, hex_str_to_bytes
 
 
 
-class ChainstateWriteCrashTest(PivxTestFramework):
+class ChainstateWriteCrashTest(ConcordiaTestFramework):
 
     def set_test_params(self):
         self.num_nodes = 4
@@ -85,14 +85,14 @@ class ChainstateWriteCrashTest(PivxTestFramework):
                 return utxo_hash
             except:
                 # An exception here should mean the node is about to crash.
-                # If pivxd exits, then try again.  wait_for_node_exit()
-                # should raise an exception if pivxd doesn't exit.
+                # If concordiad exits, then try again.  wait_for_node_exit()
+                # should raise an exception if concordiad doesn't exit.
                 self.wait_for_node_exit(node_index, timeout=10)
             self.crashed_on_restart += 1
             time.sleep(1)
 
-        # If we got here, pivxd isn't coming back up on restart.  Could be a
-        # bug in pivxd, or we've gotten unlucky with our dbcrash ratio --
+        # If we got here, concordiad isn't coming back up on restart.  Could be a
+        # bug in concordiad, or we've gotten unlucky with our dbcrash ratio --
         # perhaps we generated a test case that blew up our cache?
         # TODO: If this happens a lot, we should try to restart without -dbcrashratio
         # and make sure that recovery happens.

@@ -1,17 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="40px" viewBox="0 0 24 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
-    <title>Send</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Send" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ic-send" transform="translate(-1.000000, 11.000000)">
-            <g id="Group_8811" transform="translate(1.000000, 1.000000)" fill="#B088FF">
-                <polygon id="Path_18865" points="0.352 9.1 7.562 13.606 9.014 12.154 4.914 9.59 19.714 4.283 14.407 19.083 11.842 14.983 10.391 16.434 14.9 23.648 23.025 0.975"></polygon>
-                <g id="Group_8810" transform="translate(8.000000, 8.000000)">
-                    <polygon id="Rectangle_4394" transform="translate(3.823718, 4.176339) rotate(-45.000000) translate(-3.823718, -4.176339) " points="-0.176282346 3.17633883 7.82371765 3.17633883 7.82371765 5.17633883 -0.176282346 5.17633883"></polygon>
-                </g>
-            </g>
-            <polygon id="Rectangle_4395" points="0 0 26 0 26 26 0 26"></polygon>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24px"
+   height="40px"
+   viewBox="0 0 24 40"
+   version="1.1"
+   id="svg34001"
+   sodipodi:docname="ic-nav-send-active.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata34007">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs34005" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1908"
+     inkscape:window-height="1007"
+     id="namedview34003"
+     showgrid="false"
+     inkscape:zoom="5.9"
+     inkscape:cx="-16.135593"
+     inkscape:cy="20"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="ic-send" />
+  <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title33990">Send</title>
+  <desc
+     id="desc33992">Created with Sketch.</desc>
+  <g
+     id="Send"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+    <g
+       id="ic-send"
+       transform="translate(-1,11)">
+      <g
+         id="Group_8811"
+         transform="translate(1,1)"
+         style="fill:#4d904d;fill-opacity:1">
+        <polygon
+           id="Path_18865"
+           points="4.914,9.59 19.714,4.283 14.407,19.083 11.842,14.983 10.391,16.434 14.9,23.648 23.025,0.975 0.352,9.1 7.562,13.606 9.014,12.154 "
+           style="fill:#4d904d;fill-opacity:1" />
+        <g
+           id="Group_8810"
+           transform="translate(8,8)"
+           style="fill:#4d904d;fill-opacity:1">
+          <polygon
+             id="Rectangle_4394"
+             transform="rotate(-45,3.823718,4.176339)"
+             points="-0.17628235,5.1763388 -0.17628235,3.1763388 7.8237176,3.1763388 7.8237176,5.1763388 "
+             style="fill:#4d904d;fill-opacity:1" />
         </g>
+      </g>
+      <polygon
+         id="Rectangle_4395"
+         points="26,26 0,26 0,0 26,0 " />
     </g>
+  </g>
 </svg>

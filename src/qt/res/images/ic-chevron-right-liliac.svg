@@ -1,13 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="22px" viewBox="0 0 30 22">
-    <defs>
-        <style type="text/css">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="30px"
+   height="22px"
+   viewBox="0 0 30 22"
+   version="1.1"
+   id="svg22148"
+   sodipodi:docname="ic-chevron-right-liliac.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata22152">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1908"
+     inkscape:window-height="1007"
+     id="namedview22150"
+     showgrid="false"
+     inkscape:zoom="10.727273"
+     inkscape:cx="-0.47457627"
+     inkscape:cy="11"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_8822" />
+  <defs
+     id="defs22142">
+    <style
+       type="text/css"
+       id="style22140">
             .cls-1{fill:#b088ff}.cls-2{fill:none}
         </style>
-    </defs>
-    <g id="ic_chevron_right" transform="rotate(-90 12 12)">
-        <g id="Group_8822" data-name="Group 8822">
-            <path id="Path_18879" d="M12 16.365L4.319 9.233l1.362-1.466L12 13.635l6.319-5.868 1.361 1.466z" class="cls-1" data-name="Path 18879"/>
-        </g>
-        <path id="Rectangle_4407" d="M0 0h24v24H0z" class="cls-2" data-name="Rectangle 4407"/>
+  </defs>
+  <g
+     id="ic_chevron_right"
+     transform="rotate(-90,12,12)">
+    <g
+       id="Group_8822"
+       data-name="Group 8822">
+      <path
+         id="Path_18879"
+         d="M 12,16.365 4.319,9.233 5.681,7.767 12,13.635 18.319,7.767 19.68,9.233 Z"
+         class="cls-1"
+         data-name="Path 18879"
+         inkscape:connector-curvature="0"
+         style="fill:#4d904d;fill-opacity:1" />
     </g>
+    <path
+       id="Rectangle_4407"
+       d="M 0,0 H 24 V 24 H 0 Z"
+       class="cls-2"
+       data-name="Rectangle 4407"
+       inkscape:connector-curvature="0"
+       style="fill:none" />
+  </g>
 </svg>

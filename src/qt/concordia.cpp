@@ -50,6 +50,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QTranslator>
+#include <QFontDatabase>
 
 #if defined(QT_STATICPLUGIN)
 #include <QtPlugin>
@@ -577,6 +578,24 @@ int main(int argc, char* argv[])
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     BitcoinApplication app(argc, argv);
+
+    // Custom fonts.
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Black.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-BlackItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Bold.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-BoldItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-ExtraBold.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-ExtraBoldItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-ExtraLight.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-ExtraLightItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Italic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Light.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-LightItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-SemiBold.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-SemiBoldItalic.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-Thin.ttf");
+    QFontDatabase::addApplicationFont(":/font/Montserrat-ThinItalic.ttf");
 
     // Register meta types used for QMetaObject::invokeMethod
     qRegisterMetaType<bool*>();

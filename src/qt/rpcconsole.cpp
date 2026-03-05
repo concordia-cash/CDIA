@@ -482,7 +482,7 @@ void RPCConsole::setNumBlocks(int count)
 
 void RPCConsole::setMasternodeCount(const QString& strMasternodes)
 {
-    ui->masternodeCount->setText(strMasternodes);
+    // ui->masternodeCount->setText(strMasternodes);
 }
 
 void RPCConsole::on_lineEdit_returnPressed()

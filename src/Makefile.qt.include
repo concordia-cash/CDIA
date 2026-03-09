@@ -32,7 +32,6 @@ QT_FORMS_UI = \
   qt/forms/optionbutton.ui \
   qt/forms/masternodewizarddialog.ui \
   qt/forms/mnrow.ui \
-  qt/forms/masternodeswidget.ui \
   qt/forms/myaddressrow.ui \
   qt/forms/csrow.ui \
   qt/forms/sendmemodialog.ui \
@@ -120,7 +119,6 @@ QT_MOC_CPP = \
   qt/moc_mnmodel.cpp \
   qt/moc_masternodewizarddialog.cpp \
   qt/moc_mnrow.cpp \
-  qt/moc_masternodeswidget.cpp \
   qt/moc_myaddressrow.cpp \
   qt/moc_csrow.cpp \
   qt/moc_contactsdropdown.cpp \
@@ -235,7 +233,6 @@ BITCOIN_QT_H = \
   qt/mnmodel.h \
   qt/masternodewizarddialog.h \
   qt/mnrow.h \
-  qt/masternodeswidget.h \
   qt/myaddressrow.h \
   qt/csrow.h \
   qt/contactsdropdown.h \
@@ -575,7 +572,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/mnmodel.cpp \
   qt/masternodewizarddialog.cpp \
   qt/mnrow.cpp \
-  qt/masternodeswidget.cpp \
   qt/myaddressrow.cpp \
   qt/csrow.cpp \
   qt/sendchangeaddressdialog.cpp \

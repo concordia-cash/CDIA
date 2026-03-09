@@ -123,7 +123,6 @@ PIVXGUI::PIVXGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         sendWidget = new SendWidget(this);
         receiveWidget = new ReceiveWidget(this);
         addressesWidget = new AddressesWidget(this);
-        masterNodesWidget = new MasterNodesWidget(this);
         coldStakingWidget = new ColdStakingWidget(this);
         governancewidget = new GovernanceWidget(this);
         settingsWidget = new SettingsWidget(this);
@@ -133,7 +132,6 @@ PIVXGUI::PIVXGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         stackedContainer->addWidget(sendWidget);
         stackedContainer->addWidget(receiveWidget);
         stackedContainer->addWidget(addressesWidget);
-        stackedContainer->addWidget(masterNodesWidget);
         stackedContainer->addWidget(coldStakingWidget);
         stackedContainer->addWidget(governancewidget);
         stackedContainer->addWidget(settingsWidget);
@@ -199,8 +197,6 @@ void PIVXGUI::connectActions()
     connect(sendWidget, &SendWidget::showHide, this, &PIVXGUI::showHide);
     connect(receiveWidget, &ReceiveWidget::showHide, this, &PIVXGUI::showHide);
     connect(addressesWidget, &AddressesWidget::showHide, this, &PIVXGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &PIVXGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &PIVXGUI::execDialog);
     connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &PIVXGUI::showHide);
     connect(coldStakingWidget, &ColdStakingWidget::execDialog, this, &PIVXGUI::execDialog);
     connect(governancewidget, &GovernanceWidget::showHide, this, &PIVXGUI::showHide);
@@ -254,7 +250,6 @@ void PIVXGUI::setClientModel(ClientModel* _clientModel)
         topBar->setClientModel(clientModel);
         dashboard->setClientModel(clientModel);
         sendWidget->setClientModel(clientModel);
-        masterNodesWidget->setClientModel(clientModel);
         settingsWidget->setClientModel(clientModel);
         governancewidget->setClientModel(clientModel);
 
@@ -503,12 +498,6 @@ void PIVXGUI::goToAddresses()
     showTop(addressesWidget);
 }
 
-void PIVXGUI::goToMasterNodes()
-{
-    masterNodesWidget->resetCoinControl();
-    showTop(masterNodesWidget);
-}
-
 void PIVXGUI::goToColdStaking()
 {
     showTop(coldStakingWidget);
@@ -631,7 +620,6 @@ void PIVXGUI::setMNModel(MNModel* _mnModel)
     if (!stackedContainer || !clientModel) return;
     mnModel = _mnModel;
     governancewidget->setMNModel(mnModel);
-    masterNodesWidget->setMNModel(mnModel);
 }
 
 bool PIVXGUI::addWallet(const QString& name, WalletModel* walletModel)
@@ -647,14 +635,12 @@ bool PIVXGUI::addWallet(const QString& name, WalletModel* walletModel)
     receiveWidget->setWalletModel(walletModel);
     sendWidget->setWalletModel(walletModel);
     addressesWidget->setWalletModel(walletModel);
-    masterNodesWidget->setWalletModel(walletModel);
     coldStakingWidget->setWalletModel(walletModel);
     governancewidget->setWalletModel(walletModel);
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
     connect(walletModel, &WalletModel::message, this, &PIVXGUI::message);
-    connect(masterNodesWidget, &MasterNodesWidget::message, this, &PIVXGUI::message);
     connect(coldStakingWidget, &ColdStakingWidget::message, this, &PIVXGUI::message);
     connect(topBar, &TopBar::message, this, &PIVXGUI::message);
     connect(sendWidget, &SendWidget::message,this, &PIVXGUI::message);

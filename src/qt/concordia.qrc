@@ -253,6 +253,6 @@
         <file alias="Montserrat-SemiBold.ttf">res/font/Montserrat-SemiBold.ttf</file>
         <file alias="Montserrat-SemiBoldItalic.ttf">res/font/Montserrat-SemiBoldItalic.ttf</file>
         <file alias="Montserrat-Thin.ttf">res/font/Montserrat-Thin.ttf</file>
-        <file alias="Montserrat-ThinItalic.ttf">res/font/Montserrat-ThinItalic.ttf</file>        
+        <file alias="Montserrat-ThinItalic.ttf">res/font/Montserrat-ThinItalic.ttf</file>
     </qresource>
 </RCC>

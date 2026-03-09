@@ -85,8 +85,6 @@ public Q_SLOTS:
     void setNetworkActive(bool networkActive);
     /** Set number of blocks shown in the UI */
     void setNumBlocks(int count);
-    /** Set number of masternodes shown in the UI */
-    void setMasternodeCount(const QString& strMasternodes);
     /** Go forward or back in history */
     void browseHistory(int offset);
     /** Scroll console view to end */

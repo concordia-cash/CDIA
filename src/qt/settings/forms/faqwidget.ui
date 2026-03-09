@@ -194,7 +194,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>2) Why are my PIV unspendable?</string>
+                      <string>2) Why are my CDIA unspendable?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -216,7 +216,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>3) How do I stake PIV?</string>
+                      <string>3) How do I stake CDIA?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -239,50 +239,6 @@
                      </property>
                      <property name="text">
                       <string>4) Where I should go if I need support?</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_Masternode">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="text">
-                      <string>5) What is a Masternode?</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_MNController">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="text">
-                      <string>6) What is a Masternode Controller?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -588,7 +544,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle_UnspendablePIV">
                         <property name="text">
-                         <string>Why are my PIV unspendable?</string>
+                         <string>Why are my CDIA unspendable?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -678,7 +634,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle_Stake">
                         <property name="text">
-                         <string>How do I stake PIV?</string>
+                         <string>How do I stake CDIA?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
@@ -806,186 +762,6 @@
                       </item>
                       <item>
                        <spacer name="verticalSpacer2_Support">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="widget_Masternode" native="true">
-                   <layout class="QHBoxLayout" name="horizontalpage_Masternode" stretch="0,1">
-                    <item alignment="Qt::AlignTop">
-                     <widget class="QLabel" name="labelNumber_Masternode">
-                      <property name="minimumSize">
-                       <size>
-                        <width>24</width>
-                        <height>24</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>24</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>5</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayoutpage_Masternode">
-                      <property name="leftMargin">
-                       <number>20</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>20</number>
-                      </property>
-                      <item>
-                       <widget class="QLabel" name="labelSubtitle_Masternode">
-                        <property name="text">
-                         <string>What is a Masternode?</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="verticalSpacer1_Masternode">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Fixed</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="labelContent_Masternode">
-                        <property name="text">
-                         <string notr="true">N/A</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="verticalSpacer2_Masternode">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="widget_MNController" native="true">
-                   <layout class="QHBoxLayout" name="horizontalpage_MNController" stretch="0,1">
-                    <item alignment="Qt::AlignTop">
-                     <widget class="QLabel" name="labelNumber_MNController">
-                      <property name="minimumSize">
-                       <size>
-                        <width>24</width>
-                        <height>24</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>24</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>6</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayoutpage_MNController">
-                      <property name="leftMargin">
-                       <number>20</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>20</number>
-                      </property>
-                      <item>
-                       <widget class="QLabel" name="labelSubtitle_MNController">
-                        <property name="text">
-                         <string>What is a Masternode Controller?</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="verticalSpacer1_MNController">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Fixed</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="labelContent_MNController">
-                        <property name="text">
-                         <string notr="true">N/A</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="verticalSpacer2_MNController">
                         <property name="orientation">
                          <enum>Qt::Vertical</enum>
                         </property>

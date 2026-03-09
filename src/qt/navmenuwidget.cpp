@@ -96,10 +96,6 @@ void NavMenuWidget::onAddressClicked(){
     onNavSelected(ui->btnAddress);
 }
 
-void NavMenuWidget::onMasterNodesClicked(){
-    window->goToMasterNodes();
-}
-
 void NavMenuWidget::onColdStakingClicked() {
     window->goToColdStaking();
     onNavSelected(ui->btnColdStaking);

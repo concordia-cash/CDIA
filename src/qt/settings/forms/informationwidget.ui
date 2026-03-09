@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>474</width>
-    <height>464</height>
+    <width>497</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -251,11 +251,11 @@
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>
                </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
                <property name="text">
                 <string notr="true">N/A</string>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -290,11 +290,11 @@
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>
                </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
                <property name="text">
                 <string notr="true">N/A</string>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -329,11 +329,11 @@
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>
                </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
                <property name="text">
                 <string notr="true">N/A</string>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -368,14 +368,14 @@
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>
                </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
                <property name="text">
                 <string notr="true">N/A</string>
                </property>
                <property name="wordWrap">
                 <bool>true</bool>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -410,11 +410,11 @@
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>
                </property>
-               <property name="textInteractionFlags">
-                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
                <property name="text">
                 <string notr="true">N/A</string>
+               </property>
+               <property name="textInteractionFlags">
+                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                </property>
               </widget>
              </item>
@@ -475,11 +475,11 @@
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-            </property>
             <property name="text">
              <string notr="true">N/A</string>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
@@ -514,11 +514,11 @@
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-            </property>
             <property name="text">
              <string notr="true">N/A</string>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
@@ -526,9 +526,9 @@
         </item>
         <item>
          <widget class="QWidget" name="layoutOptions2" native="true">
-          <layout class="QHBoxLayout" name="horizontalMasternodes" stretch="0,1">
+          <layout class="QHBoxLayout" name="horizontalMasternodes" stretch="">
            <property name="spacing">
-             <number>0</number>
+            <number>0</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -542,38 +542,6 @@
            <property name="bottomMargin">
             <number>10</number>
            </property>
-           <item>
-            <widget class="QLabel" name="labelTitleMasternodes">
-             <property name="minimumSize">
-              <size>
-               <width>290</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>290</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Number of Masternodes:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelInfoMasternodes">
-             <property name="cursor">
-              <cursorShape>IBeamCursor</cursorShape>
-             </property>
-             <property name="textInteractionFlags">
-              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-             </property>
-             <property name="text">
-              <string notr="true">N/A</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
         </item>
@@ -629,11 +597,11 @@
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-            </property>
             <property name="text">
              <string notr="true">N/A</string>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
@@ -668,11 +636,11 @@
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-            </property>
             <property name="text">
              <string notr="true">N/A</string>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
@@ -720,11 +688,11 @@
              <property name="cursor">
               <cursorShape>IBeamCursor</cursorShape>
              </property>
-             <property name="textInteractionFlags">
-              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-             </property>
              <property name="text">
               <string notr="true">N/A</string>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
              </property>
             </widget>
            </item>

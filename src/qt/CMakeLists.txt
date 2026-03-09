@@ -129,7 +129,6 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/mnmodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/masternodewizarddialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/mnrow.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/masternodeswidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sendchangeaddressdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sendconfirmdialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sendcustomfeedialog.cpp

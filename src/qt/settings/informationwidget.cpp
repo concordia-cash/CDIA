@@ -40,7 +40,6 @@ SettingsInformationWidget::SettingsInformationWidget(PIVXGUI* _window,QWidget *p
         ui->labelTitleTime,
         ui->labelTitleName,
         ui->labelTitleConnections,
-        ui->labelTitleMasternodes,
         ui->labelTitleBlockNumber,
         ui->labelTitleBlockTime,
         ui->labelTitleBlockHash,
@@ -52,7 +51,6 @@ SettingsInformationWidget::SettingsInformationWidget(PIVXGUI* _window,QWidget *p
         ui->labelInfoDataDir,
         ui->labelInfoTime,
         ui->labelInfoConnections,
-        ui->labelInfoMasternodes,
         ui->labelInfoBlockNumber
         }, "text-main-settings");
 
@@ -74,7 +72,6 @@ SettingsInformationWidget::SettingsInformationWidget(PIVXGUI* _window,QWidget *p
     ui->labelInfoName->setText(tr("Main"));
     ui->labelInfoName->setProperty("cssClass", "text-main-settings");
     ui->labelInfoConnections->setText("0 (In: 0 / Out: 0)");
-    ui->labelInfoMasternodes->setText("Total: 0 (IPv4: 0 / IPv6: 0 / Tor: 0 / Unknown: 0");
 
     // Information Blockchain
     ui->labelInfoBlockNumber->setText("0");
@@ -124,7 +121,6 @@ void SettingsInformationWidget::loadClientModel()
         setNumBlocks(clientModel->getNumBlocks());
         connect(clientModel, &ClientModel::numBlocksChanged, this, &SettingsInformationWidget::setNumBlocks);
 
-        connect(clientModel, &ClientModel::strMasternodesChanged, this, &SettingsInformationWidget::setMasternodeCount);
     }
 }
 
@@ -168,11 +164,6 @@ void SettingsInformationWidget::setNumBlocks(int count)
     }
 }
 
-void SettingsInformationWidget::setMasternodeCount(const QString& strMasternodes)
-{
-    ui->labelInfoMasternodes->setText(strMasternodes);
-}
-
 void SettingsInformationWidget::openNetworkMonitor()
 {
     if (!rpcConsole) {
@@ -203,8 +194,6 @@ void SettingsInformationWidget::hideEvent(QHideEvent *event) {
 void SettingsInformationWidget::run(int type)
 {
     if (type == REQUEST_UPDATE_COUNTS) {
-        QMetaObject::invokeMethod(this, "setMasternodeCount",
-                                  Qt::QueuedConnection, Q_ARG(QString, clientModel->getMasternodesCountString()));
         QMetaObject::invokeMethod(this, "setNumBlocks",
                                   Qt::QueuedConnection, Q_ARG(int, clientModel->getLastBlockProcessedHeight()));
     }
@@ -212,8 +201,8 @@ void SettingsInformationWidget::run(int type)
 
 void SettingsInformationWidget::onError(QString error, int type)
 {
+    Q_UNUSED(error);
     if (type == REQUEST_UPDATE_COUNTS) {
-        setMasternodeCount(tr("No available data"));
     }
 }
 

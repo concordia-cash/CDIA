@@ -101,12 +101,9 @@ UniValue generate(const JSONRPCRequest& request)
             + HelpExampleCli("generate", "11")
         );
 
-    if (!Params().IsRegTestNet())
-        throw JSONRPCError(RPC_METHOD_NOT_FOUND, "This method can only be used on regtest");
-
     const int nGenerate = request.params[0].get_int();
     int nHeightEnd = 0;
-    int nHeight = 0;
+    int nHeight = 0; 
 
     {   // Don't keep cs_main locked
         LOCK(cs_main);
@@ -118,6 +115,9 @@ UniValue generate(const JSONRPCRequest& request)
     bool fPoS = consensus.NetworkUpgradeActive(nHeight + 1, Consensus::UPGRADE_POS);
     std::unique_ptr<CReserveKey> reservekey;
     CScript coinbaseScript;
+
+    if (consensus.NetworkUpgradeActive(nHeightEnd, Consensus::UPGRADE_POS) && !Params().IsRegTestNet())
+        throw JSONRPCError(RPC_METHOD_NOT_FOUND, "This method can only be used on regtest");
 
     if (fPoS) {
         // If we are in PoS, wallet must be unlocked.

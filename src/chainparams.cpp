@@ -20,7 +20,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.nVersion = 1;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
-    txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+    txNew.vin[0].scriptSig = CScript() << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
@@ -54,7 +54,7 @@ void CChainParams::UpdateNetworkUpgradeParameters(Consensus::UpgradeIndex idx, i
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "U.S. News & World Report Jan 28 2016 With His Absence, Trump Dominates Another Debate";
+    const char* pszTimestamp = "Reuters 03 Mar 2026 - Middle East conflict widens as Israeli, US strikes again hit Iran; oil soars, shares slide";
     const CScript genesisOutputScript = CScript() << ParseHex("04c10e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -156,32 +156,7 @@ static Consensus::LLMQParams llmq400_85 = {
  * + Contains no strange transactions
  */
 static MapCheckpoints mapCheckpoints = {
-    { 259201, uint256S("1c9121bf9329a6234bfd1ea2d91515f19cd96990725265253f4b164283ade5dd")},
-    { 424998, uint256S("f31e381eedb0ed3ed65fcc98cc71f36012bee32e8efd017c4f9fb0620fd35f6b")},
-    { 616764, uint256S("29dd0bd1c59484f290896687b4ffb6a49afa5c498caf61967c69a541f8191557")}, //!< First block to use new modifierV1
-    { 623933, uint256S("c7aafa648a0f1450157dc93bd4d7448913a85b7448f803b4ab970d91fc2a7da7")},
-    { 791150, uint256S("8e76f462e4e82d1bd21cb72e1ce1567d4ddda2390f26074ffd1f5d9c270e5e50")},
-    { 795000, uint256S("4423cceeb9fd574137a18733416275a70fdf95283cc79ad976ca399aa424a443")},
-    { 863787, uint256S("5b2482eca24caf2a46bb22e0545db7b7037282733faa3a42ec20542509999a64")},
-    { 863795, uint256S("2ad866818c4866e0d555181daccc628056216c0db431f88a825e84ed4f469067")},
-    { 863805, uint256S("a755bd9a22b63c70d3db474f4b2b61a1f86c835b290a081bb3ec1ba2103eb4cb")},
-    { 867733, uint256S("03b26296bf693de5782c76843d2fb649cb66d4b05550c6a79c047ff7e1c3ae15")},
-    { 879650, uint256S("227e1d2b738b6cd83c46d1d64617934ec899d77cee34336a56e61b71acd10bb2")},
-    { 895400, uint256S("7796a0274a608fac12d400198174e50beda992c1d522e52e5b95b884bc1beac6")}, //!< Block that serial# range is enforced
-    { 895991, uint256S("d53013ed7ea5c325b9696c95e07667d6858f8ff7ee13fecfa90827bf3c9ae316")}, //!< Network split here
-    { 908000, uint256S("202708f8c289b676fceb832a079ff6b308a28608339acbf7584de533619d014d")},
-    {1142400, uint256S("98aff9d605bf123247f98b1e3a02567eb5799d208d78ec30fb89737b1c1f79c5")},
-    {1679090, uint256S("f747ce055ba1b12e1f2e842bd480bc647210799359cb2e553ab292065e3419d6")}, //!< First block with a "wrapped" serial spend
-    {1686229, uint256S("bb42bf1e886a7c23474634c90893dd3d68a6ccbfea4ac92a98da5cad0c6a6cb7")}, //!< Last block in the "wrapped" serial attack range
-    {1778954, uint256S("0d3241268264a2908d6babf00d9cd1ffb83d93d7bb4e428820127fe227c2029c")}, //!< Network split here
-    {1788528, uint256S("ea9243ff8fc079fdd7a04f11fac415de4d98e1bb0dc38db6f79f8f8bbfdbe496")}, //!< Network split here
-    {2153200, uint256S("14e477e597d24549cac5e59d97d32155e6ec2861c1003b42d0566f9bf39b65d5")}, //!< First v7 block
-    {2356049, uint256S("62e80d8e193bca84655fb78893b20f54a79f2d71124c4ea37b7ef51a0d5451c4")}, //!< Network split here
-    {2365700, uint256S("b5d0beead57735539abc2db2b0b08cd65db3e5928efd3c3bf3182d5bf013f36c")}, //!< Concordia Cash v4.1.1 enforced
-    {2678402, uint256S("580a26ff0a45177a7a6f387f009c5b26140ea48b4790a857d9a796f8b3c25899")}, //!< Network split here
-    {3014000, uint256S("78ad99b7225f73c42238bd7ca841ff700542b92bba75a0ef2ed351caa560f87f")}, //!< Concordia Cash v5.3.0 enforced
-    {3024000, uint256S("be4bc75afcfb9136924810f7483b2695089a366cc4ee27fd6dc3ecd5396e1f0f")}, //!< Superblock
-    {3715200, uint256S("a676b9a598c393c82b949c37dd35013aeda55f5d18ab062349db6a8235972aaa")}, //!< Superblock for 5.5.0 mainnet rewards changeover
+    { 0, uint256S("0x0")},
 };
 
 static const CCheckpointData data = {
@@ -217,10 +192,57 @@ public:
     {
         strNetworkID = "main";
 
-        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
+        // // This is used inorder to mine the genesis block. Once found, we can use the nonce and block hash found to create a valid genesis block
+        // /////////////////////////////////////////////////////////////////
+
+        // uint32_t nGenesisTime = 1772496000;
+
+        // arith_uint256 test;
+        // bool fNegative;
+        // bool fOverflow;
+        // test.SetCompact(0x1e0ffff0, &fNegative, &fOverflow);
+        // std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+
+        // int genesisNonce = 0;
+        // uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+        // uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        // for (int i=0;i<40000000;i++) {
+        //     genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e0ffff0, 1, 0 * COIN);
+        //     //genesis.hashPrevBlock = TempHashHolding;
+        //     consensus.hashGenesisBlock = genesis.GetHash();
+
+        //     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+        //     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+        //         BestBlockHash = consensus.hashGenesisBlock;
+        //         std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
+        //         std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+        //     }
+
+        //     TempHashHolding = consensus.hashGenesisBlock;
+
+        //     if (BestBlockHashArith < test) {
+        //         genesisNonce = i - 1;
+        //         break;
+        //     }
+        //     //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
+        // }
+        // std::cout << "\n";
+        // std::cout << "\n";
+        // std::cout << "\n";
+
+        // std::cout << "nGenesisTime to " << nGenesisTime << std::endl;
+        // std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
+        // std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+        // std::cout << "Genesis Merkle 0x" << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+        // exit(0);
+
+        // /////////////////////////////////////////////////////////////////
+
+        genesis = CreateGenesisBlock(1772496000, 2220039, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000083ef4b891f45858519ac56c24b3f715fba3140df2b13b79da7f26ace94f"));
+        assert(genesis.hashMerkleRoot == uint256S("0xfae727076a472a36312a3aa5af3d6b312f3afe080d76f53d7022082641e151dc"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -315,26 +337,24 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x90;
-        pchMessageStart[1] = 0xc4;
-        pchMessageStart[2] = 0xfd;
-        pchMessageStart[3] = 0xe9;
-        nDefaultPort = 51472;
+        pchMessageStart[0] = 0xf7;
+        pchMessageStart[1] = 0xc1;
+        pchMessageStart[2] = 0xb8;
+        pchMessageStart[3] = 0xd3;
+        nDefaultPort = 52147;
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("pivx.seed.fuzzbawls.pw", true);     // Primary DNS Seeder from Fuzzbawls
-        vSeeds.emplace_back("pivx.seed2.fuzzbawls.pw", true);    // Secondary DNS Seeder from Fuzzbawls
-        vSeeds.emplace_back("dnsseed.liquid369.wtf", true);     // Primary DNS Seeder from Liquid369
+        vSeeds.emplace_back("seed.concordia.cash", true);     // Primary DNS Seeder 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
-        base58Prefixes[STAKING_ADDRESS] = std::vector<unsigned char>(1, 63);     // starting with 'S'
-        base58Prefixes[EXCHANGE_ADDRESS] = {0x01, 0xb9, 0xa2};   // starts with EXM
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x02, 0x2D, 0x25, 0x33};
-        base58Prefixes[EXT_SECRET_KEY] = {0x02, 0x21, 0x31, 0x2B};
+        base58Prefixes[PUBKEY_ADDRESS]      = {0x1C};               // C
+        base58Prefixes[SCRIPT_ADDRESS]      = {0x14};               // 9
+        base58Prefixes[STAKING_ADDRESS]     = {0x3F};               // starting with 'S'
+        base58Prefixes[EXCHANGE_ADDRESS]    = {0x01, 0xb9, 0xa2};   // starts with EXM
+        base58Prefixes[SECRET_KEY]          = {0x57};               // c
+        base58Prefixes[EXT_PUBLIC_KEY]      = {0x04, 0x88, 0xB2, 0x1E};              
+        base58Prefixes[EXT_SECRET_KEY]      = {0x04, 0x88, 0xAD, 0xE4};
         // BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-        base58Prefixes[EXT_COIN_TYPE] = {0x80, 0x00, 0x00, 0x77};
+        base58Prefixes[EXT_COIN_TYPE] = {0x80, 0x00, 0xFF, 0xFF}; // TODO define it later on slip 44
 
         vFixedSeeds = std::vector<uint8_t>(std::begin(chainparams_seed_main), std::end(chainparams_seed_main));
 
@@ -372,7 +392,7 @@ public:
 };
 
 /**
- * Testnet (v5)
+ * Testnet (v1)
  */
 class CTestNetParams : public CChainParams
 {
@@ -381,10 +401,57 @@ public:
     {
         strNetworkID = "test";
 
-        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
+        // // This is used inorder to mine the genesis block. Once found, we can use the nonce and block hash found to create a valid genesis block
+        // /////////////////////////////////////////////////////////////////
+
+        // uint32_t nGenesisTime = 1772496001;
+
+        // arith_uint256 test;
+        // bool fNegative;
+        // bool fOverflow;
+        // test.SetCompact(0x1e0ffff0, &fNegative, &fOverflow);
+        // std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+
+        // int genesisNonce = 0;
+        // uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+        // uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        // for (int i=0;i<40000000;i++) {
+        //     genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e0ffff0, 1, 0 * COIN);
+        //     //genesis.hashPrevBlock = TempHashHolding;
+        //     consensus.hashGenesisBlock = genesis.GetHash();
+
+        //     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+        //     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+        //         BestBlockHash = consensus.hashGenesisBlock;
+        //         std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
+        //         std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+        //     }
+
+        //     TempHashHolding = consensus.hashGenesisBlock;
+
+        //     if (BestBlockHashArith < test) {
+        //         genesisNonce = i - 1;
+        //         break;
+        //     }
+        //     //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
+        // }
+        // std::cout << "\n";
+        // std::cout << "\n";
+        // std::cout << "\n";
+
+        // std::cout << "nGenesisTime to " << nGenesisTime << std::endl;
+        // std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
+        // std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+        // std::cout << "Genesis Merkle 0x" << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+        // exit(0);
+
+        // /////////////////////////////////////////////////////////////////
+
+        genesis = CreateGenesisBlock(1772496001, 171216, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000045eafad3d361fad392829ab5f2c38cd18a7dfe79e3c8505139ba0fe2319"));
+        assert(genesis.hashMerkleRoot == uint256S("0xfae727076a472a36312a3aa5af3d6b312f3afe080d76f53d7022082641e151dc"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
@@ -462,11 +529,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xf5;
-        pchMessageStart[1] = 0xe6;
-        pchMessageStart[2] = 0xd5;
-        pchMessageStart[3] = 0xca;
-        nDefaultPort = 51474;
+        pchMessageStart[0] = 0xf8;
+        pchMessageStart[1] = 0xc2;
+        pchMessageStart[2] = 0xb9;
+        pchMessageStart[3] = 0xd4;
+        nDefaultPort = 52149;
 
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("pivx-testnet.seed.fuzzbawls.pw", true);
@@ -527,10 +594,57 @@ public:
     {
         strNetworkID = "regtest";
 
-        genesis = CreateGenesisBlock(1454124731, 1, 0x207fffff, 1, 250 * COIN);
+        // // This is used inorder to mine the genesis block. Once found, we can use the nonce and block hash found to create a valid genesis block
+        // /////////////////////////////////////////////////////////////////
+
+        // uint32_t nGenesisTime = 1772496002;
+
+        // arith_uint256 test;
+        // bool fNegative;
+        // bool fOverflow;
+        // test.SetCompact(0x207fffff, &fNegative, &fOverflow);
+        // std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+
+        // int genesisNonce = 0;
+        // uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+        // uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        // for (int i=0;i<40000000;i++) {
+        //     genesis = CreateGenesisBlock(nGenesisTime, i, 0x207fffff, 1, 0 * COIN);
+        //     //genesis.hashPrevBlock = TempHashHolding;
+        //     consensus.hashGenesisBlock = genesis.GetHash();
+
+        //     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+        //     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+        //         BestBlockHash = consensus.hashGenesisBlock;
+        //         std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
+        //         std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+        //     }
+
+        //     TempHashHolding = consensus.hashGenesisBlock;
+
+        //     if (BestBlockHashArith < test) {
+        //         genesisNonce = i - 1;
+        //         break;
+        //     }
+        //     //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
+        // }
+        // std::cout << "\n";
+        // std::cout << "\n";
+        // std::cout << "\n";
+
+        // std::cout << "nGenesisTime to " << nGenesisTime << std::endl;
+        // std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
+        // std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+        // std::cout << "Genesis Merkle 0x" << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+        // exit(0);
+
+        // /////////////////////////////////////////////////////////////////
+
+        genesis = CreateGenesisBlock(1772496002, 1, 0x207fffff, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x7445589c4c8e52b105247b13373e5ee325856aa05d53f429e59ea46b7149ae3f"));
-        assert(genesis.hashMerkleRoot == uint256S("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00e9f55a220ce5f989e732789822558d3c08f9d8d6ec180f321b7ac624f21a99"));
+        assert(genesis.hashMerkleRoot == uint256S("0xfae727076a472a36312a3aa5af3d6b312f3afe080d76f53d7022082641e151dc"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -614,11 +728,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xa1;
-        pchMessageStart[1] = 0xcf;
-        pchMessageStart[2] = 0x7e;
-        pchMessageStart[3] = 0xac;
-        nDefaultPort = 51476;
+        pchMessageStart[0] = 0xf9;
+        pchMessageStart[1] = 0xc3;
+        pchMessageStart[2] = 0xc0;
+        pchMessageStart[3] = 0xd5;
+        nDefaultPort = 52151;
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet concordia addresses start with 'x' or 'y'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet concordia script addresses start with '8' or '9'

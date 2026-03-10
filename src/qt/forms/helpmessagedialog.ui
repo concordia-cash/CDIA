@@ -243,7 +243,6 @@ background-color:#FFFFFF;
        </layout>
       </item>
      </layout>
-     <zorder></zorder>
      <zorder>graphic</zorder>
     </widget>
    </item>

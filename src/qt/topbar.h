@@ -53,8 +53,6 @@ public Q_SLOTS:
     void setNetworkActive(bool active);
     void setStakingStatusActive(bool fActive);
     void updateStakingStatus();
-    void updateHDState(const bool upgraded, const QString& upgradeError);
-    void showUpgradeDialog(const QString& message);
 
 Q_SIGNALS:
     void themeChanged(bool isLight);
@@ -89,7 +87,6 @@ private:
     BalanceBubble* balanceBubble = nullptr;
 
     void updateTorIcon();
-    void connectUpgradeBtnAndDialogTimer(const QString& message);
 };
 
 #endif // PIVX_QT_TOPBAR_H

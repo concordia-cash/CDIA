@@ -25,8 +25,6 @@
 
 #include <QPixmap>
 
-#define REQUEST_UPGRADE_WALLET 1
-
 class ButtonHoverWatcher : public QObject
 {
 public:
@@ -93,10 +91,6 @@ TopBar::TopBar(PIVXGUI* _mainWindow, QWidget *parent) :
 
     ui->pushButtonFAQ->setButtonClassStyle("cssClass", "btn-check-faq");
     ui->pushButtonFAQ->setButtonText(tr("FAQ"));
-
-    ui->pushButtonHDUpgrade->setButtonClassStyle("cssClass", "btn-check-hd-upgrade");
-    ui->pushButtonHDUpgrade->setButtonText(tr("Upgrade to HD Wallet"));
-    ui->pushButtonHDUpgrade->setNoIconText("HD");
 
     ui->pushButtonConnection->setButtonClassStyle("cssClass", "btn-check-connect-inactive");
     ui->pushButtonConnection->setButtonText(tr("No Connection"));
@@ -556,41 +550,8 @@ void TopBar::setNumBlocks(int count)
     ui->pushButtonSync->setButtonText(tr(text.data()));
 }
 
-void TopBar::showUpgradeDialog(const QString& message)
-{
-    QString title = tr("Wallet Upgrade");
-    if (ask(title, message)) {
-        std::unique_ptr<WalletModel::UnlockContext> pctx = std::make_unique<WalletModel::UnlockContext>(walletModel->requestUnlock());
-        if (!pctx->isValid()) {
-            warn(tr("Upgrade Wallet"), tr("Wallet unlock cancelled"));
-            return;
-        }
-        // Action performed on a separate thread, it's locking cs_main and cs_wallet.
-        LoadingDialog *dialog = new LoadingDialog(window);
-        dialog->execute(this, REQUEST_UPGRADE_WALLET, std::move(pctx));
-        openDialogWithOpaqueBackgroundFullScreen(dialog, window);
-    }
-}
-
 void TopBar::loadWalletModel()
 {
-    // Upgrade wallet.
-    if (walletModel->isHDEnabled()) {
-        if (walletModel->isSaplingWalletEnabled()) {
-            // hide upgrade
-            ui->pushButtonHDUpgrade->setVisible(false);
-        } else {
-            // show upgrade to Sapling
-            ui->pushButtonHDUpgrade->setButtonText(tr("Upgrade to Sapling Wallet"));
-            ui->pushButtonHDUpgrade->setNoIconText("SHIELD UPGRADE");
-            connectUpgradeBtnAndDialogTimer(tr("Upgrading to Sapling wallet will enable\nall of the privacy features!\n\n\n"
-                                               "NOTE: after the upgrade, a new\nbackup will be created.\n"));
-        }
-    } else {
-        connectUpgradeBtnAndDialogTimer(tr("Upgrading to HD wallet will improve\nthe wallet's reliability and security.\n\n\n"
-                                           "NOTE: after the upgrade, a new\nbackup will be created.\n"));
-    }
-
     connect(walletModel, &WalletModel::balanceChanged, this, &TopBar::updateBalances);
     connect(walletModel->getOptionsModel(), &OptionsModel::displayUnitChanged, this, &TopBar::updateDisplayUnit);
     connect(walletModel, &WalletModel::encryptionStatusChanged, this, &TopBar::refreshStatus);
@@ -603,15 +564,6 @@ void TopBar::loadWalletModel()
     onColdStakingClicked();
 
     isInitializing = false;
-}
-
-void TopBar::connectUpgradeBtnAndDialogTimer(const QString& message)
-{
-    const auto& func = [this, message]() { showUpgradeDialog(message); };
-    connect(ui->pushButtonHDUpgrade, &ExpandableButton::Mouse_Pressed, func);
-
-    // Upgrade wallet timer, only once. launched 4 seconds after the wallet started.
-    QTimer::singleShot(4000, func);
 }
 
 void TopBar::updateTorIcon()
@@ -718,47 +670,12 @@ void TopBar::expandSync()
     }
 }
 
-void TopBar::updateHDState(const bool upgraded, const QString& upgradeError)
-{
-    if (upgraded) {
-        ui->pushButtonHDUpgrade->setVisible(false);
-        if (ask("HD Upgrade Complete", tr("The wallet has been successfully upgraded to HD.") + "\n" +
-                tr("It is advised to make a backup.") + "\n\n" + tr("Do you wish to backup now?") + "\n\n")) {
-            // backup wallet
-            QString filename = GUIUtil::getSaveFileName(this,
-                                                tr("Backup Wallet"), QString(),
-                                                tr("Wallet Data (*.dat)"), nullptr);
-            if (!filename.isEmpty()) {
-                inform(walletModel->backupWallet(filename) ? tr("Backup created") : tr("Backup creation failed"));
-            } else {
-                warn(tr("Backup creation failed"), tr("no file selected"));
-            }
-        } else {
-            inform(tr("Wallet upgraded successfully, but no backup created.") + "\n" +
-                    tr("WARNING: remember to make a copy of your wallet file!"));
-        }
-    } else {
-        warn(tr("Upgrade Wallet Error"), upgradeError);
-    }
-}
-
 void TopBar::run(int type)
 {
-    if (type == REQUEST_UPGRADE_WALLET) {
-        std::string upgradeError;
-        bool ret = this->walletModel->upgradeWallet(upgradeError);
-        QMetaObject::invokeMethod(this,
-                "updateHDState",
-                Qt::QueuedConnection,
-                Q_ARG(bool, ret),
-                Q_ARG(QString, QString::fromStdString(upgradeError))
-        );
-    }
+
 }
 
 void TopBar::onError(QString error, int type)
 {
-    if (type == REQUEST_UPGRADE_WALLET) {
-        warn(tr("Upgrade Wallet Error"), error);
-    }
+
 }

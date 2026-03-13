@@ -983,26 +983,6 @@ bool CConnman::AttemptToEvictConnection(bool fPreferNewConnection)
             if (node->fDisconnect)
                 continue;
 
-            // Protect verified MN-only connections
-            if (fMasterNode) {
-                // This handles eviction protected nodes. Nodes are always protected for a short time after the connection
-                // was accepted. This short time is meant for the VERSION/VERACK exchange and the possible MNAUTH that might
-                // follow when the incoming connection is from another masternode. When a message other than MNAUTH
-                // is received after VERSION/VERACK, the protection is lifted immediately.
-                bool isProtected = GetSystemTimeInSeconds() - node->nTimeConnected < INBOUND_EVICTION_PROTECTION_TIME;
-                if (node->fFirstMessageReceived && !node->fFirstMessageIsMNAUTH) {
-                    isProtected = false;
-                }
-                // if MNAUTH was valid, the node is always protected (and at the same time not accounted when
-                // checking incoming connection limits)
-                if (!node->verifiedProRegTxHash.IsNull()) {
-                    isProtected = true;
-                }
-                if (isProtected) {
-                    continue;
-                }
-            }
-
             NodeEvictionCandidate candidate = {node->GetId(), node->nTimeConnected, node->nMinPingUsecTime, node->addr, node->nKeyedNetGroup};
             vEvictionCandidates.push_back(candidate);
         }

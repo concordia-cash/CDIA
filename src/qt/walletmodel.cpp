@@ -1031,7 +1031,7 @@ bool WalletModel::getMNCollateralCandidate(COutPoint& outPoint)
 {
     CWallet::AvailableCoinsFilter coinsFilter;
     coinsFilter.fIncludeDelegated = false;
-    coinsFilter.nMaxOutValue = Params().GetConsensus().nMNCollateralAmt;
+    coinsFilter.nMaxOutValue = 999999999;
     coinsFilter.nMinOutValue = coinsFilter.nMaxOutValue;
     coinsFilter.fIncludeLocked = true;
     std::vector<COutput> vCoins;

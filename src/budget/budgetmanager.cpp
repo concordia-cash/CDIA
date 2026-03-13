@@ -6,7 +6,6 @@
 #include "budget/budgetmanager.h"
 
 #include "consensus/validation.h"
-#include "evo/deterministicmns.h"
 #include "masternodeman.h"
 #include "netmessagemaker.h"
 #include "tiertwo/tiertwo_sync_state.h"
@@ -416,8 +415,6 @@ void CBudgetManager::CheckAndRemove()
         mapFinalizedBudgets = tmpMapFinalizedBudgets;
         LogPrint(BCLog::MNBUDGET, "%s: mapFinalizedBudgets cleanup - size after: %d\n", __func__, mapFinalizedBudgets.size());
     }
-    // Masternodes vote on valid ones
-    VoteOnFinalizedBudgets();
 }
 
 void CBudgetManager::RemoveByFeeTxId(const uint256& feeTxId)
@@ -556,87 +553,6 @@ bool CBudgetManager::FillBlockPayee(CMutableTransaction& txCoinbase, CMutableTra
     ExtractDestination(payee, address);
     LogPrint(BCLog::MNBUDGET,"%s: Budget payment to %s for %lld\n", __func__, EncodeDestination(address), nAmount);
     return true;
-}
-
-void CBudgetManager::VoteOnFinalizedBudgets()
-{
-    // function called only from initialized masternodes
-    if (!fMasterNode) {
-        LogPrint(BCLog::MNBUDGET,"%s: Not a masternode\n", __func__);
-        return;
-    }
-
-    // Do this 1 in 4 blocks -- spread out the voting activity
-    // -- this function is only called every fourteenth block, so this is really 1 in 56 blocks
-    if (GetRandInt(4) != 0) {
-        LogPrint(BCLog::MNBUDGET,"%s: waiting\n", __func__);
-        return;
-    }
-
-    // Get the active masternode (operator) key
-    CTxIn mnVin;
-    Optional<CKey> mnKey{nullopt};
-    CBLSSecretKey blsKey;
-    if (!GetActiveMasternodeKeys(mnVin, mnKey, blsKey)) {
-        return;
-    }
-
-    std::vector<CBudgetProposal> vBudget = GetBudget();
-    if (vBudget.empty()) {
-        LogPrint(BCLog::MNBUDGET,"%s: No proposal can be finalized\n", __func__);
-        return;
-    }
-
-    std::map<uint256, CBudgetProposal> mapWinningProposals;
-    for (const CBudgetProposal& p: vBudget) {
-        mapWinningProposals.emplace(p.GetHash(), p);
-    }
-    // Vector containing the hash of finalized budgets to sign
-    std::vector<uint256> vBudgetHashes;
-    {
-        LOCK(cs_budgets);
-        for (auto& it: mapFinalizedBudgets) {
-            CFinalizedBudget* pfb = &(it.second);
-            // we only need to check this once
-            if (pfb->IsAutoChecked()) continue;
-            pfb->SetAutoChecked(true);
-            //only vote for exact matches
-            if (strBudgetMode == "auto") {
-                // compare budget payments with winning proposals
-                if (!pfb->CheckProposals(mapWinningProposals)) {
-                    continue;
-                }
-            }
-            // exact match found. add budget hash to sign it later.
-            vBudgetHashes.emplace_back(pfb->GetHash());
-        }
-    }
-
-    // Sign finalized budgets
-    for (const uint256& budgetHash: vBudgetHashes) {
-        CFinalizedBudgetVote vote(mnVin, budgetHash);
-        if (mnKey != nullopt) {
-            // Legacy MN
-            if (!vote.Sign(*mnKey, mnKey->GetPubKey().GetID())) {
-                LogPrintf("%s: Failure to sign budget %s\n", __func__, budgetHash.ToString());
-                continue;
-            }
-        } else {
-            // DMN
-            if (!vote.Sign(blsKey)) {
-                LogPrintf("%s: Failure to sign budget %s with DMN\n", __func__, budgetHash.ToString());
-                continue;
-            }
-        }
-        std::string strError = "";
-        if (!UpdateFinalizedBudget(vote, nullptr, strError)) {
-            LogPrintf("%s: Error submitting vote - %s\n", __func__, strError);
-            continue;
-        }
-        LogPrint(BCLog::MNBUDGET, "%s: new finalized budget vote signed: %s\n", __func__, vote.GetHash().ToString());
-        AddSeenFinalizedBudgetVote(vote);
-        vote.Relay();
-    }
 }
 
 CFinalizedBudget* CBudgetManager::FindFinalizedBudget(const uint256& nHash)

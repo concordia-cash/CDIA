@@ -40,26 +40,21 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
     if (consensus.NetworkUpgradeActive(pindexLast->nHeight + 1, Consensus::UPGRADE_POS)) {
-        const bool fTimeV2 = !Params().IsRegTestNet() && consensus.IsTimeProtocolV2(pindexLast->nHeight+1);
-        const arith_uint256& bnTargetLimit = UintToArith256(consensus.ProofOfStakeLimit(fTimeV2));
-        const int64_t& nTargetTimespan = consensus.TargetTimespan(fTimeV2);
+        const arith_uint256& bnTargetLimit = UintToArith256(consensus.posLimit);
+        const int64_t& nTargetTimespan = consensus.nTargetTimespan;
 
         int64_t nActualSpacing = 0;
         if (pindexLast->nHeight != 0)
             nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
         if (nActualSpacing < 0)
             nActualSpacing = 1;
-        if (fTimeV2 && nActualSpacing > consensus.nTargetSpacing*10)
+        if (nActualSpacing > consensus.nTargetSpacing*10)
             nActualSpacing = consensus.nTargetSpacing*10;
 
         // ppcoin: target change every block
         // ppcoin: retarget with exponential moving toward target spacing
         arith_uint256 bnNew;
         bnNew.SetCompact(pindexLast->nBits);
-
-        // on first block with V2 time protocol, reduce the difficulty by a factor 16
-        if (fTimeV2 && !consensus.IsTimeProtocolV2(pindexLast->nHeight))
-            bnNew <<= 4;
 
         int64_t nInterval = nTargetTimespan / consensus.nTargetSpacing;
         bnNew *= ((nInterval - 1) * consensus.nTargetSpacing + nActualSpacing + nActualSpacing);

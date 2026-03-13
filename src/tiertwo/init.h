@@ -16,8 +16,6 @@ namespace boost {
     class thread_group;
 }
 
-std::string GetTierTwoHelpString(bool showDebug);
-
 /** Init the interfaces objects */
 void InitTierTwoInterfaces();
 
@@ -43,9 +41,6 @@ void RegisterTierTwoValidationInterface();
 void DumpTierTwo();
 
 void SetBudgetFinMode(const std::string& mode);
-
-/** Initialize the active Masternode manager */
-bool InitActiveMN();
 
 /** Starts tier two threads and jobs */
 void StartTierTwoThreadsAndScheduleJobs(boost::thread_group& threadGroup, CScheduler& scheduler);

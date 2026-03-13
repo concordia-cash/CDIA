@@ -1235,17 +1235,6 @@ Faites partie du DAO.</translation>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Transaction du collateral non trouvé</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>Statut: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1525,65 +1514,6 @@ Confirmez-vous?</translation>
     <message>
         <source>Collateral tx id copied</source>
         <translation>ID de transaction du collateral copié</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>Sélectionner masternodes</translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>Chaque Masternode soumet un vote; vous pouvez sélectionner celui qui vote pour le projet</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>Nombre de votes:</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Tout sélectionner</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Nom</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Statuts</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>ANNULER</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation>SELECTION DES VOTES</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>Tout désélectionner</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Oui</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Non</translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>Vote déjà soumis au réseau</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>Aucun vote n'a été soumis par ce Masternode</translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>Votes trop rapprochés. Vous devez attendre %1 minutes pour changer votre vote</translation>
     </message>
 </context>
 <context>

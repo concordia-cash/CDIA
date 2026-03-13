@@ -1321,17 +1321,6 @@ Be part of the DAO.</source>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>وثیقه tx یافت نشد</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>وضعیت: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1617,69 +1606,6 @@ Are you sure?</source>
     <message>
         <source>Collateral tx id copied</source>
         <translation>شناسه وثیقه tx کپی شد</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>مسترنود ها را انتخاب کنید </translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>هر مسترنود به یک رأی اشاره دارد، شما می توانید انتخاب کنید که کدام یک به طرح پیشنهادی رای می دهد</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>مقدار آراء:</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>انتخاب همه </translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>نام</translation>
-    </message>
-    <message>
-        <source>Vote</source>
-        <translation>رأی</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>وضعیت </translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>لغو</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation> آراء را انتخاب کنید</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>لغو انتخاب همه </translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>بله</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>نخیر </translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>مسیر رای از قبل پخش شده</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>هیچ رأی ی ازین مسترنود صادر نشده است </translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>زمان بین آراء خیلی کم است، برای تعویض رأی تان باید %1 دقیقه منتظر بمانید</translation>
     </message>
 </context>
 <context>

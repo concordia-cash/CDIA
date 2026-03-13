@@ -18,8 +18,6 @@ class VoteDialog;
 
 struct ProposalInfo;
 struct VoteInfo;
-class MNModel;
-class MnSelectionDialog;
 class GovernanceModel;
 class SnackBar;
 
@@ -52,7 +50,6 @@ private:
 
     std::unique_ptr<ProposalInfo> proposal;
     std::vector<VoteInfo> votes;
-    MnSelectionDialog* mnSelectionDialog{nullptr};
     std::vector<std::string> vecSelectedMn;
 
     void initVoteCheck(QWidget* container, QCheckBox* checkBox, QProgressBar* progressBar,

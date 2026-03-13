@@ -56,8 +56,7 @@ INCLUDEPATH += . \
                src/secp256k1/src/java
 
 # Input
-HEADERS += src/activemasternode.h \
-           src/addrman.h \
+HEADERS += src/addrman.h \
            src/alert.h \
            src/allocators.h \
            src/amount.h \
@@ -354,8 +353,7 @@ FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/sendcoinsentry.ui \
          src/qt/forms/signverifymessagedialog.ui \
          src/qt/forms/transactiondescdialog.ui
-SOURCES += src/activemasternode.cpp \
-           src/addrman.cpp \
+SOURCES += src/addrman.cpp \
            src/alert.cpp \
            src/allocators.cpp \
            src/amount.cpp \
@@ -544,7 +542,6 @@ SOURCES += src/activemasternode.cpp \
            src/test/sanity_tests.cpp \
            src/test/script_P2SH_tests.cpp \
            src/test/script_tests.cpp \
-           src/test/scriptnum_tests.cpp \
            src/test/serialize_tests.cpp \
            src/test/sighash_tests.cpp \
            src/test/sigopcount_tests.cpp \

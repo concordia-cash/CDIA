@@ -8,7 +8,6 @@
 
 #include "chain.h"
 #include "consensus/validation.h"
-#include "evo/deterministicmns.h"
 #include "logging.h"
 #include "scheduler.h"
 #include "util/validation.h"

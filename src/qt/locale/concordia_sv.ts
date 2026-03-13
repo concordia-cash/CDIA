@@ -1163,29 +1163,6 @@ Are you sure?</source>
     </message>
     </context>
 <context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select All</source>
-        <translation>välj alla</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Namn</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>cancel</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Ja</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Nej</translation>
-    </message>
-    </context>
-<context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>

@@ -1272,13 +1272,6 @@ Budite dio DAO-a. </translation>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Transakcija zaloga nije pronađjena</translation>
-    </message>
-    </context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1563,65 +1556,6 @@ Jeste li sigurni?</translation>
     <message>
         <source>Collateral tx id copied</source>
         <translation>ID transakcije zaloga kopiran</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>Odaberite Masternodeove</translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>Svaki Masternode odnosi se na jedan glas, možete odabrati koji će glasati za prijedlog</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>Količina glasova:</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Označi sve</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Naziv</translation>
-    </message>
-    <message>
-        <source>Vote</source>
-        <translation>Glasaj</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>PONIŠTI</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation>ODABERITE GLASOVE</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>Odznači sve</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Da</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Ne</translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>Smjer već emitiranog glasanja</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>Nijedan glas nije emitiran s ovog Masternodea</translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>Vrijeme između glasova je prerano, morate pričekati %1 minuta da promijenite svoj glas</translation>
     </message>
 </context>
 <context>

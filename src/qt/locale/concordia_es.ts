@@ -1174,17 +1174,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>tx colateral no encontrado</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>Estado: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1459,29 +1448,6 @@ Are you sure?</source>
         <translation>Se copió el ID de transaccion colateral</translation>
     </message>
 </context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select All</source>
-        <translation>Deseleccionar Todo</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Nombre</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Estado</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCELAR</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Sí</translation>
-    </message>
-    </context>
 <context>
     <name>NavMenuWidget</name>
     <message>

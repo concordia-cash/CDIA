@@ -1231,13 +1231,6 @@ Noch %2 Blöcke.</translation>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Kollateraltransaktion nicht gefunden</translation>
-    </message>
-    </context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Address</source>
@@ -1492,61 +1485,6 @@ Sind sie sicher?</translation>
     <message>
         <source>Collateral tx id copied</source>
         <translation>Transaktions-ID des Kollaterals kopiert</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>Masternodes auswählen</translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>Jeder Masternode bezieht sich auf eine einzelne Stimme, Sie können auswählen, welcher Masternode für den Vorschlag stimmen soll</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>Anzahl der Stimmen:</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>Alle anwählen</translation>
-    </message>
-    <message>
-        <source>Vote</source>
-        <translation>Abstimmung</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>ABBRECHEN</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation>Wähle Abstimmungen</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>Alles abwählen</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Ja</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Nein</translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>Die Richtung der bereits übertragenen Abstimmung</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>Von diesem Masternode wurde keine Stimme ausgesendet</translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>Zeit zwischen den Abstimmungen ist zu kurz, man muss %1 Minuten warten, um seine Stimme zu ändern</translation>
     </message>
 </context>
 <context>

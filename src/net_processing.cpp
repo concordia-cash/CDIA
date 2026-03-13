@@ -9,15 +9,6 @@
 
 #include "budget/budgetmanager.h"
 #include "chain.h"
-#include "evo/deterministicmns.h"
-#include "evo/mnauth.h"
-#include "llmq/quorums_blockprocessor.h"
-#include "llmq/quorums_chainlocks.h"
-#include "llmq/quorums_dkgsessionmgr.h"
-#include "llmq/quorums_signing.h"
-#include "masternode-payments.h"
-#include "masternode-sync.h"
-#include "masternodeman.h"
 #include "merkleblock.h"
 #include "netbase.h"
 #include "netmessagemaker.h"
@@ -1281,22 +1272,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         }
         if (!vRecv.empty()) {
             vRecv >> fRelay;
-        }
-        // Check if this is a quorum connection
-        if (!vRecv.empty()) {
-            WITH_LOCK(pfrom->cs_mnauth, vRecv >> pfrom->receivedMNAuthChallenge;);
-            bool fOtherMasternode = !pfrom->receivedMNAuthChallenge.IsNull();
-            if (pfrom->fInbound) {
-                pfrom->m_masternode_connection = fOtherMasternode;
-                if (fOtherMasternode) {
-                    LogPrint(BCLog::NET, "peer=%d is an inbound masternode connection, not relaying anything to it\n", pfrom->GetId());
-                    if (!fMasterNode) { // global MN flag
-                        LogPrint(BCLog::NET, "but we're not a masternode, disconnecting\n");
-                        pfrom->fDisconnect = true;
-                        return true;
-                    }
-                }
-            }
         }
 
         // Disconnect if we connected to ourself

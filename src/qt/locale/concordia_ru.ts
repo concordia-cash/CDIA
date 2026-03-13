@@ -1117,17 +1117,6 @@ It will start automatically as soon as the wallet has enough confirmations on an
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>tx залога не найден</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>Статус: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1393,33 +1382,6 @@ Are you sure?</source>
         <translation>tx Id залога скопирован</translation>
     </message>
 </context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select All</source>
-        <translation>Выбрать все</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Имя</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Состояние</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>ОТМЕНА</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>да</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>нет</translation>
-    </message>
-    </context>
 <context>
     <name>NavMenuWidget</name>
     <message>

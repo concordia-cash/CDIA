@@ -6,9 +6,6 @@
 #include "blockassembler.h"
 #include "chainparams.h"
 #include "consensus/merkle.h"
-#include "evo/deterministicmns.h"
-#include "evo/evodb.h"
-#include "evo/evonotificationinterface.h"
 
 #include "sapling/sapling_operation.h"
 #include "scheduler.h"
@@ -95,7 +92,6 @@ CTransactionRef createNoisyTx(CWallet* pwallet, int numOfOutputs)
 
 boost::thread_group threadGroup;
 CScheduler scheduler;
-EvoNotificationInterface* pEvoNotificationInterface;
 
 static void initBasics()
 {
@@ -104,15 +100,10 @@ static void initBasics()
     threadGroup.create_thread(std::bind(&TraceThread<CScheduler::Function>, "scheduler", serviceLoop));
     GetMainSignals().RegisterBackgroundSignalScheduler(scheduler);
 
-    zerocoinDB.reset(new CZerocoinDB(0, true));
     pSporkDB.reset(new CSporkDB(0, true));
     pblocktree.reset(new CBlockTreeDB(1 << 20, true));
     pcoinsdbview.reset(new CCoinsViewDB(1 << 23, true));
     pcoinsTip.reset(new CCoinsViewCache(pcoinsdbview.get()));
-    evoDb.reset(new CEvoDB(1 << 20, true, true));
-    deterministicMNManager.reset(new CDeterministicMNManager(*evoDb));
-    pEvoNotificationInterface = new EvoNotificationInterface();
-    RegisterValidationInterface(pEvoNotificationInterface);
 }
 
 static void WalletProcessBlockBench(benchmark::State& state)
@@ -192,18 +183,14 @@ static void WalletProcessBlockBench(benchmark::State& state)
 
     // Cleanup
     ECC_Stop();
-    deterministicMNManager.reset();
-    evoDb.reset();
     scheduler.stop();
     threadGroup.interrupt_all();
     threadGroup.join_all();
     UnloadBlockIndex();
     chainActive.SetTip(nullptr);
-    delete pEvoNotificationInterface;
     pcoinsTip.reset();
     pcoinsdbview.reset();
     pblocktree.reset();
-    zerocoinDB.reset();
     pSporkDB.reset();
 }
 

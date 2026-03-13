@@ -30,9 +30,6 @@ QT_FORMS_UI = \
   qt/forms/contactdropdownrow.ui \
   qt/forms/mninfodialog.ui \
   qt/forms/optionbutton.ui \
-  qt/forms/masternodewizarddialog.ui \
-  qt/forms/mnrow.ui \
-  qt/forms/masternodeswidget.ui \
   qt/forms/myaddressrow.ui \
   qt/forms/csrow.ui \
   qt/forms/sendmemodialog.ui \
@@ -49,7 +46,6 @@ QT_FORMS_UI = \
   qt/forms/defaultdialog.ui \
   qt/forms/coldstakingwidget.ui \
   qt/forms/proposalcard.ui \
-  qt/forms/mnselectiondialog.ui \
   qt/forms/votedialog.ui \
   qt/forms/createproposaldialog.ui \
   qt/forms/proposalinfodialog.ui \
@@ -117,10 +113,6 @@ QT_MOC_CPP = \
   qt/moc_mninfodialog.cpp \
   qt/moc_optionbutton.cpp \
   qt/moc_coldstakingmodel.cpp \
-  qt/moc_mnmodel.cpp \
-  qt/moc_masternodewizarddialog.cpp \
-  qt/moc_mnrow.cpp \
-  qt/moc_masternodeswidget.cpp \
   qt/moc_myaddressrow.cpp \
   qt/moc_csrow.cpp \
   qt/moc_contactsdropdown.cpp \
@@ -138,7 +130,6 @@ QT_MOC_CPP = \
   qt/moc_defaultdialog.cpp \
   qt/moc_coldstakingwidget.cpp \
   qt/moc_proposalcard.cpp \
-  qt/moc_mnselectiondialog.cpp \
   qt/moc_votedialog.cpp \
   qt/moc_createproposaldialog.cpp \
   qt/moc_proposalinfodialog.cpp \
@@ -232,10 +223,6 @@ BITCOIN_QT_H = \
   qt/mninfodialog.h \
   qt/optionbutton.h \
   qt/coldstakingmodel.h \
-  qt/mnmodel.h \
-  qt/masternodewizarddialog.h \
-  qt/mnrow.h \
-  qt/masternodeswidget.h \
   qt/myaddressrow.h \
   qt/csrow.h \
   qt/contactsdropdown.h \
@@ -254,7 +241,6 @@ BITCOIN_QT_H = \
   qt/coldstakingwidget.h \
   qt/governancemodel.h \
   qt/proposalcard.h \
-  qt/mnselectiondialog.h \
   qt/votedialog.h \
   qt/createproposaldialog.h \
   qt/proposalinfodialog.h \
@@ -572,10 +558,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/optionbutton.cpp \
   qt/mninfodialog.cpp \
   qt/coldstakingmodel.cpp \
-  qt/mnmodel.cpp \
-  qt/masternodewizarddialog.cpp \
-  qt/mnrow.cpp \
-  qt/masternodeswidget.cpp \
   qt/myaddressrow.cpp \
   qt/csrow.cpp \
   qt/sendchangeaddressdialog.cpp \
@@ -593,7 +575,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/coldstakingwidget.cpp \
   qt/governancemodel.cpp \
   qt/proposalcard.cpp \
-  qt/mnselectiondialog.cpp \
   qt/votedialog.cpp \
   qt/createproposaldialog.cpp \
   qt/proposalinfodialog.cpp \

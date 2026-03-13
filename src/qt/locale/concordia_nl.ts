@@ -1070,13 +1070,6 @@ Het zal automatisch starten zodra de portemonnee voldoende bevestigingen heeft o
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Terugbetalingstransactie niet gevonden</translation>
-    </message>
-    </context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Name</source>
@@ -1319,29 +1312,6 @@ Weet je het zeker?</translation>
         <translation>ID terugbetalingstransactie gekopieerd</translation>
     </message>
 </context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select All</source>
-        <translation>Selecteer Alles</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Naam</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>Annuleren</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>ja</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Nee</translation>
-    </message>
-    </context>
 <context>
     <name>NavMenuWidget</name>
     <message>

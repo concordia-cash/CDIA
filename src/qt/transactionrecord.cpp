@@ -49,19 +49,6 @@ bool TransactionRecord::decomposeCoinStake(const CWallet* wallet, const CWalletT
             sub.address = EncodeDestination(address);
             sub.credit = nCredit - nDebit;
         }
-    } else {
-        //Masternode reward
-        CTxDestination destMN;
-        int nIndexMN = (int) wtx.tx->vout.size() - 1;
-        if (ExtractDestination(wtx.tx->vout[nIndexMN].scriptPubKey, destMN) && (mine = IsMine(*wallet, destMN)) ) {
-            sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
-            sub.address = EncodeDestination(destMN);
-            sub.credit = wtx.tx->vout[nIndexMN].nValue;
-            // Simple way to differentiate budget payments from MN rewards.
-            int nHeight = wtx.m_confirm.block_height;
-            CAmount mn_reward = Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V5_5) ? Params().GetConsensus().nNewMNBlockReward : Params().GetConsensus().nMNBlockReward;
-            sub.type = sub.credit > mn_reward ? TransactionRecord::BudgetPayment : TransactionRecord::MNReward;
-        }
     }
 
     parts.append(sub);

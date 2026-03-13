@@ -110,9 +110,6 @@ public:
     bool IsFinal() const { return nSequence == SEQUENCE_FINAL; }
     bool IsNull() const { return prevout.IsNull() && scriptSig.empty() && IsFinal(); }
 
-    bool IsZerocoinSpend() const;
-    bool IsZerocoinPublicSpend() const;
-
     friend bool operator==(const CTxIn& a, const CTxIn& b)
     {
         return (a.prevout   == b.prevout &&

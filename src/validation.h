@@ -37,12 +37,10 @@
 #include <utility>
 #include <vector>
 
-class AccumulatorCache;
 class CBlockIndex;
 class CBlockTreeDB;
 class CBudgetManager;
 class CCoinsViewDB;
-class CZerocoinDB;
 class CSporkDB;
 class CBloomFilter;
 class CInv;
@@ -253,7 +251,7 @@ CAmount GetShieldedTxMinFee(const CTransaction& tx);
 bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& view, bool fScriptChecks, unsigned int flags, bool cacheStore, PrecomputedTransactionData& precomTxData, std::vector<CScriptCheck>* pvChecks = nullptr);
 
 /** Apply the effects of this transaction on the UTXO set represented by view */
-void UpdateCoins(const CTransaction& tx, CCoinsViewCache& inputs, int nHeight, bool fSkipInvalid = false);
+void UpdateCoins(const CTransaction& tx, CCoinsViewCache& inputs, int nHeight);
 
 /**
  * Check if transaction will be final in the next block to be created.
@@ -369,12 +367,6 @@ extern std::unique_ptr<CCoinsViewCache> pcoinsTip;
 
 /** Global variable that points to the active block tree (protected by cs_main) */
 extern std::unique_ptr<CBlockTreeDB> pblocktree;
-
-/** Global variable that points to the zerocoin database (protected by cs_main) */
-extern std::unique_ptr<CZerocoinDB> zerocoinDB;
-
-/** In-memory cache for the zerocoin accumulators */
-extern std::unique_ptr<AccumulatorCache> accumulatorCache;
 
 /** Global variable that points to the spork database (protected by cs_main) */
 extern std::unique_ptr<CSporkDB> pSporkDB;

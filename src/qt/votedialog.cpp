@@ -5,8 +5,6 @@
 #include "votedialog.h"
 #include "ui_votedialog.h"
 
-#include "mnmodel.h"
-#include "mnselectiondialog.h"
 #include "qtutils.h"
 
 VoteDialog::VoteDialog(QWidget *parent, GovernanceModel* _govModel, MNModel* _mnModel) :
@@ -114,16 +112,6 @@ void VoteDialog::showEvent(QShowEvent *event)
 void VoteDialog::onMnSelectionClicked()
 {
     PIVXGUI* window = dynamic_cast<PIVXGUI*>(parent());
-    if (!mnSelectionDialog) {
-        mnSelectionDialog = new MnSelectionDialog(window);
-        mnSelectionDialog->setModel(mnModel, govModel->getProposalVoteUpdateMinTime());
-    }
-    mnSelectionDialog->setMnVoters(votes);
-    mnSelectionDialog->updateView();
-    mnSelectionDialog->resize(size());
-    if (openDialogWithOpaqueBackgroundY(mnSelectionDialog, window, 4.5, 5, false)) {
-        vecSelectedMn = mnSelectionDialog->getSelectedMnAlias();
-    }
 }
 
 void VoteDialog::onCheckBoxClicked(QCheckBox* checkBox, QProgressBar* progressBar, bool isVoteYes)

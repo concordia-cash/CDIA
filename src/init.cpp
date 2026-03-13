@@ -14,7 +14,6 @@
 
 #include "init.h"
 
-#include "activemasternode.h"
 #include "addrman.h"
 #include "amount.h"
 #include "bls/bls_wrapper.h"
@@ -24,7 +23,6 @@
 #include "fs.h"
 #include "httpserver.h"
 #include "httprpc.h"
-#include "invalid.h"
 #include "key.h"
 #include "mapport.h"
 #include "miner.h"
@@ -284,8 +282,6 @@ void Shutdown()
         pcoinscatcher.reset();
         pcoinsdbview.reset();
         pblocktree.reset();
-        zerocoinDB.reset();
-        accumulatorCache.reset();
         pSporkDB.reset();
         DeleteTierTwo();
     }
@@ -523,8 +519,6 @@ std::string HelpMessage(HelpMessageMode mode)
     }
     strUsage += HelpMessageOpt("-shrinkdebugfile", "Shrink debug.log file on client startup (default: 1 when no -debug)");
     AppendParamsHelpMessages(strUsage, showDebug);
-
-    strUsage += GetTierTwoHelpString(showDebug);
 
     strUsage += HelpMessageGroup("Node relay options:");
     if (showDebug) {
@@ -1467,10 +1461,8 @@ bool AppInitMain()
                 pcoinscatcher.reset();
                 pblocktree.reset(new CBlockTreeDB(nBlockTreeDBCache, false, fReset));
 
-                //Concordia Cash specific: zerocoin and spork DB's
-                zerocoinDB.reset(new CZerocoinDB(0, false, fReindex));
+                //Concordia Cash specific: spork DB's
                 pSporkDB.reset(new CSporkDB(0, false, false));
-                accumulatorCache.reset(new AccumulatorCache(zerocoinDB.get()));
 
                 InitTierTwoPreChainLoad(fReindex);
 
@@ -1553,29 +1545,6 @@ bool AppInitMain()
                         break;
                     }
                     assert(chainActive.Tip() != nullptr);
-                }
-
-                if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-                    // Prune zerocoin invalid outs if they were improperly stored in the coins database
-                    int chainHeight = chainActive.Height();
-                    bool fZerocoinActive = chainHeight > 0 && consensus.NetworkUpgradeActive(chainHeight, Consensus::UPGRADE_ZC);
-
-                    uiInterface.InitMessage(_("Loading/Pruning invalid outputs..."));
-                    if (fZerocoinActive) {
-                        if (!pcoinsTip->PruneInvalidEntries()) {
-                            strLoadError = _("System error while flushing the chainstate after pruning invalid entries. Possible corrupt database.");
-                            break;
-                        }
-                        MoneySupply.Update(pcoinsTip->GetTotalAmount(), chainHeight);
-                        // No need to keep the invalid outs in memory. Clear the map 100 blocks after the last invalid UTXO
-                        if (chainHeight > consensus.height_last_invalid_UTXO + 100) {
-                            invalid_out::setInvalidOutPoints.clear();
-                        }
-                    } else {
-                        // Populate list of invalid/fraudulent outpoints that are banned from the chain
-                        // They will not be added to coins view
-                        invalid_out::LoadOutpoints();
-                    }
                 }
 
                 if (!is_coinsview_empty) {
@@ -1844,9 +1813,6 @@ bool AppInitMain()
         threadGroup.create_thread(std::bind(&ThreadStakeMinter));
     }
 #endif
-
-    // Enable active MN
-    if (!InitActiveMN()) return false;
 
     // ********************************************************* Step 12: finished
 

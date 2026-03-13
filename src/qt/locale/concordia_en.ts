@@ -1601,19 +1601,6 @@ Be part of the DAO.</source>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <location filename="../concordia/mnrow.cpp" line="+25"/>
-        <source>Collateral tx not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Status: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <location filename="../concordia/forms/masternodewizarddialog.ui" line="+196"/>
@@ -1993,85 +1980,6 @@ Are you sure?</source>
     <message>
         <location line="+1"/>
         <source>Collateral tx id copied</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <location filename="../concordia/forms/mnselectiondialog.ui" line="+117"/>
-        <source>Select Masternodes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+113"/>
-        <source>Amount of votes:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+45"/>
-        <location filename="../concordia/mnselectiondialog.cpp" line="+104"/>
-        <source>Select All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+39"/>
-        <source>Name</source>
-        <translation type="unfinished">Name</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Vote</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Status</source>
-        <translation type="unfinished">Status</translation>
-    </message>
-    <message>
-        <location line="+43"/>
-        <source>CANCEL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>SELECT VOTES</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../concordia/mnselectiondialog.cpp" line="+0"/>
-        <source>Unselect All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+42"/>
-        <source>Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>The direction of the already broadcasted vote</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

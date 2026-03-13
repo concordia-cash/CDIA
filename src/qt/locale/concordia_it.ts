@@ -1072,13 +1072,6 @@ Si avvierà automaticamente non appena il portafoglio avrà sufficienti conferme
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Tx Collaterale non trovata</translation>
-    </message>
-    </context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Name</source>
@@ -1329,29 +1322,6 @@ Sei sicuro?</translation>
         <translation>Tx Collaterale copiata</translation>
     </message>
 </context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select All</source>
-        <translation>Seleziona tutto</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Nome</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Stato</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>CANCELLA</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Si</translation>
-    </message>
-    </context>
 <context>
     <name>NavMenuWidget</name>
     <message>

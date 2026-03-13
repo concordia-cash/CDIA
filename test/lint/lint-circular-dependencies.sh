@@ -9,21 +9,11 @@
 export LC_ALL=C
 
 EXPECTED_CIRCULAR_DEPENDENCIES=(
-    "activemasternode -> masternodeman -> activemasternode"
     "budget/budgetmanager -> validation -> budget/budgetmanager"
     "chain -> legacy/stakemodifier -> chain"
     "chainparamsbase -> util/system -> chainparamsbase"
     "consensus/params -> consensus/upgrades -> consensus/params"
-    "evo/deterministicmns -> masternodeman -> evo/deterministicmns"
-    "evo/specialtx_validation -> llmq/quorums_blockprocessor -> evo/specialtx_validation"
-    "evo/specialtx_validation -> validation -> evo/specialtx_validation"
     "kernel -> validation -> kernel"
-    "masternode -> masternodeman -> masternode"
-    "masternode-payments -> masternodeman -> masternode-payments"
-    "masternode-payments -> validation -> masternode-payments"
-    "masternode-sync -> masternodeman -> masternode-sync"
-    "masternodeman -> validation -> masternodeman"
-    "net -> tiertwo/net_masternodes -> net"
     "policy/fees -> txmempool -> policy/fees"
     "policy/policy -> validation -> policy/policy"
     "sapling/saplingscriptpubkeyman -> wallet/wallet -> sapling/saplingscriptpubkeyman"
@@ -37,20 +27,11 @@ EXPECTED_CIRCULAR_DEPENDENCIES=(
     "wallet/wallet -> wallet/walletdb -> wallet/wallet"
     "chain -> legacy/stakemodifier -> stakeinput -> chain"
     "chain -> legacy/stakemodifier -> validation -> chain"
-    "legacy/validation_zerocoin_legacy -> wallet/wallet -> validation -> legacy/validation_zerocoin_legacy"
-    "llmq/quorums -> llmq/quorums_connections -> llmq/quorums"
-    "llmq/quorums_dkgsession -> llmq/quorums_dkgsessionmgr -> llmq/quorums_dkgsessionhandler -> llmq/quorums_dkgsession"
-    "llmq/quorums_dkgsessionhandler -> net_processing -> llmq/quorums_dkgsessionmgr -> llmq/quorums_dkgsessionhandler"
-    "llmq/quorums_signing -> net_processing -> llmq/quorums_signing"
-    "llmq/quorums_chainlocks -> net_processing -> llmq/quorums_chainlocks"
-    "llmq/quorums_chainlocks -> validation -> llmq/quorums_chainlocks"
     "chain -> legacy/stakemodifier -> validation -> validationinterface -> chain"
     "chain -> legacy/stakemodifier -> stakeinput -> txdb -> chain"
     "chain -> legacy/stakemodifier -> validation -> checkpoints -> chain"
     "chain -> legacy/stakemodifier -> validation -> undo -> chain"
     "chain -> legacy/stakemodifier -> validation -> pow -> chain"
-    "evo/deterministicmns -> masternodeman -> net -> tiertwo/net_masternodes -> evo/deterministicmns"
-    "evo/deterministicmns -> masternodeman -> validation -> validationinterface -> evo/deterministicmns"
 )
 
 EXIT_CODE=0

@@ -49,12 +49,7 @@ public:
 
 extern const char * const PIVX_CONF_FILENAME;
 extern const char * const PIVX_PID_FILENAME;
-extern const char * const PIVX_MASTERNODE_CONF_FILENAME;
 extern const char * const DEFAULT_DEBUGLOGFILE;
-
-//Concordia Cash only features
-
-extern std::atomic<bool> fMasterNode;
 
 extern CTranslationInterface translationInterface;
 
@@ -108,7 +103,6 @@ const fs::path &ZC_GetParamsDir();
 void initZKSNARKS();
 void ClearDatadirCache();
 fs::path GetConfigFile(const std::string& confPath);
-fs::path GetMasternodeConfigFile();
 #ifdef WIN32
 fs::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
 #endif

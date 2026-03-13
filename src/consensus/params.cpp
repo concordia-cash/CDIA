@@ -7,28 +7,20 @@
 #include "consensus/upgrades.h"
 #include "util/system.h"
 
-namespace Consensus {
+namespace Consensus
+{
 
 bool Params::NetworkUpgradeActive(int nHeight, Consensus::UpgradeIndex idx) const
 {
     if (idx >= Consensus::MAX_NETWORK_UPGRADES)
         return error("%s: Upgrade index out of bounds: %d >= %d",
-                __func__, idx, Consensus::MAX_NETWORK_UPGRADES);
+            __func__, idx, Consensus::MAX_NETWORK_UPGRADES);
 
     if (nHeight < 0)
         return error("%s: Requested state for upgrade %s at negative height %d",
-                __func__, NetworkUpgradeInfo[idx].strName, nHeight);
+            __func__, NetworkUpgradeInfo[idx].strName, nHeight);
 
     return NetworkUpgradeState(nHeight, *this, idx) == UPGRADE_ACTIVE;
 }
 
-Optional<LLMQParams> Params::GetLLMQParams(uint8_t llmqtype) const
-{
-    const auto it = llmqs.find((LLMQType)llmqtype);
-    if (it == llmqs.end()) {
-        return nullopt;
-    }
-    return Optional<LLMQParams>(it->second);
-}
-
-} // End consensus namespace
+} // namespace Consensus

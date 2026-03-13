@@ -129,8 +129,6 @@ CBlockIndex::CBlockIndex(const CBlock& block):
         nBits{block.nBits},
         nNonce{block.nNonce}
 {
-    if(block.nVersion > 3 && block.nVersion < 7)
-        nAccumulatorCheckpoint = block.nAccumulatorCheckpoint;
     if (block.IsProofOfStake())
         SetProofOfStake();
 }
@@ -172,7 +170,6 @@ CBlockHeader CBlockIndex::GetBlockHeader() const
     block.nTime = nTime;
     block.nBits = nBits;
     block.nNonce = nNonce;
-    if (nVersion > 3 && nVersion < 7) block.nAccumulatorCheckpoint = nAccumulatorCheckpoint;
     if (nVersion >= 8) block.hashFinalSaplingRoot = hashFinalSaplingRoot;
     return block;
 }
@@ -184,18 +181,7 @@ int64_t CBlockIndex::MaxFutureBlockTime() const
 
 int64_t CBlockIndex::MinPastBlockTime() const
 {
-    const Consensus::Params& consensus = Params().GetConsensus();
-    // Time Protocol v1: pindexPrev->MedianTimePast + 1
-    if (!consensus.IsTimeProtocolV2(nHeight+1))
-        return GetMedianTimePast();
-
-    // on the transition from Time Protocol v1 to v2
-    // pindexPrev->nTime might be in the future (up to the allowed drift)
-    // so we allow the nBlockTimeProtocolV2 (Concordia Cash v4.0) to be at most (180-14) seconds earlier than previous block
-    if (nHeight + 1 == consensus.vUpgrades[Consensus::UPGRADE_V4_0].nActivationHeight)
-        return GetBlockTime() - consensus.FutureBlockTimeDrift(nHeight) + consensus.FutureBlockTimeDrift(nHeight + 1);
-
-    // Time Protocol v2: pindexPrev->nTime
+    // Time Protocol: pindexPrev->nTime
     return GetBlockTime();
 }
 

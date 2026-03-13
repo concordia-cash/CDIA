@@ -1287,17 +1287,6 @@ Be part of the DAO.</source>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>Collateral tx를 찾을 수 없습니다.</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>상태: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Name</source>
@@ -1572,61 +1561,6 @@ Are you sure?</source>
     <message>
         <source>Collateral tx id copied</source>
         <translation>Collateral tx id가 복사되었습니다.</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>마스터노드 선택</translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>각 마스터노드는 단일 투표를 참조하며, 제안에 투표할 것을 선택할 수 있습니다.</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>투표들의 양</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>모두 선택</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>이름</translation>
-    </message>
-    <message>
-        <source>Vote</source>
-        <translation>투표</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>상태</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>취소</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation>투표 선택</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>모두 선택 해제</translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>이미 방송된 투표의 방향성</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>이 마스터 노드에서 발행된 투표가 없습니다.</translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>투표 사이의 시간이 너무 짧습니다. 투표를 바꾸기 위해서는 %1분을 기다려야 합니다.</translation>
     </message>
 </context>
 <context>

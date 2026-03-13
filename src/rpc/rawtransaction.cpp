@@ -6,10 +6,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "core_io.h"
-#include "evo/providertx.h"
 #include "key_io.h"
 #include "keystore.h"
-#include "llmq/quorums_chainlocks.h"
 #include "net.h"
 #include "policy/policy.h"
 #include "primitives/transaction.h"

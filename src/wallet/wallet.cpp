@@ -15,7 +15,6 @@
 
 #include "checkpoints.h"
 #include "coincontrol.h"
-#include "evo/providertx.h"
 #include "guiinterfaceutil.h"
 #include "policy/policy.h"
 #include "sapling/key_io_sapling.h"
@@ -1713,7 +1712,7 @@ CAmount CWalletTx::GetLockedCredit() const
 
     CAmount nCredit = 0;
     uint256 hashTx = GetHash();
-    const CAmount collAmt = Params().GetConsensus().nMNCollateralAmt;
+    const CAmount collAmt = 999999999;
     for (unsigned int i = 0; i < tx->vout.size(); i++) {
         const CTxOut& txout = tx->vout[i];
 
@@ -1723,11 +1722,6 @@ CAmount CWalletTx::GetLockedCredit() const
         // Add locked coins
         if (pwallet->IsLockedCoin(hashTx, i)) {
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE_ALL);
-        }
-
-        // Add masternode collaterals which are handled like locked coins
-        else if (fMasterNode && tx->vout[i].nValue == collAmt) {
-            nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
         if (!Params().GetConsensus().MoneyRange(nCredit))
@@ -2460,8 +2454,8 @@ bool CWallet::GetMasternodeVinAndKeys(CPubKey& pubKeyRet,
 
     // Masternode collateral value
     const auto& consensus = Params().GetConsensus();
-    if (txOut.nValue != consensus.nMNCollateralAmt) {
-        strError = strprintf("Invalid collateral tx value, must be %s PIV", FormatMoney(Params().GetConsensus().nMNCollateralAmt));
+    if (txOut.nValue != 999999999) {
+        strError = strprintf("Invalid collateral tx value, must be %s PIV", FormatMoney(999999999));
         return error("%s: tx %s, index %d not a masternode collateral", __func__, collateralOut.hash.GetHex(), collateralOut.n);
     }
 
@@ -2484,9 +2478,9 @@ bool CWallet::GetMasternodeVinAndKeys(CPubKey& pubKeyRet,
         }
 
         // Depth must be at least MASTERNODE_MIN_CONFIRMATIONS
-        if (nDepth < consensus.MasternodeCollateralMinConf()) {
+        if (nDepth < 15) {
             strError = strprintf("Collateral tx must have at least %d confirmations, has %d",
-                                 consensus.MasternodeCollateralMinConf(), nDepth);
+                                 15, nDepth);
             return error("%s: %s", __func__, strError);
         }
     }

@@ -33,7 +33,6 @@ LIBBITCOIN_COMMON=libbitcoin_common.a
 LIBBITCOIN_CLI=libbitcoin_cli.a
 LIBBITCOIN_UTIL=libbitcoin_util.a
 LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
-LIBBITCOIN_ZEROCOIN=libzerocoin/libbitcoin_zerocoin.a
 LIBBITCOINQT=qt/libbitcoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 LIBSAPLING=libsapling.a
@@ -140,7 +139,6 @@ LIBSAPLING_H = \
 .PHONY: FORCE cargo-build check-symbols check-security
 # concordia core #
 BITCOIN_CORE_H = \
-  activemasternode.h \
   addrdb.h \
   addrman.h \
   attributes.h \
@@ -174,8 +172,6 @@ BITCOIN_CORE_H = \
   consensus/consensus.h \
   consensus/merkle.h \
   consensus/validation.h \
-  consensus/tx_verify.h \
-  consensus/zerocoin_verify.h \
   consensus/params.h \
   consensus/upgrades.h \
   primitives/block.h \
@@ -185,12 +181,6 @@ BITCOIN_CORE_H = \
   crypter.h \
   ctpl_stl.h \
   cyclingvector.h \
-  evo/deterministicmns.h \
-  evo/evodb.h \
-  evo/mnauth.h \
-  evo/evonotificationinterface.h \
-  evo/providertx.h \
-  evo/specialtx_validation.h \
   flatdb.h \
   llmq/quorums.h \
   llmq/quorums_blockprocessor.h \
@@ -219,8 +209,6 @@ BITCOIN_CORE_H = \
   tiertwo/init.h \
   interfaces/handler.h \
   interfaces/wallet.h \
-  invalid.h \
-  invalid_outpoints.json.h \
   legacy/stakemodifier.h \
   kernel.h \
   key.h \
@@ -366,13 +354,6 @@ libbitcoin_server_a_SOURCES = \
   consensus/params.cpp \
   consensus/tx_verify.cpp \
   flatfile.cpp \
-  consensus/zerocoin_verify.cpp \
-  evo/deterministicmns.cpp \
-  evo/evodb.cpp \
-  evo/evonotificationinterface.cpp \
-  evo/mnauth.cpp \
-  evo/providertx.cpp \
-  evo/specialtx_validation.cpp \
   llmq/quorums.cpp \
   llmq/quorums_blockprocessor.cpp \
   llmq/quorums_chainlocks.cpp \
@@ -510,35 +491,10 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_skein.h \
   crypto/sph_types.h
 
-# libzerocoin library
-libzerocoin_libbitcoin_zerocoin_a_CPPFLAGS = $(AM_CPPFLAGS) $(BOOST_CPPFLAGS)
-libzerocoin_libbitcoin_zerocoin_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
-  libzerocoin/bignum.h \
-  libzerocoin/Coin.h \
-  libzerocoin/CoinRandomnessSchnorrSignature.h \
-  libzerocoin/CoinSpend.h \
-  libzerocoin/Commitment.h \
-  libzerocoin/Denominations.h \
-  libzerocoin/ParamGeneration.h \
-  libzerocoin/Params.h \
-  libzerocoin/SpendType.h \
-  libzerocoin/ZerocoinDefines.h \
-  zpiv/zpivmodule.h \
-  libzerocoin/bignum.cpp \
-  libzerocoin/Coin.cpp \
-  libzerocoin/CoinRandomnessSchnorrSignature.cpp \
-  libzerocoin/CoinSpend.cpp \
-  libzerocoin/Denominations.cpp \
-  libzerocoin/ParamGeneration.cpp \
-  libzerocoin/Params.cpp \
-  zpiv/zpivmodule.cpp
-
 # common: shared between concordiad, and concordia-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
-  activemasternode.cpp \
   base58.cpp \
   bip38.cpp \
   budget/budgetdb.cpp \
@@ -559,7 +515,6 @@ libbitcoin_common_a_SOURCES = \
   core_read.cpp \
   core_write.cpp \
   hash.cpp \
-  invalid.cpp \
   key.cpp \
   keystore.cpp \
   masternode.cpp \
@@ -779,11 +734,8 @@ CLEANFILES += compat/*.gcda compat/*.gcno
 CLEANFILES += consensus/*.gcda consensus/*.gcno
 CLEANFILES += crc32c/src/*.gcda crc32c/src/*.gcno
 CLEANFILES += crypto/*.gcda crypto/*.gcno
-CLEANFILES += evo/*.gcda evo/*.gcno
 CLEANFILES += interfaces/*.gcda interfaces/*.gcno
 CLEANFILES += legacy/*.gcda legacy/*.gcno
-CLEANFILES += libzerocoin/*.gcda libzerocoin/*.gcno
-CLEANFILES += llmq/*.gcda llmq/*.gcno
 CLEANFILES += policy/*.gcda policy/*.gcno
 CLEANFILES += primitives/*.gcda primitives/*.gcno
 CLEANFILES += rpc/*.gcda rpc/*.gcno
@@ -796,7 +748,6 @@ CLEANFILES += util/*.gcda util/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
-CLEANFILES += zpiv/*.gcda zpiv/*.gcno
 CLEANFILES += obj/build.h
 
 CTAES_DIST =  crypto/ctaes/bench.c

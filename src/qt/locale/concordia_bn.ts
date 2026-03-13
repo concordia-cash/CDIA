@@ -1316,17 +1316,6 @@ Be part of the DAO.</source>
     </message>
 </context>
 <context>
-    <name>MNRow</name>
-    <message>
-        <source>Collateral tx not found</source>
-        <translation>জামানত ট্রান্সাকশন পাওয়া যায় নি</translation>
-    </message>
-    <message>
-        <source>Status: %1</source>
-        <translation>স্ট্যাটাস: %1</translation>
-    </message>
-</context>
-<context>
     <name>MasterNodeWizardDialog</name>
     <message>
         <source>Intro</source>
@@ -1616,69 +1605,6 @@ Are you sure?</source>
     <message>
         <source>Collateral tx id copied</source>
         <translation>জামানত tx আইডি কপি করা হয়েছে</translation>
-    </message>
-</context>
-<context>
-    <name>MnSelectionDialog</name>
-    <message>
-        <source>Select Masternodes</source>
-        <translation>মাস্টারনোড নির্বাচন করুন</translation>
-    </message>
-    <message>
-        <source>Each Masternode refers to a single vote, you can select which one will vote for the proposal</source>
-        <translation>প্রতিটি মাস্টারনোড একটি একক ভোটকে বোঝায়, আপনি কোনটি প্রস্তাবের জন্য ভোট দেবেন তা নির্বাচন করতে পারেন</translation>
-    </message>
-    <message>
-        <source>Amount of votes:</source>
-        <translation>ভোটের পরিমাণ:</translation>
-    </message>
-    <message>
-        <source>Select All</source>
-        <translation>সব নির্বাচিত করুণ</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>নাম</translation>
-    </message>
-    <message>
-        <source>Vote</source>
-        <translation>ভোট</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>স্ট্যাটাস</translation>
-    </message>
-    <message>
-        <source>CANCEL</source>
-        <translation>বাতিল করুন</translation>
-    </message>
-    <message>
-        <source>SELECT VOTES</source>
-        <translation>ভোট নির্বাচন করুন</translation>
-    </message>
-    <message>
-        <source>Unselect All</source>
-        <translation>সমস্ত নির্বাচন বাদ দিন</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>হ্যাঁ</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>না</translation>
-    </message>
-    <message>
-        <source>The direction of the already broadcasted vote</source>
-        <translation>ইতিমধ্যে প্রচারিত ভোটের দিক</translation>
-    </message>
-    <message>
-        <source>No vote has been emitted from this Masternode</source>
-        <translation>এই মাস্টারনোড থেকে কোন ভোট নির্গত হয় নি</translation>
-    </message>
-    <message>
-        <source>Time between votes is too soon, have to wait %1 minutes to change your vote</source>
-        <translation>ভোটগুলির মধ্যে সময় খুব কম, আপনার ভোট পরিবর্তন করতে %1 মিনিট অপেক্ষা করতে হবে</translation>
     </message>
 </context>
 <context>

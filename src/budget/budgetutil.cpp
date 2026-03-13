@@ -143,28 +143,6 @@ static mnKeyList getMNKeys(const Optional<std::string>& mnAliasFilter,
     return mnKeys;
 }
 
-static mnKeyList getMNKeysForActiveMasternode(UniValue& resultsObj)
-{
-    // local node must be a masternode
-    if (!fMasterNode) {
-        throw std::runtime_error(_("This is not a masternode. 'local' option disabled."));
-    }
-
-    if (activeMasternode.vin == nullopt) {
-        throw std::runtime_error(_("Active Masternode not initialized."));
-    }
-
-    CKey mnKey; CPubKey mnPubKey;
-    activeMasternode.GetKeys(mnKey, mnPubKey);
-    CMasternode* pmn = mnodeman.Find(mnPubKey);
-    if (!pmn) {
-        resultsObj.push_back(packErrorRetStatus("local", "Can't find masternode by pubkey"));
-        return mnKeyList();
-    }
-
-    return {MnKeyData("local", &pmn->vin.prevout, mnKey)};
-}
-
 // Deterministic masternodes
 static mnKeyList getDMNVotingKeys(CWallet* const pwallet, const Optional<std::string>& mnAliasFilter, bool fFinal, UniValue& resultsObj, int& failed)
 {
@@ -212,23 +190,6 @@ static mnKeyList getDMNVotingKeys(CWallet* const pwallet, const Optional<std::st
     return mnKeys;
 }
 
-static mnKeyList getDMNKeysForActiveMasternode(UniValue& resultsObj)
-{
-    // local node must be a masternode
-    if (!activeMasternodeManager) {
-        throw std::runtime_error(_("This is not a deterministic masternode. 'local' option disabled."));
-    }
-
-    CBLSSecretKey sk; CDeterministicMNCPtr dmn;
-    auto res = activeMasternodeManager->GetOperatorKey(sk, dmn);
-    if (!res) {
-        resultsObj.push_back(packErrorRetStatus("local", res.getError()));
-        return {};
-    }
-
-    return {MnKeyData("local", &dmn->collateralOutpoint, sk)};
-}
-
 // vote on proposal (finalized budget, if fFinal=true) with all possible keys or a single mn (mnAliasFilter)
 // Note: for DMNs only proposal voting is allowed with the voting key
 // (finalized budget voting requires the operator BLS key)
@@ -260,8 +221,7 @@ UniValue mnLocalBudgetVoteInner(bool fLegacyMN, const uint256& budgetHash, bool 
 {
     UniValue resultsObj(UniValue::VARR);
 
-    mnKeyList mnKeys = fLegacyMN ? getMNKeysForActiveMasternode(resultsObj)
-                                 : getDMNKeysForActiveMasternode(resultsObj);
+    mnKeyList mnKeys;
 
     if (mnKeys.empty()) {
         return packVoteReturnValue(resultsObj, 0, 1);

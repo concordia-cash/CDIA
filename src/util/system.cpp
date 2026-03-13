@@ -79,12 +79,6 @@
 #endif
 
 const char * const PIVX_CONF_FILENAME = "concordia.conf";
-const char * const PIVX_MASTERNODE_CONF_FILENAME = "masternode.conf";
-
-
-// Concordia Cash only features
-// Masternode
-std::atomic<bool> fMasterNode{false};
 
 ArgsManager gArgs;
 
@@ -771,12 +765,6 @@ fs::path GetConfigFile(const std::string& confPath)
 {
     fs::path pathConfigFile(confPath);
     return AbsPathForConfigVal(pathConfigFile, false);
-}
-
-fs::path GetMasternodeConfigFile()
-{
-    fs::path pathConfigFile(gArgs.GetArg("-mnconf", PIVX_MASTERNODE_CONF_FILENAME));
-    return AbsPathForConfigVal(pathConfigFile);
 }
 
 static std::string TrimString(const std::string& str, const std::string& pattern)

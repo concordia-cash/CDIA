@@ -11,10 +11,6 @@
 #include "consensus/merkle.h"
 #include "bls/bls_wrapper.h"
 #include "guiinterface.h"
-#include "evo/deterministicmns.h"
-#include "evo/evodb.h"
-#include "evo/evonotificationinterface.h"
-#include "llmq/quorums_init.h"
 #include "miner.h"
 #include "net_processing.h"
 #include "rpc/server.h"
@@ -111,19 +107,13 @@ TestingSetup::TestingSetup(const std::string& chainName) : BasicTestingSetup(cha
         g_connman = std::make_unique<CConnman>(0x1337, 0x1337); // Deterministic randomness for tests.
         connman = g_connman.get();
 
-        // Register EvoNotificationInterface
-        pEvoNotificationInterface = new EvoNotificationInterface();
-        RegisterValidationInterface(pEvoNotificationInterface);
-
         // Ideally we'd move all the RPC tests to the functional testing framework
         // instead of unit tests, but for now we need these here.
         RegisterAllCoreRPCCommands(tableRPC);
-        zerocoinDB.reset(new CZerocoinDB(0, true));
         pSporkDB.reset(new CSporkDB(0, true));
         pblocktree.reset(new CBlockTreeDB(1 << 20, true));
         pcoinsdbview.reset(new CCoinsViewDB(1 << 23, true));
         pcoinsTip.reset(new CCoinsViewCache(pcoinsdbview.get()));
-        llmq::InitLLMQSystem(*evoDb, &scheduler, true);
         if (!LoadGenesisBlock()) {
             throw std::runtime_error("Error initializing block database");
         }
@@ -141,7 +131,6 @@ TestingSetup::TestingSetup(const std::string& chainName) : BasicTestingSetup(cha
 TestingSetup::~TestingSetup()
 {
         scheduler.stop();
-        llmq::InterruptLLMQSystem();
         threadGroup.interrupt_all();
         threadGroup.join_all();
         GetMainSignals().FlushBackgroundCallbacks();
@@ -150,13 +139,10 @@ TestingSetup::~TestingSetup()
         g_connman.reset();
         peerLogic.reset();
         UnloadBlockIndex();
-        delete pEvoNotificationInterface;
         pcoinsTip.reset();
         pcoinsdbview.reset();
         pblocktree.reset();
-        zerocoinDB.reset();
         pSporkDB.reset();
-        llmq::DestroyLLMQSystem();
 }
 
 // Test chain only available on regtest

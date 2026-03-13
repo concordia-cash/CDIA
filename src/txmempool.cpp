@@ -8,9 +8,6 @@
 
 #include "clientversion.h"
 #include "bls/bls_wrapper.h"
-#include "evo/deterministicmns.h"
-#include "evo/specialtx_validation.h"
-#include "evo/providertx.h"
 #include "policy/fees.h"
 #include "reverse_iterate.h"
 #include "streams.h"

@@ -71,7 +71,6 @@ struct TestingSetup: public BasicTestingSetup
 {
     boost::thread_group threadGroup;
     CConnman* connman;
-    EvoNotificationInterface* pEvoNotificationInterface;
     CScheduler scheduler;
     std::unique_ptr<PeerLogicValidation> peerLogic;
 

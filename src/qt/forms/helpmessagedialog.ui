@@ -93,7 +93,7 @@
          </size>
         </property>
         <property name="pixmap">
-         <pixmap>:/images/about</pixmap>
+         <pixmap resource="../concordia.qrc">:/images/about</pixmap>
         </property>
        </widget>
       </item>
@@ -243,10 +243,13 @@ background-color:#FFFFFF;
        </layout>
       </item>
      </layout>
+     <zorder>graphic</zorder>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../concordia.qrc"/>
+ </resources>
  <connections/>
 </ui>

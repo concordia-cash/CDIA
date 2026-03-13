@@ -18,7 +18,6 @@
 #include "coldstakingwidget.h"
 #include "dashboardwidget.h"
 #include "governancewidget.h"
-#include "masternodeswidget.h"
 #include "navmenuwidget.h"
 #include "qt/settings/faqwidget.h"
 #include "qt/settings/settingswidget.h"
@@ -70,7 +69,6 @@ public Q_SLOTS:
     void goToSend();
     void goToReceive();
     void goToAddresses();
-    void goToMasterNodes();
     void goToGovernance();
     void goToColdStaking();
     void goToSettings();
@@ -141,7 +139,6 @@ private:
     SendWidget *sendWidget = nullptr;
     ReceiveWidget *receiveWidget = nullptr;
     AddressesWidget *addressesWidget = nullptr;
-    MasterNodesWidget *masterNodesWidget = nullptr;
     ColdStakingWidget *coldStakingWidget = nullptr;
     GovernanceWidget* governancewidget{nullptr};
     SettingsWidget* settingsWidget = nullptr;

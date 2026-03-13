@@ -37,8 +37,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
            ui->labelNumber_UnspendablePIV,
            ui->labelNumber_Stake,
            ui->labelNumber_Support,
-           ui->labelNumber_Masternode,
-           ui->labelNumber_MNController
         }, "container-number-faq");
 
     setCssProperty({
@@ -46,8 +44,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
               ui->labelSubtitle_UnspendablePIV,
               ui->labelSubtitle_Stake,
               ui->labelSubtitle_Support,
-              ui->labelSubtitle_Masternode,
-              ui->labelSubtitle_MNController
             }, "text-subtitle-faq");
 
 
@@ -56,8 +52,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
               ui->labelContent_UnspendablePIV,
               ui->labelContent_Stake,
               ui->labelContent_Support,
-              ui->labelContent_Masternode,
-              ui->labelContent_MNController
             }, "text-content-faq");
 
 
@@ -66,8 +60,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
               ui->pushButton_UnspendablePIV,
               ui->pushButton_Stake,
               ui->pushButton_Support,
-              ui->pushButton_Masternode,
-              ui->pushButton_MNController
             }, "btn-faq-options");
 
     ui->labelContent_Support->setOpenExternalLinks(true);
@@ -117,50 +109,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
                 .arg("<a style='color: #b088ff' href='https://discord.gg/jXUpZVMZFC'>" + tr("#support in our Discord") + "</a>.")));
     ui->labelContent_Support->setText(supportContent);
 
-    QString masternodeContent = formatFAQContent(
-        formatFAQParagraph(
-            tr("A masternode is a computer running a full node %1 wallet with a "
-               "requirement of %2 secured collateral to provide extra services "
-               "to the network and in return, receive a portion of the block reward "
-               "regularly. These services include:")
-                .arg(PACKAGE_NAME)
-                .arg(GUIUtil::formatBalance(mnModel->getMNCollateralRequiredAmount(), BitcoinUnits::PIV)) +
-            formatFAQUnorderedList(
-                formatFAQListItem(tr("A decentralized governance (Proposal Voting)")) +
-                formatFAQListItem(tr("A decentralized budgeting system (Treasury)")) +
-                formatFAQListItem(tr("Validation of transactions within each block")) +
-                formatFAQListItem(tr("Act as an additional full node in the network")))) +
-        formatFAQParagraph(
-            tr("For providing such services, masternodes are also paid a certain portion "
-               "of reward for each block. This can serve as a passive income to the "
-               "masternode owners minus their running cost.")) +
-        formatFAQParagraph(
-            tr("Masternode Perks:") +
-            formatFAQUnorderedList(
-                formatFAQListItem(tr("Participate in Concordia Cash Governance")) +
-                formatFAQListItem(tr("Earn Masternode Rewards")) +
-                formatFAQListItem(tr("Commodity option for future sale")) +
-                formatFAQListItem(tr("Help secure the Concordia Cash network")))) +
-        formatFAQParagraph(
-            tr("Requirements:") +
-            formatFAQUnorderedList(
-                formatFAQListItem(tr("%1 per single Masternode instance")
-                        .arg(GUIUtil::formatBalance(mnModel->getMNCollateralRequiredAmount(), BitcoinUnits::PIV))) +
-                formatFAQListItem(tr("Must be stored in a core wallet")) +
-                formatFAQListItem(tr("Need dedicated IP address")) +
-                formatFAQListItem(tr("Masternode wallet to remain online")))));
-    ui->labelContent_Masternode->setText(masternodeContent);
-
-    QString mNControllerContent = formatFAQContent(
-        formatFAQParagraph(
-            tr("A Masternode Controller wallet is where the %1 collateral "
-               "can reside during a Controller-Remote masternode setup. It is a wallet "
-               "that can activate the remote masternode wallet(s) and allows you to keep "
-               "your collateral coins offline while the remote masternode remains online.")
-                    .arg(GUIUtil::formatBalance(mnModel->getMNCollateralRequiredAmount(), BitcoinUnits::PIV))));
-    ui->labelContent_MNController->setText(mNControllerContent);
-
-
     // Exit button
     setCssProperty(ui->pushButtonExit, "btn-faq-exit");
 
@@ -174,8 +122,6 @@ SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
     connect(ui->pushButton_UnspendablePIV, &QPushButton::clicked, [this](){onFaqClicked(ui->widget_UnspendablePIV);});
     connect(ui->pushButton_Stake, &QPushButton::clicked, [this](){onFaqClicked(ui->widget_Stake);});
     connect(ui->pushButton_Support, &QPushButton::clicked, [this](){onFaqClicked(ui->widget_Support);});
-    connect(ui->pushButton_Masternode, &QPushButton::clicked, [this](){onFaqClicked(ui->widget_Masternode);});
-    connect(ui->pushButton_MNController, &QPushButton::clicked, [this](){onFaqClicked(ui->widget_MNController);});
 
     if (parent)
         connect(parent, &PIVXGUI::windowResizeEvent, this, &SettingsFaqWidget::windowResizeEvent);
@@ -212,8 +158,6 @@ std::vector<QPushButton*> SettingsFaqWidget::getButtons()
             ui->pushButton_UnspendablePIV,
             ui->pushButton_Stake,
             ui->pushButton_Support,
-            ui->pushButton_Masternode,
-            ui->pushButton_MNController
     };
 }
 

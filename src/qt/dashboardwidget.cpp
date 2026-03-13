@@ -55,7 +55,6 @@ DashboardWidget::DashboardWidget(PIVXGUI* parent) :
     setCssProperty(ui->labelSquarePiv, "square-chart-piv");
     setCssProperty(ui->labelSquareMN, "square-chart-mn");
     setCssProperty(ui->labelPiv, "text-chart-piv");
-    setCssProperty(ui->labelMN, "text-chart-mn");
 
     // Staking Amount
     QFont fontBold;
@@ -63,7 +62,6 @@ DashboardWidget::DashboardWidget(PIVXGUI* parent) :
 
     setCssProperty(ui->labelChart, "legend-chart");
     setCssProperty(ui->labelAmountPiv, "text-stake-piv-disable");
-    setCssProperty(ui->labelAmountMN, "text-stake-mn-disable");
 
     setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
     setCssProperty({ui->comboBoxMonths,  ui->comboBoxYears}, "btn-combo-chart-selected");
@@ -684,14 +682,11 @@ void DashboardWidget::onChartRefreshed()
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     if (chartData->totalPiv > 0 || chartData->totalMN > 0) {
         setCssProperty(ui->labelAmountPiv, "text-stake-piv");
-        setCssProperty(ui->labelAmountMN, "text-stake-mn");
     } else {
         setCssProperty(ui->labelAmountPiv, "text-stake-piv-disable");
-        setCssProperty(ui->labelAmountMN, "text-stake-mn-disable");
     }
-    forceUpdateStyle({ui->labelAmountPiv, ui->labelAmountMN});
+    forceUpdateStyle({ui->labelAmountPiv});
     ui->labelAmountPiv->setText(GUIUtil::formatBalance(chartData->totalPiv, nDisplayUnit));
-    ui->labelAmountMN->setText(GUIUtil::formatBalance(chartData->totalMN, nDisplayUnit));
 
     series->append(set0);
     if (hasMNRewards)

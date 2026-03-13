@@ -28,7 +28,6 @@ QT_FORMS_UI = \
   qt/forms/dashboardwidget.ui \
   qt/forms/addresslabelrow.ui \
   qt/forms/contactdropdownrow.ui \
-  qt/forms/mninfodialog.ui \
   qt/forms/optionbutton.ui \
   qt/forms/myaddressrow.ui \
   qt/forms/csrow.ui \
@@ -110,7 +109,6 @@ QT_MOC_CPP = \
   qt/moc_dashboardwidget.cpp \
   qt/moc_addresslabelrow.cpp \
   qt/moc_contactdropdownrow.cpp \
-  qt/moc_mninfodialog.cpp \
   qt/moc_optionbutton.cpp \
   qt/moc_coldstakingmodel.cpp \
   qt/moc_myaddressrow.cpp \
@@ -220,7 +218,6 @@ BITCOIN_QT_H = \
   qt/dashboardwidget.h \
   qt/addresslabelrow.h \
   qt/contactdropdownrow.h \
-  qt/mninfodialog.h \
   qt/optionbutton.h \
   qt/coldstakingmodel.h \
   qt/myaddressrow.h \
@@ -556,7 +553,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/contactdropdownrow.cpp \
   qt/contactsdropdown.cpp \
   qt/optionbutton.cpp \
-  qt/mninfodialog.cpp \
   qt/coldstakingmodel.cpp \
   qt/myaddressrow.cpp \
   qt/csrow.cpp \

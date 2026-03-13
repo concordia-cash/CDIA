@@ -183,8 +183,6 @@ void RPCConsole::setClientModel(ClientModel* model)
         setNumBlocks(model->getNumBlocks());
         connect(model, &ClientModel::numBlocksChanged, this, &RPCConsole::setNumBlocks);
 
-        connect(model, &ClientModel::strMasternodesChanged, this, &RPCConsole::setMasternodeCount);
-
         updateNetworkState(num_connections);
         connect(model, &ClientModel::networkActiveChanged, this, &RPCConsole::setNetworkActive);
 
@@ -478,11 +476,6 @@ void RPCConsole::setNumBlocks(int count)
         ui->lastBlockTime->setText(clientModel->getLastBlockDate().toString());
         ui->lastBlockHash->setText(clientModel->getLastBlockHash());
     }
-}
-
-void RPCConsole::setMasternodeCount(const QString& strMasternodes)
-{
-    ui->masternodeCount->setText(strMasternodes);
 }
 
 void RPCConsole::on_lineEdit_returnPressed()

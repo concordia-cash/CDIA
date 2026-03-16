@@ -97,7 +97,6 @@ public Q_SLOTS:
     void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address);
 #ifdef ENABLE_WALLET
     void setGovModel(GovernanceModel* govModel);
-    void setMNModel(MNModel* mnModel);
     /** Set the wallet model.
         The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
@@ -124,7 +123,6 @@ private:
 
     bool enableWallet;
     ClientModel* clientModel = nullptr;
-    MNModel* mnModel = nullptr;
 
     // Actions
     QAction* quitAction = nullptr;

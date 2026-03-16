@@ -31,42 +31,6 @@
 
 #include <univalue.h>
 
-template <typename Payload>
-static void PayloadToJSON(const CTransaction& tx, Payload& pl, UniValue& entry)
-{
-    if (GetTxPayload(tx, pl)) {
-        UniValue payloadObj;
-        pl.ToJson(payloadObj);
-        entry.pushKV("payload", payloadObj);
-    }
-}
-
-static void PayloadToJSON(const CTransaction& tx, UniValue& entry)
-{
-    switch(tx.nType) {
-        case CTransaction::TxType::PROREG: {
-            ProRegPL pl;
-            PayloadToJSON(tx, pl, entry);
-            break;
-        }
-        case CTransaction::TxType::PROUPSERV: {
-            ProUpServPL pl;
-            PayloadToJSON(tx, pl, entry);
-            break;
-        }
-        case CTransaction::TxType::PROUPREG: {
-            ProUpRegPL pl;
-            PayloadToJSON(tx, pl, entry);
-            break;
-        }
-        case CTransaction::TxType::PROUPREV: {
-            ProUpRevPL pl;
-            PayloadToJSON(tx, pl, entry);
-            break;
-        }
-    }
-}
-
 extern int ComputeNextBlockAndDepth(const CBlockIndex* tip, const CBlockIndex* blockindex, const CBlockIndex*& next);
 
 static int ComputeConfirmations(const CBlockIndex* tip, const CBlockIndex* blockindex)
@@ -97,11 +61,6 @@ void TxToJSON(CWallet* const pwallet, const CTransaction& tx, const CBlockIndex*
             }
             entry.pushKV("shielded_addresses", addrs);
         }
-    }
-
-    // Special txes
-    if (tx.IsSpecialTx()) {
-        PayloadToJSON(tx, entry);
     }
 
     bool chainLock = false;
@@ -214,8 +173,6 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
             "  ],\n"
             + GetSaplingTxHelpInfo() +
             "  \"shielded_addresses\"      (json array of string) the shielded addresses involved in this transaction if possible (only for shielded transactions and the tx owner/viewer)\n"
-            "  \"extraPayloadSize\" : n    (numeric) Size of extra payload. Only present if it's a special TX\n"
-            "  \"extraPayload\" : \"hex\"  (string) Hex encoded extra payload data. Only present if it's a special TX\n"
             "  \"blockhash\" : \"hash\",   (string) the block hash\n"
             "  \"confirmations\" : n,      (numeric) The confirmations\n"
             "  \"time\" : ttt,             (numeric) The transaction time in seconds since epoch (Jan 1 1970 GMT)\n"
@@ -427,8 +384,6 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
             "     ,...\n"
             "  ],\n"
             + GetSaplingTxHelpInfo() +
-            "  \"extraPayloadSize\" : n    (numeric) Size of extra payload. Only present if it's a special TX\n"
-            "  \"extraPayload\" : \"hex\"  (string) Hex encoded extra payload data. Only present if it's a special TX\n"
             "}\n"
 
             "\nExamples:\n" +

@@ -601,7 +601,7 @@ int PIVXGUI::getNavWidth()
 void PIVXGUI::openFAQ(SettingsFaqWidget::Section section)
 {
     showHide(true);
-    SettingsFaqWidget* dialog = new SettingsFaqWidget(this, mnModel);
+    SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
     dialog->setSection(section);
     openDialogWithOpaqueBackgroundFullScreen(dialog, this);
     dialog->deleteLater();
@@ -613,13 +613,6 @@ void PIVXGUI::setGovModel(GovernanceModel* govModel)
 {
     if (!stackedContainer || !clientModel) return;
     governancewidget->setGovModel(govModel);
-}
-
-void PIVXGUI::setMNModel(MNModel* _mnModel)
-{
-    if (!stackedContainer || !clientModel) return;
-    mnModel = _mnModel;
-    governancewidget->setMNModel(mnModel);
 }
 
 bool PIVXGUI::addWallet(const QString& name, WalletModel* walletModel)

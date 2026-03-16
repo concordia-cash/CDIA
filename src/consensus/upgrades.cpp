@@ -26,6 +26,14 @@ const struct NUInfo NetworkUpgradeInfo[Consensus::MAX_NETWORK_UPGRADES] = {
                 /*.strInfo =*/ "CLTV (BIP65) activation",
         },
         {
+                /*.strName =*/ "v5_shield",
+                /*.strInfo =*/ "Sapling Shield - start block v8 - start transaction v3",
+        },
+        {
+                /*.strName =*/ "PIVX_v5.6",
+                /*.strInfo =*/ "Exchange address",
+        },
+        {
                 /*.strName =*/ "Test_dummy",
                 /*.strInfo =*/ "Test dummy info",
         },

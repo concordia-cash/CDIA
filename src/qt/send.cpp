@@ -736,8 +736,6 @@ void SendWidget::onShieldCoinsClicked()
         nBytesInputs += (BINDINGSIG_SIZE + 8);
         // (plus at least 2 bytes for shielded in/outs len sizes)
         nBytesInputs += 2;
-        // ExtraPayload size for special txes. For now 1 byte for nullopt.
-        nBytesInputs += 1;
         // nVersion, nType, nLockTime and vin/vout len sizes
         nBytesInputs += 10;
         CAmount nPayFee = GetMinRelayFee(nBytesInputs) * DEFAULT_SHIELDEDTXFEE_K;

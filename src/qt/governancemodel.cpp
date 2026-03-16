@@ -8,7 +8,6 @@
 #include "budget/budgetutil.h"
 #include "destination_io.h"
 #include "guiconstants.h"
-#include "mnmodel.h"
 #include "qt/transactionrecord.h"
 #include "qt/transactiontablemodel.h"
 #include "tiertwo/tiertwo_sync_state.h"
@@ -36,7 +35,7 @@ std::string ProposalInfo::statusToStr() const
     return "";
 }
 
-GovernanceModel::GovernanceModel(ClientModel* _clientModel, MNModel* _mnModel) : clientModel(_clientModel), mnModel(_mnModel) {}
+GovernanceModel::GovernanceModel(ClientModel* _clientModel) : clientModel(_clientModel) {}
 GovernanceModel::~GovernanceModel() {}
 
 void GovernanceModel::setWalletModel(WalletModel* _walletModel)
@@ -150,35 +149,6 @@ int GovernanceModel::getNextSuperblockHeight() const
     return chainHeight - chainHeight % nBlocksPerCycle + nBlocksPerCycle;
 }
 
-std::vector<VoteInfo> GovernanceModel::getLocalMNsVotesForProposal(const ProposalInfo& propInfo)
-{
-    // First, get the local masternodes
-    std::vector<std::pair<COutPoint, std::string>> vecLocalMn;
-    for (int i = 0; i < mnModel->rowCount(); ++i) {
-        vecLocalMn.emplace_back(std::make_pair(
-                COutPoint(uint256S(mnModel->index(i, MNModel::COLLATERAL_ID, QModelIndex()).data().toString().toStdString()),
-                mnModel->index(i, MNModel::COLLATERAL_OUT_INDEX, QModelIndex()).data().toInt()),
-                mnModel->index(i, MNModel::ALIAS, QModelIndex()).data().toString().toStdString())
-        );
-    }
-
-    std::vector<VoteInfo> localVotes;
-    {
-        LOCK(g_budgetman.cs_proposals); // future: encapsulate this mutex lock.
-        // Get the budget proposal, get the votes, then loop over it and return the ones that correspond to the local masternodes here.
-        CBudgetProposal* prop = g_budgetman.FindProposal(propInfo.id);
-        const auto& mapVotes = prop->GetVotes();
-        for (const auto& it : mapVotes) {
-            for (const auto& mn : vecLocalMn) {
-                if (it.first == mn.first && it.second.IsValid()) {
-                    localVotes.emplace_back(mn.first, (VoteInfo::VoteDirection) it.second.GetDirection(), mn.second, it.second.GetTime());
-                    break;
-                }
-            }
-        }
-    }
-    return localVotes;
-}
 
 OperationResult GovernanceModel::validatePropName(const QString& name) const
 {

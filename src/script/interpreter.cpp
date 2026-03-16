@@ -966,17 +966,7 @@ bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& 
 
                 case OP_CHECKCOLDSTAKEVERIFY:
                 {
-                    if (!checker.CheckColdStake(false, script, stack, flags, serror)) {
-                        // serror set
-                        return false;
-                    }
-                }
-                break;
-
-                case OP_CHECKCOLDSTAKEVERIFY_LOF:
-                {
-                    // Allow last output script "free"
-                    if (!checker.CheckColdStake(true, script, stack, flags, serror)) {
+                    if (!checker.CheckColdStake(script, stack, flags, serror)) {
                         // serror set
                         return false;
                     }
@@ -1261,11 +1251,6 @@ uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsig
             ss << txTo.vin[nIn].nSequence;
         }
 
-        // Extra payload for special transactions
-        if (txTo.IsSpecialTx()) {
-            ss << *(txTo.extraPayload);
-        }
-
         // Locktime
         ss << txTo.nLockTime;
         // Sighash type
@@ -1353,7 +1338,7 @@ bool TransactionSignatureChecker::CheckLockTime(const CScriptNum& nLockTime) con
     return true;
 }
 
-bool TransactionSignatureChecker::CheckColdStake(bool fAllowLastOutputFree, const CScript& prevoutScript, std::vector<valtype>& stack, unsigned int flags, ScriptError* serror) const
+bool TransactionSignatureChecker::CheckColdStake(const CScript& prevoutScript, std::vector<valtype>& stack, unsigned int flags, ScriptError* serror) const
 {
     // the stack can contain only <sig> <pk> <pkh> at this point
     if ((int)stack.size() != 3) {
@@ -1392,10 +1377,7 @@ bool TransactionSignatureChecker::CheckColdStake(bool fAllowLastOutputFree, cons
     CAmount outValue{0};
     for (unsigned int i = 1; i < outs; i++) {
         if (txTo->vout[i].scriptPubKey != prevoutScript) {
-            // Only the last one can be different (and only when outs >=3 and fAllowLastOutputFree=true)
-            if (!fAllowLastOutputFree || i != outs-1 || outs < 3) {
-                return set_error(serror, SCRIPT_ERR_CHECKCOLDSTAKEVERIFY);
-            }
+            return set_error(serror, SCRIPT_ERR_CHECKCOLDSTAKEVERIFY);
         } else {
             outValue += txTo->vout[i].nValue;
         }

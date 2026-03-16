@@ -42,27 +42,10 @@ void enableMnSyncAndSuperblocksPayment()
     BOOST_CHECK(sporkManager.IsSporkActive(SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT));
 }
 
-BOOST_AUTO_TEST_CASE(masternode_value)
-{
-    SelectParams(CBaseChainParams::REGTEST);
-    int nHeightTest = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_V5_5].nActivationHeight + 1;
-    BOOST_CHECK_EQUAL(GetMasternodePayment(nHeightTest - 1), 3 * COIN);
-    BOOST_CHECK_EQUAL(GetMasternodePayment(nHeightTest), 6 * COIN);
-}
-
 BOOST_AUTO_TEST_CASE(budget_value)
 {
     SelectParams(CBaseChainParams::TESTNET);
-    int nHeightTest = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight + 1;
-    CheckBudgetValue(nHeightTest-1, "testnet", 7200*COIN);
-    CheckBudgetValue(nHeightTest, "testnet", 144*COIN);
-
-    SelectParams(CBaseChainParams::MAIN);
-    nHeightTest = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight + 1;
-    CheckBudgetValue(nHeightTest, "mainnet", 43200*COIN);
-
-    SelectParams(CBaseChainParams::TESTNET);
-    nHeightTest = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_V5_5].nActivationHeight + 1;
+    int nHeightTest = = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_V5_5].nActivationHeight + 1;
     CheckBudgetValue(nHeightTest-1, "testnet", 144*COIN);
     CheckBudgetValue(nHeightTest, "testnet", 1440*COIN);
 
@@ -356,117 +339,6 @@ static CMutableTransaction NewCoinBase(int nHeight, CAmount cbaseAmt, const CScr
     tx.vin.emplace_back();
     tx.vin[0].scriptSig = CScript() << nHeight << OP_0;
     return tx;
-}
-
-BOOST_FIXTURE_TEST_CASE(IsCoinbaseValueValid_test, TestingSetup)
-{
-    int nHeight = 100;
-    const CAmount mnAmt = GetMasternodePayment(nHeight);
-    const CScript& cbaseScript = GetRandomP2PKH();
-    CValidationState state;
-
-    // force mnsync complete
-    g_tiertwo_sync_state.SetCurrentSyncPhase(MASTERNODE_SYNC_FINISHED);
-
-    // -- Regular blocks
-
-    // Exact
-    CMutableTransaction cbase = NewCoinBase(1, mnAmt, cbaseScript);
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    cbase.vout[0].nValue /= 2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-
-    // Underpaying with SPORK_8 disabled (good)
-    cbase.vout.clear();
-    cbase.vout.emplace_back(mnAmt - 1, cbaseScript);
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    cbase.vout[0].nValue = mnAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = mnAmt/2 - 1;
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-
-    // Overpaying with SPORK_8 disabled
-    cbase.vout.clear();
-    cbase.vout.emplace_back(mnAmt + 1, cbaseScript);
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt-spork8-disabled");
-    state = CValidationState();
-    cbase.vout[0].nValue = mnAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = mnAmt/2 + 1;
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt-spork8-disabled");
-    state = CValidationState();
-
-    // enable SPORK_8
-    int64_t nTime = GetTime() - 10;
-    const CSporkMessage& spork = CSporkMessage(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT, nTime + 1, nTime);
-    sporkManager.AddOrUpdateSporkMessage(spork);
-    BOOST_CHECK(sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT));
-
-    // Underpaying with SPORK_8 enabled
-    cbase.vout.clear();
-    cbase.vout.emplace_back(mnAmt - 1, cbaseScript);
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt");
-    state = CValidationState();
-    cbase.vout[0].nValue = mnAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = mnAmt/2 - 1;
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt");
-    state = CValidationState();
-
-    // Overpaying with SPORK_8 enabled
-    cbase.vout.clear();
-    cbase.vout.emplace_back(mnAmt + 1, cbaseScript);
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt");
-    state = CValidationState();
-    cbase.vout[0].nValue = mnAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = mnAmt/2 + 1;
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), 0, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-cb-amt");
-    state = CValidationState();
-
-    const CAmount budgAmt = 200 * COIN;
-
-    // -- Superblocks
-
-    // Exact
-    cbase.vout.clear();
-    cbase.vout.emplace_back(budgAmt, cbaseScript);
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-    cbase.vout[0].nValue /= 2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    BOOST_CHECK(IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-
-    // Underpaying
-    cbase.vout.clear();
-    cbase.vout.emplace_back(budgAmt - 1, cbaseScript);
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-superblock-cb-amt");
-    state = CValidationState();
-    cbase.vout[0].nValue = budgAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = budgAmt/2 - 1;
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-superblock-cb-amt");
-    state = CValidationState();
-
-    // Overpaying
-    cbase.vout.clear();
-    cbase.vout.emplace_back(budgAmt + 1, cbaseScript);
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-superblock-cb-amt");
-    state = CValidationState();
-    cbase.vout[0].nValue = budgAmt/2;
-    cbase.vout.emplace_back(cbase.vout[0]);
-    cbase.vout[1].nValue = budgAmt/2 + 1;
-    BOOST_CHECK(!IsCoinbaseValueValid(MakeTransactionRef(cbase), budgAmt, state));
-    BOOST_CHECK_EQUAL(state.GetRejectReason(), "bad-superblock-cb-amt");
 }
 
 BOOST_AUTO_TEST_CASE(fbv_signverify_bls)

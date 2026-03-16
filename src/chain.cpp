@@ -5,8 +5,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chain.h"
-#include "legacy/stakemodifier.h"  // for ComputeNextStakeModifier
-
 
 /**
  * CChain implementation
@@ -201,80 +199,27 @@ int64_t CBlockIndex::GetMedianTimePast() const
     return pbegin[(pend - pbegin) / 2];
 }
 
-unsigned int CBlockIndex::GetStakeEntropyBit() const
+// Generates and sets stake modifier
+void CBlockIndex::SetStakeModifier(const uint256& prevoutId)
 {
-    unsigned int nEntropyBit = ((GetBlockHash().GetCheapHash()) & 1);
-    return nEntropyBit;
-}
-
-bool CBlockIndex::SetStakeEntropyBit(unsigned int nEntropyBit)
-{
-    if (nEntropyBit > 1)
-        return false;
-    nFlags |= (nEntropyBit ? BLOCK_STAKE_ENTROPY : 0);
-    return true;
-}
-
-// Sets V1 stake modifier (uint64_t)
-void CBlockIndex::SetStakeModifier(const uint64_t nStakeModifier, bool fGeneratedStakeModifier)
-{
-    vStakeModifier.clear();
-    const size_t modSize = sizeof(nStakeModifier);
-    vStakeModifier.resize(modSize);
-    std::memcpy(vStakeModifier.data(), &nStakeModifier, modSize);
-    if (fGeneratedStakeModifier)
-        nFlags |= BLOCK_STAKE_MODIFIER;
-
-}
-
-// Generates and sets new V1 stake modifier
-void CBlockIndex::SetNewStakeModifier()
-{
-    // compute stake entropy bit for stake modifier
-    if (!SetStakeEntropyBit(GetStakeEntropyBit()))
-        LogPrintf("%s : SetStakeEntropyBit() failed\n", __func__);
-    uint64_t nStakeModifier = 0;
-    bool fGeneratedStakeModifier = false;
-    if (!ComputeNextStakeModifier(pprev, nStakeModifier, fGeneratedStakeModifier))
-        LogPrintf("%s : ComputeNextStakeModifier() failed \n",  __func__);
-    return SetStakeModifier(nStakeModifier, fGeneratedStakeModifier);
-}
-
-// Sets V2 stake modifiers (uint256)
-void CBlockIndex::SetStakeModifier(const uint256& nStakeModifier)
-{
-    vStakeModifier.clear();
-    vStakeModifier.insert(vStakeModifier.begin(), nStakeModifier.begin(), nStakeModifier.end());
-}
-
-// Generates and sets new V2 stake modifier
-void CBlockIndex::SetNewStakeModifier(const uint256& prevoutId)
-{
-    // Shouldn't be called on V1 modifier's blocks (or before setting pprev)
-    if (!Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V3_4)) return;
+    // Shouldn't be called on PoW blocks (or before setting pprev)
+    if (!Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_POS)) return;
     if (!pprev) throw std::runtime_error(strprintf("%s : ERROR: null pprev", __func__));
 
     // Generate Hash(prevoutId | prevModifier) - switch with genesis modifier (0) on upgrade block
     CHashWriter ss(SER_GETHASH, 0);
     ss << prevoutId;
-    ss << pprev->GetStakeModifierV2();
-    SetStakeModifier(ss.GetHash());
+    ss << pprev->GetStakeModifier();
+
+    const auto& nStakeModifier = ss.GetHash();
+    vStakeModifier.clear();
+    vStakeModifier.insert(vStakeModifier.begin(), nStakeModifier.begin(), nStakeModifier.end());
 }
 
-// Returns V1 stake modifier (uint64_t)
-uint64_t CBlockIndex::GetStakeModifierV1() const
+// Returns stake modifier (uint256)
+uint256 CBlockIndex::GetStakeModifier() const
 {
-    if (vStakeModifier.empty() || Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V3_4))
-        return 0;
-    uint64_t nStakeModifier;
-    std::memcpy(&nStakeModifier, vStakeModifier.data(), vStakeModifier.size());
-    return nStakeModifier;
-}
-
-// Returns V2 stake modifier (uint256)
-uint256 CBlockIndex::GetStakeModifierV2() const
-{
-    if (vStakeModifier.empty() || !Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V3_4))
+    if (vStakeModifier.empty() || !Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_POS))
         return UINT256_ZERO;
     uint256 nStakeModifier;
     std::memcpy(nStakeModifier.begin(), vStakeModifier.data(), vStakeModifier.size());

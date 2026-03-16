@@ -10,7 +10,6 @@ export LC_ALL=C
 
 EXPECTED_CIRCULAR_DEPENDENCIES=(
     "budget/budgetmanager -> validation -> budget/budgetmanager"
-    "chain -> legacy/stakemodifier -> chain"
     "chainparamsbase -> util/system -> chainparamsbase"
     "consensus/params -> consensus/upgrades -> consensus/params"
     "kernel -> validation -> kernel"
@@ -25,13 +24,6 @@ EXPECTED_CIRCULAR_DEPENDENCIES=(
     "wallet/fees -> wallet/wallet -> wallet/fees"
     "wallet/scriptpubkeyman -> wallet/wallet -> wallet/scriptpubkeyman"
     "wallet/wallet -> wallet/walletdb -> wallet/wallet"
-    "chain -> legacy/stakemodifier -> stakeinput -> chain"
-    "chain -> legacy/stakemodifier -> validation -> chain"
-    "chain -> legacy/stakemodifier -> validation -> validationinterface -> chain"
-    "chain -> legacy/stakemodifier -> stakeinput -> txdb -> chain"
-    "chain -> legacy/stakemodifier -> validation -> checkpoints -> chain"
-    "chain -> legacy/stakemodifier -> validation -> undo -> chain"
-    "chain -> legacy/stakemodifier -> validation -> pow -> chain"
 )
 
 EXIT_CODE=0

@@ -182,8 +182,7 @@ enum opcodetype
     OP_NOP10 = 0xb9,
 
     // cold staking
-    OP_CHECKCOLDSTAKEVERIFY_LOF = 0xd1,     // last output free for masternode/budget payments
-    OP_CHECKCOLDSTAKEVERIFY = 0xd2,
+    OP_CHECKCOLDSTAKEVERIFY = 0xd1,
 
     // exchange address, NOP but identifies as an address not allowing private outputs
     OP_EXCHANGEADDR = 0xe0,
@@ -630,7 +629,6 @@ public:
     bool IsPayToPublicKeyHash() const;
     bool IsPayToScriptHash() const;
     bool IsPayToColdStaking() const;
-    bool IsPayToColdStakingLOF() const;
     bool IsPayToExchangeAddress() const;
     bool StartsWithOpcode(const opcodetype opcode) const;
     bool IsZerocoinMint() const;

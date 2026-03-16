@@ -9,13 +9,12 @@
 #include "qt/settings/faqwidget.h"
 #include "qt/settings/forms/ui_faqwidget.h"
 
-#include "mnmodel.h"
 #include "qtutils.h"
 
 #include <QScrollBar>
 #include <QMetaObject>
 
-SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent, MNModel* mnModel) :
+SettingsFaqWidget::SettingsFaqWidget(PIVXGUI* parent) :
     QDialog(parent),
     ui(new Ui::SettingsFaqWidget)
 {

@@ -23,14 +23,14 @@ class CBlockHeader
 {
 public:
     // header
-    static const int32_t CURRENT_VERSION=11;    // since v5.2.99
+    static const int32_t CURRENT_VERSION=4;
     int32_t nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
     uint32_t nTime;
     uint32_t nBits;
     uint32_t nNonce;
-    uint256 hashFinalSaplingRoot;               // only for version 8+
+    uint256 hashFinalSaplingRoot;
 
     CBlockHeader()
     {
@@ -40,9 +40,9 @@ public:
     SERIALIZE_METHODS(CBlockHeader, obj) {
         READWRITE(obj.nVersion, obj.hashPrevBlock, obj.hashMerkleRoot, obj.nTime, obj.nBits, obj.nNonce);
 
-        // Sapling active
+        // Sapling
         if (obj.nVersion >= 8)
-            READWRITE(obj.hashFinalSaplingRoot);
+            READWRITE(obj.hashFinalSaplingRoot);    
     }
 
     void SetNull()

@@ -79,7 +79,6 @@ struct VoteInfo {
 
 class CBudgetProposal;
 class TransactionRecord;
-class MNModel;
 class WalletModel;
 
 QT_BEGIN_NAMESPACE
@@ -90,7 +89,7 @@ class GovernanceModel : public QObject
 {
 
 public:
-    explicit GovernanceModel(ClientModel* _clientModel, MNModel* _mnModel);
+    explicit GovernanceModel(ClientModel* _clientModel);
     ~GovernanceModel() override;
     void setWalletModel(WalletModel* _walletModel);
 
@@ -116,7 +115,6 @@ public:
     CAmount getBudgetAllocatedAmount() const { return allocatedAmount; };
     CAmount getBudgetAvailableAmount() const { return getMaxAvailableBudgetAmount() - allocatedAmount; };
     // Return the votes that the local masternodes did for the inputted proposal
-    std::vector<VoteInfo> getLocalMNsVotesForProposal(const ProposalInfo& propInfo);
     // Check if the URL is valid.
     OperationResult validatePropURL(const QString& url) const;
     OperationResult validatePropName(const QString& name) const;
@@ -148,7 +146,6 @@ public Q_SLOTS:
 private:
     ClientModel* clientModel{nullptr};
     WalletModel* walletModel{nullptr};
-    MNModel* mnModel{nullptr};
     std::atomic<bool> refreshNeeded{false};
 
     // Cached amount

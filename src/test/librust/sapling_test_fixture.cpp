@@ -16,5 +16,6 @@ SaplingTestingSetup::~SaplingTestingSetup()
 
 SaplingRegTestingSetup::SaplingRegTestingSetup() : SaplingTestingSetup(CBaseChainParams::REGTEST)
 {
-    UpdateNetworkUpgradeParameters(Consensus::UPGRADE_V5_0, Consensus::NetworkUpgrade::ALWAYS_ACTIVE);
+    UpdateNetworkUpgradeParameters(Consensus::UPGRADE_POS, Consensus::NetworkUpgrade::ALWAYS_ACTIVE);
 }
+

@@ -33,8 +33,8 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, CAmount& 
 
     // From here, all of the checks are done in v3+ transactions.
 
-    // if the tx has shielded data, cannot be a coinstake, coinbase, zcspend and zcmint
-    if (tx.IsCoinStake() || tx.IsCoinBase() || tx.HasZerocoinSpendInputs() || tx.HasZerocoinMintOutputs())
+    // if the tx has shielded data, cannot be a coinstake, or a coinbase
+    if (tx.IsCoinStake() || tx.IsCoinBase())
         return state.DoS(100, error("%s: Sapling version with invalid data", __func__),
                          REJECT_INVALID, "bad-txns-invalid-sapling");
 
@@ -129,17 +129,6 @@ bool ContextualCheckTransaction(
     auto dosLevelPotentiallyRelaxing = isMined ? DOS_LEVEL_BLOCK : (
             isInitBlockDownload ? 0 : DOS_LEVEL_MEMPOOL);
 
-    // If Sapling is not active return quickly and don't perform any check here.
-    // basic data checks are performed in CheckTransaction which is ALWAYS called before ContextualCheckTransaction.
-    if (!chainparams.GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V5_0)) {
-        // If the v5 upgrade was not enforced, then let's not perform any check
-        if (tx.IsShieldedTx()) {
-            return state.DoS(dosLevelConstricting, error("%s: Sapling not activated", __func__),
-                             REJECT_INVALID, "bad-txns-invalid-sapling-act");
-        }
-        return true;
-    }
-
     // Reject transactions with invalid version
     if (!tx.isSaplingVersion() && tx.hasSaplingData()) {
         return state.DoS(
@@ -161,7 +150,7 @@ bool ContextualCheckTransaction(
     if (hasShieldedData) {
         uint256 dataToBeSigned;
 
-        if (tx.HasExchangeAddr() && Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V5_6)) {
+        if (tx.HasExchangeAddr() && Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_POS)) {
             return state.DoS(100, error("%s: Sapling version with invalid data", __func__),
                 REJECT_INVALID, "bad-txns-exchange-addr-has-sapling");
         }

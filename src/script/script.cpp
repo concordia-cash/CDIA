@@ -142,13 +142,7 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP9                   : return "OP_NOP9";                  // OP_NOP9
     case OP_NOP10                  : return "OP_NOP10";                 // OP_NOP10
 
-    // zerocoin
-    case OP_ZEROCOINMINT           : return "OP_ZEROCOINMINT";
-    case OP_ZEROCOINSPEND          : return "OP_ZEROCOINSPEND";
-    case OP_ZEROCOINPUBLICSPEND    : return "OP_ZEROCOINPUBLICSPEND";
-
     // cold staking
-    case OP_CHECKCOLDSTAKEVERIFY_LOF   : return "OP_CHECKCOLDSTAKEVERIFY_LOF";
     case OP_CHECKCOLDSTAKEVERIFY       : return "OP_CHECKCOLDSTAKEVERIFY";
 
     // exchange address
@@ -237,18 +231,13 @@ bool CScript::IsPayToColdStaking() const
             (*this)[1] == OP_HASH160 &&
             (*this)[2] == OP_ROT &&
             (*this)[3] == OP_IF &&
-            ((*this)[4] == OP_CHECKCOLDSTAKEVERIFY || (*this)[4] == OP_CHECKCOLDSTAKEVERIFY_LOF) &&
+            (*this)[4] == OP_CHECKCOLDSTAKEVERIFY &&
             (*this)[5] == 0x14 &&
             (*this)[26] == OP_ELSE &&
             (*this)[27] == 0x14 &&
             (*this)[48] == OP_ENDIF &&
             (*this)[49] == OP_EQUALVERIFY &&
             (*this)[50] == OP_CHECKSIG);
-}
-
-bool CScript::IsPayToColdStakingLOF() const
-{
-    return IsPayToColdStaking() && (*this)[4] == OP_CHECKCOLDSTAKEVERIFY_LOF;
 }
 
 bool CScript::IsPayToExchangeAddress() const

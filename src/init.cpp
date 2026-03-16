@@ -1256,10 +1256,9 @@ bool AppInitMain()
         fs::path chainstateDir = GetDataDir() / "chainstate";
         fs::path sporksDir = GetDataDir() / "sporks";
         fs::path zerocoinDir = GetDataDir() / "zerocoin";
-        fs::path evoDir = GetDataDir() / "evodb";
 
-        LogPrintf("Deleting blockchain folders blocks, chainstate, sporks, zerocoin and evodb\n");
-        std::vector<fs::path> removeDirs{blocksDir, chainstateDir, sporksDir, zerocoinDir, evoDir};
+        LogPrintf("Deleting blockchain folders blocks, chainstate, sporks, zerocoin\n");
+        std::vector<fs::path> removeDirs{blocksDir, chainstateDir, sporksDir, zerocoinDir};
         // We delete in 5 individual steps in case one of the folder is missing already
         try {
             for (const auto& dir : removeDirs) {

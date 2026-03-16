@@ -182,9 +182,7 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* tip, const CBlockIn
         if (blockindex->pprev && !GetStakeKernelHash(hashProofOfStakeRet, block, blockindex->pprev))
             throw JSONRPCError(RPC_INTERNAL_ERROR, "Cannot get proof of stake hash");
 
-        std::string stakeModifier = (Params().GetConsensus().NetworkUpgradeActive(blockindex->nHeight, Consensus::UPGRADE_V3_4) ?
-                                     blockindex->GetStakeModifierV2().GetHex() :
-                                     strprintf("%016x", blockindex->GetStakeModifierV1()));
+        std::string stakeModifier = blockindex->GetStakeModifier().GetHex();
         result.pushKV("stakeModifier", stakeModifier);
         result.pushKV("hashProofOfStake", hashProofOfStakeRet.GetHex());
     }
@@ -962,17 +960,11 @@ static UniValue SoftForkMajorityDesc(int version, const CBlockIndex* pindex, con
     case 3:
         idx = Consensus::BASE_NETWORK;
         break;
-    case 4:
-        idx = Consensus::UPGRADE_ZC;
+    case 5:
+        idx = Consensus::UPGRADE_POS;
         break;
     case 5:
-        idx = Consensus::UPGRADE_BIP65;
-        break;
-    case 6:
-        idx = Consensus::UPGRADE_V3_4;
-        break;
-    case 7:
-        idx = Consensus::UPGRADE_V4_0;
+        idx = Consensus::UPGRADE_POS;
         break;
     default:
         rv.pushKV("status", false);
@@ -1415,10 +1407,6 @@ UniValue getblockindexstats(const JSONRPCRequest& request) {
         // loop through each tx in block and save size and fee (except for coinbase/coinstake)
         for (int idx = firstTxIndex; idx < ntx; idx++) {
             const CTransaction& tx = *(block.vtx[idx]);
-
-            // zerocoin txes have fixed fee, don't count them here.
-            if (tx.ContainsZerocoins())
-                continue;
 
             // Transaction size
             nBytes += GetSerializeSize(tx, CLIENT_VERSION);

@@ -7,11 +7,10 @@
 
 #include "qtutils.h"
 
-VoteDialog::VoteDialog(QWidget *parent, GovernanceModel* _govModel, MNModel* _mnModel) :
+VoteDialog::VoteDialog(QWidget *parent, GovernanceModel* _govModel) :
     QDialog(parent),
     ui(new Ui::VoteDialog),
-    govModel(_govModel),
-    mnModel(_mnModel)
+    govModel(_govModel)
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
@@ -63,7 +62,6 @@ void VoteDialog::setProposal(const ProposalInfo& prop)
     progressBarYes->setValue((int)percentageYes);
     checkBoxNo->setText(QString::number(prop.votesNo) + " /  " + QString::number(percentageNo) + "% " + tr("No"));
     checkBoxYes->setText(tr("Yes") + " " + QString::number(prop.votesYes) + " / " + QString::number(percentageYes) + "%");
-    votes = govModel->getLocalMNsVotesForProposal(prop);
     updateMnSelectionNum();
 }
 

@@ -26,7 +26,7 @@ class VoteDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit VoteDialog(QWidget *parent, GovernanceModel* _govModel, MNModel* _mnModel);
+    explicit VoteDialog(QWidget *parent, GovernanceModel* _govModel);
     ~VoteDialog();
 
     void showEvent(QShowEvent *event) override;
@@ -40,7 +40,6 @@ public Q_SLOTS:
 private:
     Ui::VoteDialog *ui;
     GovernanceModel* govModel{nullptr};
-    MNModel* mnModel{nullptr};
     SnackBar* snackBar{nullptr};
 
     QCheckBox* checkBoxNo{nullptr};

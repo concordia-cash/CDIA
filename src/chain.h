@@ -125,8 +125,6 @@ enum BlockStatus {
 // BlockIndex flags
 enum {
     BLOCK_PROOF_OF_STAKE = (1 << 0), // is proof-of-stake block
-    BLOCK_STAKE_ENTROPY = (1 << 1),  // entropy bit for stake modifier
-    BLOCK_STAKE_MODIFIER = (1 << 2), // regenerated stake modifier
 };
 
 /** The block chain is a tree shaped structure starting with the
@@ -224,15 +222,8 @@ public:
     void SetProofOfStake() { nFlags |= BLOCK_PROOF_OF_STAKE; }
 
     // Stake Modifier
-    unsigned int GetStakeEntropyBit() const;
-    bool SetStakeEntropyBit(unsigned int nEntropyBit);
-    bool GeneratedStakeModifier() const { return (nFlags & BLOCK_STAKE_MODIFIER); }
-    void SetStakeModifier(const uint64_t nStakeModifier, bool fGeneratedStakeModifier);
-    void SetNewStakeModifier();                             // generates and sets new v1 modifier
-    void SetStakeModifier(const uint256& nStakeModifier);
-    void SetNewStakeModifier(const uint256& prevoutId);     // generates and sets new v2 modifier
-    uint64_t GetStakeModifierV1() const;
-    uint256 GetStakeModifierV2() const;
+    void SetStakeModifier(const uint256& prevoutId);     // generates and sets new v2 modifier
+    uint256 GetStakeModifier() const;
 
     // Update Sapling chain value
     void SetChainSaplingValue();
@@ -295,7 +286,7 @@ public:
         READWRITE(obj.nNonce);
 
         // Sapling blocks
-        if (obj.nVersion >= 8) {
+        if (obj.nVersion >= 4) {
             READWRITE(obj.hashFinalSaplingRoot);
             READWRITE(obj.nSaplingValue);
         }

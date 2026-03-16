@@ -84,12 +84,10 @@ void test_one_input(std::vector<uint8_t> buffer)
     (void)tx.IsCoinBase();
     (void)tx.IsCoinStake();
     (void)tx.IsShieldedTx();
-    (void)tx.IsSpecialTx();
     (void)tx.IsNormalType();
     (void)tx.isSaplingVersion();
     (void)tx.hasSaplingData();
     (void)tx.HasP2CSOutputs();
-    (void)tx.ContainsZerocoins();
     (void)tx.IsNull();
     (void)tx.ToString();
 

@@ -524,21 +524,11 @@ bool CBudgetManager::FillBlockPayee(CMutableTransaction& txCoinbase, CMutableTra
 
     CAmount blockValue = GetBlockValue(nHeight);
 
-    // Starting from CDIA v6.0 masternode and budgets are paid in the coinbase tx of PoS blocks
-    const bool fPayCoinstake = fProofOfStake &&
-                               !Params().GetConsensus().NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V6_0);
-
     if (fProofOfStake) {
-        if (fPayCoinstake) {
-            unsigned int i = txCoinstake.vout.size();
-            txCoinstake.vout.resize(i + 1);
-            txCoinstake.vout[i].scriptPubKey = payee;
-            txCoinstake.vout[i].nValue = nAmount;
-        } else {
-            txCoinbase.vout.resize(1);
-            txCoinbase.vout[0].scriptPubKey = payee;
-            txCoinbase.vout[0].nValue = nAmount;
-        }
+        unsigned int i = txCoinbase.vout.size();
+        txCoinbase.vout.resize(i + 1);
+        txCoinbase.vout[i].scriptPubKey = payee;
+        txCoinbase.vout[i].nValue = nAmount;
     } else {
         //miners get the full amount on these blocks
         txCoinbase.vout[0].nValue = blockValue;

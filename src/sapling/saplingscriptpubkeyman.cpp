@@ -221,11 +221,6 @@ void UpdateWitnessHeights(NoteDataMap& noteDataMap, int indexHeight, int64_t nWi
 
 bool SaplingScriptPubKeyMan::BuildWitnessChain(const CBlockIndex* pTargetBlock, const Consensus::Params& params, std::string& errorStr)
 {
-    // If V5 is not enforced building the witness cache is useless
-    if (!params.NetworkUpgradeActive(chainActive.Height(), Consensus::UPGRADE_V5_0)) {
-        return true;
-    }
-
     LOCK2(cs_main, wallet->cs_wallet);
     // Target is the last block we want to invalidate
     rollbackTargetHeight = pTargetBlock->nHeight;
@@ -1178,19 +1173,13 @@ KeyAddResult SaplingScriptPubKeyMan::AddSpendingKeyToWallet(
         if (wallet->HaveSaplingSpendingKey(extfvk)) {
             return KeyAlreadyExists;
         } else {
-            if (!wallet-> AddSaplingZKey(sk)) {
+            if (!wallet->AddSaplingZKey(sk)) {
                 return KeyNotAdded;
             }
 
             int64_t nTimeToSet;
-            // Sapling addresses can't have been used in transactions prior to activation.
-            if (params.vUpgrades[Consensus::UPGRADE_V5_0].nActivationHeight == Consensus::NetworkUpgrade::ALWAYS_ACTIVE) {
-                nTimeToSet = nTime;
-            } else {
-                // TODO: Update epoch before release v5.
-                // 154051200 seconds from epoch is Friday, 26 October 2018 00:00:00 GMT - definitely before Sapling activates
-                nTimeToSet = std::max((int64_t) 154051200, nTime);
-            }
+            // 154051200 seconds from epoch is Friday, 26 October 2018 00:00:00 GMT - definitely before Sapling activates
+            nTimeToSet = std::max((int64_t) 154051200, nTime);
 
             mapSaplingZKeyMetadata[ivk] = CKeyMetadata(nTimeToSet);
             return KeyAdded;

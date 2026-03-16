@@ -199,7 +199,6 @@ struct CMutableTransaction;
  * - std::vector<CTxOut> vout
  * - uint32_t nLockTime
  * - Optional<SaplingTxData> sapData
- * - Optional<std::vector<uint8_t>> extraPayload
  */
 template<typename Stream, typename TxType>
 inline void UnserializeTransaction(TxType& tx, Stream& s) {
@@ -213,9 +212,6 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
     s >> tx.nLockTime;
     if (tx.isSaplingVersion()) {
         s >> tx.sapData;
-        if (!tx.IsNormalType()) {
-            s >> tx.extraPayload;
-        }
     }
 }
 
@@ -228,9 +224,6 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
     s << tx.nLockTime;
     if (tx.isSaplingVersion()) {
         s << tx.sapData;
-        if (!tx.IsNormalType()) {
-            s << tx.extraPayload;
-        }
     }
 }
 
@@ -250,11 +243,6 @@ public:
     /** Transaction types */
     enum TxType: int16_t {
         NORMAL = 0,
-        PROREG = 1,
-        PROUPSERV = 2,
-        PROUPREG = 3,
-        PROUPREV = 4,
-        LLMQCOMM = 5,
     };
 
     static const int16_t CURRENT_VERSION = TxVersion::LEGACY;
@@ -270,7 +258,6 @@ public:
     const int16_t nType;
     const uint32_t nLockTime;
     Optional<SaplingTxData> sapData{SaplingTxData()}; // Future: Don't initialize it by default
-    Optional<std::vector<uint8_t>> extraPayload{nullopt};     // only available for special transaction types
 
     /** Construct a CTransaction that qualifies as IsNull() */
     CTransaction();
@@ -318,27 +305,7 @@ public:
         return isSaplingVersion() && hasSaplingData();
     }
 
-    bool hasExtraPayload() const
-    {
-        return extraPayload != nullopt && !extraPayload->empty();
-    }
-
-    bool IsSpecialTx() const
-    {
-        return isSaplingVersion() && nType != TxType::NORMAL && hasExtraPayload();
-    }
-
     bool IsNormalType() const { return nType == TxType::NORMAL; }
-
-    bool IsProRegTx() const
-    {
-        return IsSpecialTx() && nType == TxType::PROREG;
-    }
-
-    bool IsQuorumCommitmentTx() const
-    {
-        return IsSpecialTx() && nType == TxType::LLMQCOMM;
-    }
 
     // Ensure that special and sapling fields are signed
     SigVersion GetRequiredSigVersion() const
@@ -360,15 +327,6 @@ public:
 
     // Return sum of (positive valueBalance or zero) and JoinSplit vpub_new
     CAmount GetShieldedValueIn() const;
-
-    bool HasZerocoinSpendInputs() const;
-
-    bool HasZerocoinMintOutputs() const;
-
-    bool ContainsZerocoins() const
-    {
-        return HasZerocoinSpendInputs() || HasZerocoinMintOutputs();
-    }
 
     bool IsCoinBase() const
     {
@@ -410,7 +368,6 @@ struct CMutableTransaction
     int16_t nType;
     uint32_t nLockTime;
     Optional<SaplingTxData> sapData{SaplingTxData()}; // Future: Don't initialize it by default
-    Optional<std::vector<uint8_t>> extraPayload{nullopt};
 
     CMutableTransaction();
     CMutableTransaction(const CTransaction& tx);
@@ -438,11 +395,6 @@ struct CMutableTransaction
      */
     uint256 GetHash() const;
 
-    bool hasExtraPayload() const
-    {
-        return extraPayload != nullopt && !extraPayload->empty();
-    }
-
     // Ensure that special and sapling fields are signed
     SigVersion GetRequiredSigVersion() const
     {
@@ -455,36 +407,5 @@ static inline CTransactionRef MakeTransactionRef() { return std::make_shared<con
 template <typename Tx> static inline CTransactionRef MakeTransactionRef(Tx&& txIn) { return std::make_shared<const CTransaction>(std::forward<Tx>(txIn)); }
 static inline CTransactionRef MakeTransactionRef(const CTransactionRef& txIn) { return txIn; }
 static inline CTransactionRef MakeTransactionRef(CTransactionRef&& txIn) { return std::move(txIn); }
-
-/* Special tx payload handling */
-template <typename T>
-inline bool GetTxPayload(const std::vector<unsigned char>& payload, T& obj)
-{
-    CDataStream ds(payload, SER_NETWORK, PROTOCOL_VERSION | ADDRV2_FORMAT);
-    try {
-        ds >> obj;
-    } catch (std::exception& e) {
-        return false;
-    }
-    return ds.empty();
-}
-template <typename T>
-inline bool GetTxPayload(const CMutableTransaction& tx, T& obj)
-{
-    return tx.hasExtraPayload() && GetTxPayload(*tx.extraPayload, obj);
-}
-template <typename T>
-inline bool GetTxPayload(const CTransaction& tx, T& obj)
-{
-    return tx.hasExtraPayload() && GetTxPayload(*tx.extraPayload, obj);
-}
-
-template <typename T>
-void SetTxPayload(CMutableTransaction& tx, const T& payload)
-{
-    CDataStream ds(SER_NETWORK, PROTOCOL_VERSION | ADDRV2_FORMAT);
-    ds << payload;
-    tx.extraPayload.emplace(ds.begin(), ds.end());
-}
 
 #endif // PIVX_PRIMITIVES_TRANSACTION_H

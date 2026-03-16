@@ -26,7 +26,9 @@ namespace Consensus
 enum UpgradeIndex : uint32_t {
     BASE_NETWORK,
     UPGRADE_POS,
-    UPGRADE_BIP65,
+    UPGRADE_POS,
+    UPGRADE_V5_0,
+    UPGRADE_POS,
     UPGRADE_TESTDUMMY,
     // NOTE: Also add new upgrades to NetworkUpgradeInfo in upgrades.cpp
     MAX_NETWORK_UPGRADES
@@ -97,14 +99,6 @@ struct Params {
 
     // spork keys
     std::string strSporkPubKey;
-
-    // height-based activations
-    int height_last_ZC_AccumCheckpoint;
-    int height_last_ZC_WrappedSerials;
-
-    // validation by-pass
-    int64_t nConcordiaBadBlockTime;
-    unsigned int nConcordiaBadBlockBits;
 
     // Map with network updates
     NetworkUpgrade vUpgrades[MAX_NETWORK_UPGRADES];

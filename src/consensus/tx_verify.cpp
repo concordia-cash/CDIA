@@ -37,8 +37,7 @@ unsigned int GetLegacySigOpCount(const CTransaction& tx)
 
 unsigned int GetP2SHSigOpCount(const CTransaction& tx, const CCoinsViewCache& inputs)
 {
-    if (tx.IsCoinBase() || tx.HasZerocoinSpendInputs())
-        // a tx containing a zc spend can have only zc inputs
+    if (tx.IsCoinBase())
         return 0;
 
     unsigned int nSigOps = 0;
@@ -55,11 +54,11 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fCol
     // Basic checks that don't depend on any context
     // Transactions containing empty `vin` must have non-empty `vShieldedSpend`,
     // or they must be quorum commitments (only one per-type allowed in a block)
-    if (tx.vin.empty() && (tx.sapData && tx.sapData->vShieldedSpend.empty()) && !tx.IsQuorumCommitmentTx())
+    if (tx.vin.empty() && (tx.sapData && tx.sapData->vShieldedSpend.empty()))
         return state.DoS(10, false, REJECT_INVALID, "bad-txns-vin-empty");
     // Transactions containing empty `vout` must have non-empty `vShieldedOutput`,
     // or they must be quorum commitments (only one per-type allowed in a block)
-    if (tx.vout.empty() && (tx.sapData && tx.sapData->vShieldedOutput.empty()) && !tx.IsQuorumCommitmentTx())
+    if (tx.vout.empty() && (tx.sapData && tx.sapData->vShieldedOutput.empty()))
         return state.DoS(10, false, REJECT_INVALID, "bad-txns-vout-empty");
 
     // Version check
@@ -109,9 +108,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fCol
         // Check for duplicate inputs
         if (vInOutPoints.count(txin.prevout))
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-duplicate");
-        if (!txin.IsZerocoinSpend()) {
-            vInOutPoints.insert(txin.prevout);
-        }
+        vInOutPoints.insert(txin.prevout);
     }
 
     bool hasExchangeUTXOs = tx.HasExchangeAddr();
@@ -123,7 +120,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fCol
             return state.DoS(100, false, REJECT_INVALID, "bad-exchange-address-in-cb");
     } else {
         for (const CTxIn& txin : tx.vin)
-            if (txin.prevout.IsNull() && !txin.IsZerocoinSpend())
+            if (txin.prevout.IsNull())
                 return state.DoS(10, false, REJECT_INVALID, "bad-txns-prevout-null");
     }
 
@@ -134,11 +131,6 @@ bool ContextualCheckTransaction(const CTransactionRef& tx, CValidationState& sta
 {
     // Dispatch to Sapling validator
     if (!SaplingValidation::ContextualCheckTransaction(*tx, state, chainparams, nHeight, isMined, fIBD)) {
-        return false; // Failure reason has been set in validation state object
-    }
-
-    // Dispatch to ZerocoinTx validator
-    if (!ContextualCheckZerocoinTx(tx, state, chainparams.GetConsensus(), nHeight, isMined)) {
         return false; // Failure reason has been set in validation state object
     }
 

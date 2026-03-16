@@ -100,15 +100,6 @@ bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType)
 bool IsStandardTx(const CTransactionRef& tx, int nBlockHeight, std::string& reason)
 {
     AssertLockHeld(cs_main);
-    if (!Params().GetConsensus().NetworkUpgradeActive(nBlockHeight, Consensus::UPGRADE_V5_0)) {
-        // Before v5, all txes with version other than STANDARD_VERSION (1) are considered non-standard
-        if (tx->nVersion != CTransaction::TxVersion::LEGACY) {
-            reason = "version";
-            return false;
-        }
-    }
-    // After v5, all txes with a version number accepted by consensus are considered standard.
-
     // Treat non-final transactions as non-standard to prevent a specific type
     // of double-spend attack, as well as DoS attacks. (if the transaction
     // can't be mined, the attacker isn't expending resources broadcasting it)

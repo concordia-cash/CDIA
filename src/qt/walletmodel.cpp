@@ -98,11 +98,6 @@ bool WalletModel::isSaplingInMaintenance() const
     return sporkManager.IsSporkActive(SPORK_20_SAPLING_MAINTENANCE);
 }
 
-bool WalletModel::isV6Enforced() const
-{
-    return Params().GetConsensus().NetworkUpgradeActive(cachedNumBlocks, Consensus::UPGRADE_V6_0);
-}
-
 bool WalletModel::isStakingStatusActive() const
 {
     return wallet && wallet->pStakerStatus && wallet->pStakerStatus->IsActive();
@@ -501,8 +496,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
                     return InvalidAddress;
                 }
 
-                scriptPubKey = isV6Enforced() ? GetScriptForStakeDelegation(*stakerId, *ownerId)
-                                              : GetScriptForStakeDelegationLOF(*stakerId, *ownerId);
+                scriptPubKey = GetScriptForStakeDelegation(*stakerId, *ownerId);
             } else {
                 // Regular P2PK or P2PKH
                 scriptPubKey = GetScriptForDestination(out);

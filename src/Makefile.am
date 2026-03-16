@@ -209,7 +209,6 @@ BITCOIN_CORE_H = \
   tiertwo/init.h \
   interfaces/handler.h \
   interfaces/wallet.h \
-  legacy/stakemodifier.h \
   kernel.h \
   key.h \
   key_io.h \
@@ -217,7 +216,6 @@ BITCOIN_CORE_H = \
   dbwrapper.h \
   limitedmap.h \
   logging.h \
-  legacy/validation_zerocoin_legacy.h \
   sapling/sapling_validation.h \
   budget/budgetdb.h \
   budget/budgetmanager.h \
@@ -374,7 +372,6 @@ libbitcoin_server_a_SOURCES = \
   init.cpp \
   tiertwo/init.cpp \
   dbwrapper.cpp \
-  legacy/validation_zerocoin_legacy.cpp \
   sapling/sapling_validation.cpp \
   merkleblock.cpp \
   blockassembler.cpp \
@@ -429,7 +426,6 @@ libbitcoin_wallet_a_SOURCES = \
   interfaces/wallet.cpp \
   addressbook.cpp \
   crypter.cpp \
-  legacy/stakemodifier.cpp \
   kernel.cpp \
   wallet/db.cpp \
   wallet/fees.cpp \
@@ -735,7 +731,6 @@ CLEANFILES += consensus/*.gcda consensus/*.gcno
 CLEANFILES += crc32c/src/*.gcda crc32c/src/*.gcno
 CLEANFILES += crypto/*.gcda crypto/*.gcno
 CLEANFILES += interfaces/*.gcda interfaces/*.gcno
-CLEANFILES += legacy/*.gcda legacy/*.gcno
 CLEANFILES += policy/*.gcda policy/*.gcno
 CLEANFILES += primitives/*.gcda primitives/*.gcno
 CLEANFILES += rpc/*.gcda rpc/*.gcno

@@ -22,7 +22,6 @@ QT_BEGIN_NAMESPACE
 class QTimer;
 QT_END_NAMESPACE
 
-class MNModel;
 class PIVXGUI;
 class GovernanceModel;
 class TooltipMenu;
@@ -67,7 +66,6 @@ public:
     void loadClientModel() override;
     void loadWalletModel() override;
     void setGovModel(GovernanceModel* _model);
-    void setMNModel(MNModel* _mnModel);
 
 public Q_SLOTS:
     void tierTwoSynced(bool IsSync);
@@ -84,7 +82,6 @@ public Q_SLOTS:
 private:
     Ui::governancewidget *ui;
     GovernanceModel* governanceModel{nullptr};
-    MNModel* mnModel{nullptr};
     bool isSync{false};
     QGridLayout* gridLayout{nullptr}; // cards
     std::vector<ProposalCard*> cards;

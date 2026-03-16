@@ -131,10 +131,6 @@ public:
                                    const CAmount& nCredit, const CAmount& nDebit,
                                    QList<TransactionRecord>& parts);
 
-    static bool decomposeZcSpendTx(const CWallet* wallet, const CWalletTx& wtx,
-                                   const CAmount& nCredit, const CAmount& nDebit,
-                                   QList<TransactionRecord>& parts);
-
     static bool decomposeP2CS(const CWallet* wallet, const CWalletTx& wtx,
                                     const CAmount& nCredit, const CAmount& nDebit,
                                     QList<TransactionRecord>& parts);

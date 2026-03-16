@@ -7,7 +7,6 @@
 
 #include "createproposaldialog.h"
 #include "governancemodel.h"
-#include "mnmodel.h"
 #include "proposalinfodialog.h"
 #include "qtutils.h"
 #include "votedialog.h"
@@ -135,7 +134,7 @@ void GovernanceWidget::onVoteForPropClicked(const ProposalInfo& proposalInfo)
         return;
     }
     window->showHide(true);
-    VoteDialog* dialog = new VoteDialog(window, governanceModel, mnModel);
+    VoteDialog* dialog = new VoteDialog(window, governanceModel);
     dialog->setProposal(proposalInfo);
     if (openDialogWithOpaqueBackgroundY(dialog, window, 4.5, 5)) {
         // future: make this refresh atomic, no need to refresh the entire grid.
@@ -260,11 +259,6 @@ void GovernanceWidget::chainHeightChanged(int height)
 void GovernanceWidget::setGovModel(GovernanceModel* _model)
 {
     governanceModel = _model;
-}
-
-void GovernanceWidget::setMNModel(MNModel* _mnModel)
-{
-    mnModel = _mnModel;
 }
 
 void GovernanceWidget::loadWalletModel()

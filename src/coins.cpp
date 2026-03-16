@@ -93,7 +93,6 @@ bool CCoinsViewCache::GetCoin(const COutPoint& outpoint, Coin& coin) const
 void CCoinsViewCache::AddCoin(const COutPoint& outpoint, Coin&& coin, bool possible_overwrite) {
     assert(!coin.IsSpent());
     if (coin.out.scriptPubKey.IsUnspendable()) return;
-    if (coin.out.IsZerocoinMint()) return;
     CCoinsMap::iterator it;
     bool inserted;
     std::tie(it, inserted) = cacheCoins.emplace(std::piecewise_construct, std::forward_as_tuple(outpoint), std::tuple<>());
@@ -380,7 +379,7 @@ CAmount CCoinsViewCache::GetTotalAmount() const
     return nTotal;
 }
 
-static const size_t MAX_OUTPUTS_PER_BLOCK = MAX_BLOCK_SIZE_CURRENT /  ::GetSerializeSize(CTxOut(), PROTOCOL_VERSION); // TODO: merge with similar definition in undo.h.
+static const size_t MAX_OUTPUTS_PER_BLOCK = MAX_BLOCK_SIZE /  ::GetSerializeSize(CTxOut(), PROTOCOL_VERSION); // TODO: merge with similar definition in undo.h.
 
 const Coin& AccessByTxid(const CCoinsViewCache& view, const uint256& txid)
 {

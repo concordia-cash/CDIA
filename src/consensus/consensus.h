@@ -11,8 +11,7 @@
 #include <stdint.h>
 
 /** The maximum allowed size for a block, in bytes (only for buffer size limits) */
-static const unsigned int MAX_BLOCK_SIZE_CURRENT = 2000000;
-static const unsigned int MAX_BLOCK_SIZE_LEGACY = 1000000;
+static const unsigned int MAX_BLOCK_SIZE = 2000000;
 
 /** The maximum size of a transaction after Sapling activation (network rule) */
 static const unsigned int MAX_TX_SIZE_AFTER_SAPLING = 400000;
@@ -21,12 +20,10 @@ static const unsigned int MAX_TX_SIZE_AFTER_SAPLING = 400000;
 static const unsigned int MAX_BLOCK_SHIELDED_TXES_SIZE = 750000;
 
 /** The maximum allowed number of signature check operations in a block (network rule) */
-static const unsigned int MAX_BLOCK_SIGOPS_CURRENT = MAX_BLOCK_SIZE_CURRENT / 50;
-static const unsigned int MAX_BLOCK_SIGOPS_LEGACY = MAX_BLOCK_SIZE_LEGACY / 50;
+static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE / 50;
 
 /** The maximum number of sigops we're willing to relay/mine in a single tx */
-static const unsigned int MAX_TX_SIGOPS_CURRENT = MAX_BLOCK_SIGOPS_CURRENT / 5;
-static const unsigned int MAX_TX_SIGOPS_LEGACY = MAX_BLOCK_SIGOPS_LEGACY / 5;
+static const unsigned int MAX_TX_SIGOPS = MAX_BLOCK_SIGOPS / 5;
 
 /** The minimum amount for the value of a P2CS output */
 static const CAmount MIN_COLDSTAKING_AMOUNT = 1 * COIN;

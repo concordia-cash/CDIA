@@ -269,10 +269,6 @@ bool TransactionRecord::decomposeDebitTransaction(const CWallet* wallet, const C
             // Sent to Concordia Cash Address
             sub.type = TransactionRecord::SendToAddress;
             sub.address = EncodeDestination(address);
-        } else if (txout.IsZerocoinMint()){
-            sub.type = TransactionRecord::ZerocoinMint;
-            sub.address = getValueOrReturnEmpty(wtx.mapValue, "zerocoinmint");
-            sub.credit += txout.nValue;
         } else {
             // Sent to IP, or other non-address transaction like OP_EVAL
             sub.type = TransactionRecord::SendToOther;

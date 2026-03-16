@@ -488,7 +488,7 @@ static bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState &state, 
         // MAX_BLOCK_SIGOPS; we still consider this an invalid rather than
         // merely non-standard transaction.
         unsigned int nSigOps = GetLegacySigOpCount(tx);
-        unsigned int nMaxSigOps = MAX_TX_SIGOPS_CURRENT;
+        unsigned int nMaxSigOps = MAX_TX_SIGOPS;
         nSigOps += GetP2SHSigOpCount(tx, view);
         if(nSigOps > nMaxSigOps)
             return state.DoS(0, false, REJECT_NONSTANDARD, "bad-txns-too-many-sigops", false,
@@ -1253,7 +1253,7 @@ DisconnectResult DisconnectBlock(CBlock& block, const CBlockIndex* pindex, CCoin
         // Check that all outputs are available and match the outputs in the block itself
         // exactly.
         for (size_t o = 0; o < tx.vout.size(); o++) {
-            if (!tx.vout[o].scriptPubKey.IsUnspendable() && !tx.vout[o].IsZerocoinMint()) {
+            if (!tx.vout[o].scriptPubKey.IsUnspendable()) {
                 COutPoint out(hash, o);
                 Coin coin;
                 view.SpendCoin(out, &coin);
@@ -1434,7 +1434,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     blockundo.vtxundo.reserve(block.vtx.size() - 1);
     CAmount nValueOut = 0;
     CAmount nValueIn = 0;
-    unsigned int nMaxBlockSigOps = MAX_BLOCK_SIGOPS_CURRENT;
+    unsigned int nMaxBlockSigOps = MAX_BLOCK_SIGOPS;
 
     // Sapling
     SaplingMerkleTree sapling_tree;
@@ -2552,7 +2552,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     }
 
     // Size limits
-    unsigned int nMaxBlockSize = MAX_BLOCK_SIZE_CURRENT;
+    unsigned int nMaxBlockSize = MAX_BLOCK_SIZE;
     const unsigned int nBlockSize = ::GetSerializeSize(block, PROTOCOL_VERSION);
     if (block.vtx.empty() || block.vtx.size() > nMaxBlockSize || nBlockSize > nMaxBlockSize)
         return state.DoS(100, false, REJECT_INVALID, "bad-blk-length", false, "size limits failed");
@@ -2616,7 +2616,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     for (const auto& tx : block.vtx) {
         nSigOps += GetLegacySigOpCount(*tx);
     }
-    unsigned int nMaxBlockSigOps = block.GetBlockTime() > Params().GetConsensus().ZC_TimeStart ? MAX_BLOCK_SIGOPS_CURRENT : MAX_BLOCK_SIGOPS_LEGACY;
+    unsigned int nMaxBlockSigOps = MAX_BLOCK_SIGOPS;
     if (nSigOps > nMaxBlockSigOps)
         return state.DoS(100, error("%s : out-of-bounds SigOpCount", __func__),
             REJECT_INVALID, "bad-blk-sigops", true);
@@ -3696,7 +3696,7 @@ bool LoadExternalBlockFile(FILE* fileIn, FlatFilePos* dbp)
     int nLoaded = 0;
     try {
         // This takes over fileIn and calls fclose() on it in the CBufferedFile destructor
-        CBufferedFile blkdat(fileIn, 2 * MAX_BLOCK_SIZE_CURRENT, MAX_BLOCK_SIZE_CURRENT + 8, SER_DISK, CLIENT_VERSION);
+        CBufferedFile blkdat(fileIn, 2 * MAX_BLOCK_SIZE, MAX_BLOCK_SIZE + 8, SER_DISK, CLIENT_VERSION);
         uint64_t nRewind = blkdat.GetPos();
         while (!blkdat.eof()) {
             boost::this_thread::interruption_point();
@@ -3715,7 +3715,7 @@ bool LoadExternalBlockFile(FILE* fileIn, FlatFilePos* dbp)
                     continue;
                 // read size
                 blkdat >> nSize;
-                if (nSize < 80 || nSize > MAX_BLOCK_SIZE_CURRENT)
+                if (nSize < 80 || nSize > MAX_BLOCK_SIZE)
                     continue;
             } catch (const std::exception&) {
                 // no valid block header found; don't complain

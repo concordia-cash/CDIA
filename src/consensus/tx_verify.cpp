@@ -69,7 +69,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fCol
     }
 
     // Size limits
-    static_assert(MAX_BLOCK_SIZE_CURRENT >= MAX_TX_SIZE_AFTER_SAPLING, "Max block size must be bigger than max TX size");    // sanity
+    static_assert(MAX_BLOCK_SIZE >= MAX_TX_SIZE_AFTER_SAPLING, "Max block size must be bigger than max TX size");    // sanity
     static_assert(MAX_TX_SIZE_AFTER_SAPLING > MAX_ZEROCOIN_TX_SIZE, "New max TX size must be bigger than old max TX size");  // sanity
     const unsigned int nMaxSize = tx.IsShieldedTx() ? MAX_TX_SIZE_AFTER_SAPLING : MAX_ZEROCOIN_TX_SIZE;
     if (tx.GetTotalSize() > nMaxSize) {

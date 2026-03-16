@@ -14,7 +14,6 @@
 #include "consensus/merkle.h"
 #include "consensus/upgrades.h"
 #include "consensus/validation.h"
-#include "llmq/quorums_blockprocessor.h"
 #include "masternode-payments.h"
 #include "policy/policy.h"
 #include "pow.h"
@@ -139,7 +138,7 @@ BlockAssembler::BlockAssembler(const CChainParams& _chainparams, const bool _def
     // Largest block you're willing to create:
     nBlockMaxSize = gArgs.GetArg("-blockmaxsize", DEFAULT_BLOCK_MAX_SIZE);
     // Limit to between 1K and MAX_BLOCK_SIZE-1K for sanity:
-    nBlockMaxSize = std::max((unsigned int)1000, std::min((unsigned int)(MAX_BLOCK_SIZE_CURRENT - 1000), nBlockMaxSize));
+    nBlockMaxSize = std::max((unsigned int)1000, std::min((unsigned int)(MAX_BLOCK_SIZE - 1000), nBlockMaxSize));
 }
 
 void BlockAssembler::resetBlock()
@@ -260,7 +259,7 @@ bool BlockAssembler::TestPackage(uint64_t packageSize, unsigned int packageSigOp
 {
     if (nBlockSize + packageSize >= nBlockMaxSize)
         return false;
-    if (nBlockSigOps + packageSigOps >= MAX_BLOCK_SIGOPS_CURRENT)
+    if (nBlockSigOps + packageSigOps >= MAX_BLOCK_SIGOPS)
         return false;
     return true;
 }

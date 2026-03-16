@@ -46,10 +46,7 @@ std::string CTxIn::ToString() const
     str += "CTxIn(";
     str += prevout.ToString();
     if (prevout.IsNull())
-        if(IsZerocoinSpend())
-            str += strprintf(", zerocoinspend %s...", HexStr(scriptSig).substr(0, 25));
-        else
-            str += strprintf(", coinbase %s", HexStr(scriptSig));
+        str += strprintf(", coinbase %s", HexStr(scriptSig));    
     else
         str += strprintf(", scriptSig=%s", HexStr(scriptSig).substr(0, 24));
     if (nSequence != std::numeric_limits<unsigned int>::max())
@@ -68,11 +65,6 @@ CTxOut::CTxOut(const CAmount& nValueIn, CScript scriptPubKeyIn)
 uint256 CTxOut::GetHash() const
 {
     return SerializeHash(*this);
-}
-
-bool CTxOut::IsZerocoinMint() const
-{
-    return scriptPubKey.IsZerocoinMint();
 }
 
 std::string CTxOut::ToString() const

@@ -245,9 +245,6 @@ const CBlockIndex* LastCommonAncestor(const CBlockIndex* pa, const CBlockIndex* 
 
 /** Used to marshal pointers into hashes for db storage. */
 
-// New serialization introduced with 4.0.99
-static const int DBI_SER_VERSION_NO_ZC = 4009902;   // removes mapZerocoinSupply, nMoneySupply
-
 class CDiskBlockIndex : public CBlockIndex
 {
 public:
@@ -301,7 +298,7 @@ public:
         block.nTime = nTime;
         block.nBits = nBits;
         block.nNonce = nNonce;
-        if (nVersion >= 8)
+        if (nVersion >= 4)
             block.hashFinalSaplingRoot = hashFinalSaplingRoot;
         return block.GetHash();
     }

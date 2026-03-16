@@ -1408,11 +1408,9 @@ void CWallet::MarkAffectedTransactionsDirty(const CTransaction& tx)
     // available of the outputs it spends. So force those to be
     // recomputed, also:
     for (const CTxIn& txin : tx.vin) {
-        if (!txin.IsZerocoinSpend()) {
-            auto it = mapWallet.find(txin.prevout.hash);
-            if (it != mapWallet.end()) {
-                it->second.MarkDirty();
-            }
+        auto it = mapWallet.find(txin.prevout.hash);
+        if (it != mapWallet.end()) {
+            it->second.MarkDirty();
         }
     }
 
@@ -1791,9 +1789,7 @@ void CWalletTx::GetAmounts(std::list<COutputEntry>& listReceived,
         // In either case, we need to get the destination address
         const bool fColdStake = (filter & ISMINE_COLD);
         CTxDestination address;
-        if (txout.IsZerocoinMint()) {
-            address = CNoDestination();
-        } else if (!ExtractDestination(txout.scriptPubKey, address, fColdStake)) {
+        if (!ExtractDestination(txout.scriptPubKey, address, fColdStake)) {
             if (!IsCoinStake() && !IsCoinBase()) {
                 LogPrintf("CWalletTx::GetAmounts: Unknown transaction type found, txid %s\n", this->GetHash().ToString());
             }

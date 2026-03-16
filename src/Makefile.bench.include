@@ -50,7 +50,6 @@ bench_bench_concordia_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_ZEROCOIN) \
   $(LIBSAPLING) \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)

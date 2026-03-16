@@ -60,7 +60,6 @@ BASE_SCRIPTS= [
     'wallet_basic.py',                          # ~ 498 sec
     'wallet_backup.py',                         # ~ 477 sec
     'mempool_persist.py',                       # ~ 417 sec
-    'p2p_quorum_connect.py',                    # ~ 400 sec
     'wallet_reorgsrestore.py',                  # ~ 391 sec
     'p2p_addr_relay.py',                        # ~ 380 sec
 

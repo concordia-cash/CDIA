@@ -97,7 +97,6 @@ EXTRA_LIBRARIES += \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_ZEROCOIN) \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_WALLET) \
@@ -182,21 +181,6 @@ BITCOIN_CORE_H = \
   ctpl_stl.h \
   cyclingvector.h \
   flatdb.h \
-  llmq/quorums.h \
-  llmq/quorums_blockprocessor.h \
-  llmq/quorums_chainlocks.h \
-  llmq/quorums_commitment.h \
-  llmq/quorums_connections.h \
-  llmq/quorums_debug.h \
-  llmq/quorums_dkgsessionhandler.h \
-  llmq/quorums_dkgsessionmgr.h \
-  llmq/quorums_dkgsession.h \
-  llmq/quorums_init.h \
-  llmq/quorums_utils.h \
-  llmq/quorums_signing.h \
-  llmq/quorums_signing_shares.h \
-  tiertwo/masternode_meta_manager.h \
-  tiertwo/net_masternodes.h \
   addressbook.h \
   wallet/db.h \
   flatfile.h \
@@ -352,21 +336,6 @@ libbitcoin_server_a_SOURCES = \
   consensus/params.cpp \
   consensus/tx_verify.cpp \
   flatfile.cpp \
-  llmq/quorums.cpp \
-  llmq/quorums_blockprocessor.cpp \
-  llmq/quorums_chainlocks.cpp \
-  llmq/quorums_commitment.cpp \
-  llmq/quorums_connections.cpp \
-  llmq/quorums_debug.cpp \
-  llmq/quorums_dkgsessionhandler.cpp \
-  llmq/quorums_dkgsessionmgr.cpp \
-  llmq/quorums_dkgsession.cpp \
-  llmq/quorums_init.cpp \
-  llmq/quorums_utils.cpp \
-  llmq/quorums_signing.cpp \
-  llmq/quorums_signing_shares.cpp \
-  tiertwo/masternode_meta_manager.cpp \
-  tiertwo/net_masternodes.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
@@ -629,7 +598,6 @@ concordiad_LDADD = \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_ZEROCOIN) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_ZMQ) \
   $(LIBBITCOIN_CRYPTO) \
@@ -678,7 +646,6 @@ endif
 concordia_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_ZEROCOIN) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1) \

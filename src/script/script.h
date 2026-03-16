@@ -631,9 +631,6 @@ public:
     bool IsPayToColdStaking() const;
     bool IsPayToExchangeAddress() const;
     bool StartsWithOpcode(const opcodetype opcode) const;
-    bool IsZerocoinMint() const;
-    bool IsZerocoinSpend() const;
-    bool IsZerocoinPublicSpend() const;
 
     /** Called by IsStandardTx and P2SH/BIP62 VerifyScript (which makes it consensus-critical). */
     bool IsPushOnly(const_iterator pc) const;

@@ -1186,99 +1186,6 @@ bool CBudgetManager::ProcessFinalizedBudgetVote(CFinalizedBudgetVote& vote, CNod
     return true;
 }
 
-bool CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, int& banScore)
-{
-    banScore = ProcessMessageInner(pfrom, strCommand, vRecv);
-    return banScore == 0;
-}
-
-int CBudgetManager::ProcessMessageInner(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
-{
-    if (!g_tiertwo_sync_state.IsBlockchainSynced()) return 0;
-
-    if (strCommand == NetMsgType::BUDGETVOTESYNC) {
-        // Masternode vote sync
-        uint256 nProp;
-        vRecv >> nProp;
-        return ProcessBudgetVoteSync(nProp, pfrom);
-    }
-
-    if (strCommand == NetMsgType::BUDGETPROPOSAL) {
-        // Masternode Proposal
-        CBudgetProposal proposal;
-        if (!proposal.ParseBroadcast(vRecv)) {
-            return 20;
-        }
-        {
-            // Clear inv request
-            LOCK(cs_main);
-            g_connman->RemoveAskFor(proposal.GetHash(), MSG_BUDGET_PROPOSAL);
-        }
-        return ProcessProposal(proposal);
-    }
-
-    if (strCommand == NetMsgType::BUDGETVOTE) {
-        CBudgetVote vote;
-        vRecv >> vote;
-        vote.SetValid(true);
-
-        {
-            // Clear inv request
-            LOCK(cs_main);
-            g_connman->RemoveAskFor(vote.GetHash(), MSG_BUDGET_VOTE);
-        }
-
-        CValidationState state;
-        if (!ProcessProposalVote(vote, pfrom, state)) {
-            int nDos = 0;
-            if (state.IsInvalid(nDos)) {
-                LogPrint(BCLog::MNBUDGET, "%s: %s\n", __func__, FormatStateMessage(state));
-            }
-            return nDos;
-        }
-        return 0;
-    }
-
-    if (strCommand == NetMsgType::FINALBUDGET) {
-        // Finalized Budget Suggestion
-        CFinalizedBudget finalbudget;
-        if (!finalbudget.ParseBroadcast(vRecv)) {
-            return 20;
-        }
-        {
-            // Clear inv request
-            LOCK(cs_main);
-            g_connman->RemoveAskFor(finalbudget.GetHash(), MSG_BUDGET_FINALIZED);
-        }
-        return ProcessFinalizedBudget(finalbudget, pfrom);
-    }
-
-    if (strCommand == NetMsgType::FINALBUDGETVOTE) {
-        CFinalizedBudgetVote vote;
-        vRecv >> vote;
-        vote.SetValid(true);
-
-        {
-            // Clear inv request
-            LOCK(cs_main);
-            g_connman->RemoveAskFor(vote.GetHash(), MSG_BUDGET_FINALIZED_VOTE);
-        }
-
-        CValidationState state;
-        if (!ProcessFinalizedBudgetVote(vote, pfrom, state)) {
-            int nDos = 0;
-            if (state.IsInvalid(nDos)) {
-                LogPrint(BCLog::MNBUDGET, "%s: %s\n", __func__, FormatStateMessage(state));
-            }
-            return nDos;
-        }
-        return 0;
-    }
-
-    // nothing was done
-    return 0;
-}
-
 void CBudgetManager::SetSynced(bool synced)
 {
     {
@@ -1356,15 +1263,7 @@ void CBudgetManager::SyncSingleItem(CNode* pfrom, const uint256& nProp)
 
 void CBudgetManager::Sync(CNode* pfrom, bool fPartial)
 {
-    // Full budget sync request.
-    relayInventoryItems<CBudgetProposal>(pfrom, cs_proposals, mapProposals, fPartial, MSG_BUDGET_PROPOSAL, MASTERNODE_SYNC_BUDGET_PROP);
-    relayInventoryItems<CFinalizedBudget>(pfrom, cs_budgets, mapFinalizedBudgets, fPartial, MSG_BUDGET_FINALIZED, MASTERNODE_SYNC_BUDGET_FIN);
-
-    if (!fPartial) {
-        // We are not going to answer full budget sync requests for an hour (chainparams.FulfilledRequestExpireTime()).
-        // The remote peer can still do single prop and mnv sync requests if needed.
-        g_netfulfilledman.AddFulfilledRequest(pfrom->addr, BUDGET_SYNC_REQUEST_RECV);
-    }
+    
 }
 
 template<typename T>

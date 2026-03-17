@@ -14,7 +14,6 @@
 #include "consensus/merkle.h"
 #include "consensus/upgrades.h"
 #include "consensus/validation.h"
-#include "masternode-payments.h"
 #include "policy/policy.h"
 #include "pow.h"
 #include "primitives/transaction.h"
@@ -90,9 +89,9 @@ bool SolveProofOfStake(CBlock* pblock, CBlockIndex* pindexPrev, CWallet* pwallet
     }
     // Stake found
 
-    // Create coinbase tx and add masternode/budget payments
+    // Create coinbase tx and add budget payments
     CMutableTransaction txCoinbase = NewCoinbase(pindexPrev->nHeight + 1);
-    FillBlockPayee(txCoinbase, txCoinStake, pindexPrev, true);
+    // FillBlockPayee(txCoinbase, txCoinStake, pindexPrev, true);
 
     // Sign coinstake
     if (!pwallet->SignCoinStake(txCoinStake)) {

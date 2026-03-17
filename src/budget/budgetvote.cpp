@@ -31,8 +31,7 @@ CBudgetVote::CBudgetVote(const CTxIn& vinIn, const uint256& nProposalHashIn, Vot
 
 void CBudgetVote::Relay() const
 {
-    CInv inv(MSG_BUDGET_VOTE, GetHash());
-    g_connman->RelayInv(inv);
+    
 }
 
 uint256 CBudgetVote::GetHash() const

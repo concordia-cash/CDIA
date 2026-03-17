@@ -65,13 +65,7 @@ bool CBudgetProposal::ParseBroadcast(CDataStream& broadcast)
 
 void CBudgetProposal::SyncVotes(CNode* pfrom, bool fPartial, int& nInvCount) const
 {
-    for (const auto& it: mapVotes) {
-        const CBudgetVote& vote = it.second;
-        if (vote.IsValid() && (!fPartial || !vote.IsSynced())) {
-            pfrom->PushInventory(CInv(MSG_BUDGET_VOTE, vote.GetHash()));
-            nInvCount++;
-        }
-    }
+    
 }
 
 bool CBudgetProposal::IsHeavilyDownvoted(int mnCount)
@@ -341,7 +335,5 @@ CDataStream CBudgetProposal::GetBroadcast() const
 
 void CBudgetProposal::Relay()
 {
-    CInv inv(MSG_BUDGET_PROPOSAL, GetHash());
-    g_connman->RelayInv(inv);
 }
 

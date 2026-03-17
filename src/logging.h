@@ -56,17 +56,10 @@ namespace BCLog {
         QT          = (1 << 15),
         LEVELDB     = (1 << 16),
         STAKING     = (1 << 17),
-        MASTERNODE  = (1 << 18),
         MNBUDGET    = (1 << 19),
-        MNPING      = (1 << 20),
-        LEGACYZC    = (1 << 21),
         SAPLING     = (1 << 22),
         SPORKS      = (1 << 23),
         VALIDATION  = (1 << 24),
-        LLMQ        = (1 << 25),
-        NET_MN      = (1 << 26),
-        DKG         = (1 << 27),
-        CHAINLOCKS  = (1 << 28),
         ALL         = ~(uint32_t)0,
     };
 

@@ -13,7 +13,6 @@
 #include "messagesigner.h"
 #include "net.h"
 #include "netbase.h"
-#include "tiertwo/net_masternodes.h"
 #include "rpc/server.h"
 #include "spork.h"
 #include "timedata.h"
@@ -101,7 +100,6 @@ UniValue getinfo(const JSONRPCRequest& request)
                     services+= "NETWORK/";
                     break;
                 case NODE_BLOOM:
-                case NODE_BLOOM_WITHOUT_MN:
                     services+= "BLOOM/";
                     break;
                 default:

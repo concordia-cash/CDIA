@@ -157,7 +157,6 @@ UniValue getpeerinfo(const JSONRPCRequest& request)
         obj.pushKV("subver", stats.cleanSubVer);
         obj.pushKV("inbound", stats.fInbound);
         obj.pushKV("addnode", stats.fAddnode);
-        obj.pushKV("masternode", stats.m_masternode_connection);
         obj.pushKV("startingheight", stats.nStartingHeight);
         if (fStateStats) {
             obj.pushKV("banscore", statestats.nMisbehavior);
@@ -186,13 +185,6 @@ UniValue getpeerinfo(const JSONRPCRequest& request)
                 recvPerMsgCmd.pushKV(i.first, i.second);
         }
         obj.pushKV("bytesrecv_per_msg", recvPerMsgCmd);
-
-        // DMN data
-        if (stats.m_masternode_connection) {
-            obj.pushKV("masternode_iqr_conn", stats.m_masternode_iqr_connection);
-            obj.pushKV("verif_mn_proreg_tx_hash", stats.verifiedProRegTxHash.GetHex());
-            obj.pushKV("verif_mn_operator_pubkey_hash", stats.verifiedPubKeyHash.GetHex());
-        }
 
         ret.push_back(obj);
     }

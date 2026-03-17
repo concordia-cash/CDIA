@@ -1034,9 +1034,6 @@ bool AppInitParameterInteraction()
     // Check level must be 4 for zerocoin checks
     if (gArgs.IsArgSet("-checklevel"))
         return UIError(strprintf(_("Error: Unsupported argument %s found. Checklevel must be level 4."), "-checklevel"));
-    // Exit early if -masternode=1 and -listen=0
-    if (gArgs.GetBoolArg("-masternode", DEFAULT_MASTERNODE) && !gArgs.GetBoolArg("-listen", DEFAULT_LISTEN))
-        return UIError(strprintf(_("Error: %s must be true if %s is set."), "-listen", "-masternode"));
     if (gArgs.GetBoolArg("-benchmark", false))
         UIWarning(strprintf(_("Warning: Unsupported argument %s ignored, use %s"), "-benchmark", "-debug=bench."));
 

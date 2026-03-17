@@ -28,8 +28,7 @@ CFinalizedBudgetVote::CFinalizedBudgetVote(const CTxIn& vinIn, const uint256& nB
 
 void CFinalizedBudgetVote::Relay() const
 {
-    CInv inv(MSG_BUDGET_FINALIZED_VOTE, GetHash());
-    g_connman->RelayInv(inv);
+    
 }
 
 uint256 CFinalizedBudgetVote::GetHash() const

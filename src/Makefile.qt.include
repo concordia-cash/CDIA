@@ -326,7 +326,6 @@ RES_ICONS = \
   qt/res/images/ic-pending.svg \
   qt/res/images/ic-check-theme-dark.svg \
   qt/res/images/ic-nav-receive-active.svg \
-  qt/res/images/img-empty-dark-masternode.svg \
   qt/res/images/ic-add-liliac.svg \
   qt/res/images/ic-check-theme-light.svg \
   qt/res/images/ic-nav-receive-hover.svg \
@@ -352,7 +351,6 @@ RES_ICONS = \
   qt/res/images/ic-address-book.svg \
   qt/res/images/ic-clear-liliac.svg \
   qt/res/images/ic-nav-settings-active.svg \
-  qt/res/images/img-empty-masternode.svg \
   qt/res/images/ic-address-send-white.svg \
   qt/res/images/ic-clear-purple.svg \
   qt/res/images/ic-nav-settings-hover.svg \

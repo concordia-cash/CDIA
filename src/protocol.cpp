@@ -205,10 +205,6 @@ bool operator<(const CInv& a, const CInv& b)
     return (a.type < b.type || (a.type == b.type && a.hash < b.hash));
 }
 
-bool CInv::IsMasterNodeType() const{
-     return type > 2;
-}
-
 std::string CInv::GetCommand() const
 {
     std::string cmd;
@@ -216,26 +212,7 @@ std::string CInv::GetCommand() const
         case MSG_TX:                return cmd.append(NetMsgType::TX);
         case MSG_BLOCK:             return cmd.append(NetMsgType::BLOCK);
         case MSG_FILTERED_BLOCK:    return cmd.append(NetMsgType::MERKLEBLOCK);
-        case MSG_TXLOCK_REQUEST:    return cmd.append("ix");       // Deprecated
-        case MSG_TXLOCK_VOTE:       return cmd.append("txlvote");  // Deprecated
         case MSG_SPORK:             return cmd.append(NetMsgType::SPORK);
-        case MSG_MASTERNODE_WINNER: return cmd.append(NetMsgType::MNWINNER);
-        case MSG_MASTERNODE_SCANNING_ERROR: return cmd.append("mnodescanerr"); // Deprecated
-        case MSG_BUDGET_VOTE: return cmd.append(NetMsgType::BUDGETVOTE);
-        case MSG_BUDGET_PROPOSAL: return cmd.append(NetMsgType::BUDGETPROPOSAL);
-        case MSG_BUDGET_FINALIZED: return cmd.append(NetMsgType::FINALBUDGET);
-        case MSG_BUDGET_FINALIZED_VOTE: return cmd.append(NetMsgType::FINALBUDGETVOTE);
-        case MSG_MASTERNODE_QUORUM: return cmd.append("mnq"); // Unused
-        case MSG_MASTERNODE_ANNOUNCE: return cmd.append(NetMsgType::MNBROADCAST); // or MNBROADCAST2
-        case MSG_MASTERNODE_PING: return cmd.append(NetMsgType::MNPING);
-        case MSG_DSTX: return cmd.append("dstx"); // Deprecated
-        case MSG_QUORUM_FINAL_COMMITMENT: return cmd.append(NetMsgType::QFCOMMITMENT);
-        case MSG_QUORUM_CONTRIB: return cmd.append(NetMsgType::QCONTRIB);
-        case MSG_QUORUM_COMPLAINT: return cmd.append(NetMsgType::QCOMPLAINT);
-        case MSG_QUORUM_JUSTIFICATION: return cmd.append(NetMsgType::QJUSTIFICATION);
-        case MSG_QUORUM_PREMATURE_COMMITMENT: return cmd.append(NetMsgType::QPCOMMITMENT);
-        case MSG_QUORUM_RECOVERED_SIG: return cmd.append(NetMsgType::QSIGREC);
-        case MSG_CLSIG: return cmd.append(NetMsgType::CLSIG);
         default:
             throw std::out_of_range(strprintf("%s: type=%d unknown type", __func__, type));
     }

@@ -210,11 +210,6 @@ BITCOIN_CORE_H = \
   budget/budgetutil.h \
   mapport.h \
   memusage.h \
-  masternode.h \
-  masternode-payments.h \
-  masternode-sync.h \
-  masternodeman.h \
-  masternodeconfig.h \
   merkleblock.h \
   messagesigner.h \
   blockassembler.h \
@@ -354,7 +349,6 @@ libbitcoin_server_a_SOURCES = \
   pow.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
-  rpc/masternode.cpp \
   rpc/budget.cpp \
   rpc/mining.cpp \
   rpc/misc.cpp \
@@ -482,11 +476,6 @@ libbitcoin_common_a_SOURCES = \
   hash.cpp \
   key.cpp \
   keystore.cpp \
-  masternode.cpp \
-  masternode-payments.cpp \
-  masternode-sync.cpp \
-  masternodeconfig.cpp \
-  masternodeman.cpp \
   messagesigner.cpp \
   netaddress.cpp \
   netbase.cpp \

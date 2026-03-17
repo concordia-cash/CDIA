@@ -8,9 +8,6 @@
 #include <string>
 #include "fs.h"
 
-static const bool DEFAULT_MASTERNODE  = false;
-static const bool DEFAULT_MNCONFLOCK = true;
-
 class CScheduler;
 namespace boost {
     class thread_group;

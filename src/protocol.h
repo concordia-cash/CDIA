@@ -320,10 +320,6 @@ enum ServiceFlags : uint64_t {
     // NODE_BLOOM means the node is capable and willing to handle bloom-filtered connections.
     NODE_BLOOM = (1 << 2),
 
-    // NODE_BLOOM_WITHOUT_MN means the node has the same features as NODE_BLOOM with the only difference
-    // that the node doesn't want to receive master nodes messages. (the 1<<3 was not picked as constant because on bitcoin 0.14 is witness and we want that update here )
-    NODE_BLOOM_WITHOUT_MN = (1 << 4),
-
     // Bits 24-31 are reserved for temporary experiments. Just pick a bit that
     // isn't getting used, or one not being used much, and notify the
     // bitcoin-development mailing list. Remember that service bits are just
@@ -432,33 +428,14 @@ public:
 
 /** getdata message types */
 enum GetDataMsg {
-    UNDEFINED = 0,
-    MSG_TX,
-    MSG_BLOCK,
+    UNDEFINED               = 0,
+    MSG_TX                  = 1,
+    MSG_BLOCK               = 2,
     // Nodes may always request a MSG_FILTERED_BLOCK in a getdata, however,
     // MSG_FILTERED_BLOCK should not appear in any invs except as a part of getdata.
-    MSG_FILTERED_BLOCK,
-    MSG_TXLOCK_REQUEST, // Deprecated
-    MSG_TXLOCK_VOTE,    // Deprecated
-    MSG_SPORK,
-    MSG_MASTERNODE_WINNER,
-    MSG_MASTERNODE_SCANNING_ERROR,
-    MSG_BUDGET_VOTE,
-    MSG_BUDGET_PROPOSAL,
-    MSG_BUDGET_FINALIZED,
-    MSG_BUDGET_FINALIZED_VOTE,
-    MSG_MASTERNODE_QUORUM,
-    MSG_MASTERNODE_ANNOUNCE,
-    MSG_MASTERNODE_PING,
-    MSG_DSTX, // Deprecated
-    MSG_QUORUM_FINAL_COMMITMENT,
-    MSG_QUORUM_CONTRIB,
-    MSG_QUORUM_COMPLAINT,
-    MSG_QUORUM_JUSTIFICATION,
-    MSG_QUORUM_PREMATURE_COMMITMENT,
-    MSG_QUORUM_RECOVERED_SIG,
-    MSG_CLSIG,
-    MSG_TYPE_MAX = MSG_CLSIG,
+    MSG_FILTERED_BLOCK      = 3,
+    MSG_SPORK               = 6,
+    MSG_TYPE_MAX = MSG_SPORK,
 };
 
 /** inv message data */
@@ -472,7 +449,6 @@ public:
 
     friend bool operator<(const CInv& a, const CInv& b);
 
-    bool IsMasterNodeType() const;
     std::string ToString() const;
 
     // TODO: make private (improve encapsulation)

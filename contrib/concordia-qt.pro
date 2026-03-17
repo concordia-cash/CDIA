@@ -90,12 +90,6 @@ HEADERS += src/addrman.h \
            src/leveldbwrapper.h \
            src/limitedmap.h \
            src/main.h \
-           src/masternode-budget.h \
-           src/masternode-payments.h \
-           src/masternode-sync.h \
-           src/masternode.h \
-           src/masternodeconfig.h \
-           src/masternodeman.h \
            src/merkleblock.h \
            src/miner.h \
            src/mruset.h \
@@ -386,12 +380,6 @@ SOURCES += src/addrman.cpp \
            src/keystore.cpp \
            src/leveldbwrapper.cpp \
            src/main.cpp \
-           src/masternode-budget.cpp \
-           src/masternode-payments.cpp \
-           src/masternode-sync.cpp \
-           src/masternode.cpp \
-           src/masternodeconfig.cpp \
-           src/masternodeman.cpp \
            src/merkleblock.cpp \
            src/miner.cpp \
            src/net.cpp \
@@ -405,8 +393,6 @@ SOURCES += src/addrman.cpp \
            src/rpcblockchain.cpp \
            src/rpcclient.cpp \
            src/rpcdump.cpp \
-           src/rpcmasternode-budget.cpp \
-           src/rpcmasternode.cpp \
            src/rpcmining.cpp \
            src/rpcmisc.cpp \
            src/rpcnet.cpp \

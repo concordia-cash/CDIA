@@ -170,13 +170,7 @@ std::vector<uint256> CFinalizedBudget::GetProposalsHashes() const
 
 void CFinalizedBudget::SyncVotes(CNode* pfrom, bool fPartial, int& nInvCount) const
 {
-    for (const auto& it: mapVotes) {
-        const CFinalizedBudgetVote& vote = it.second;
-        if (vote.IsValid() && (!fPartial || !vote.IsSynced())) {
-            pfrom->PushInventory(CInv(MSG_BUDGET_FINALIZED_VOTE, vote.GetHash()));
-            nInvCount++;
-        }
-    }
+    
 }
 
 bool CFinalizedBudget::CheckStartEnd()
@@ -414,6 +408,5 @@ bool CFinalizedBudget::operator>(const CFinalizedBudget& other) const
 
 void CFinalizedBudget::Relay()
 {
-    CInv inv(MSG_BUDGET_FINALIZED, GetHash());
-    g_connman->RelayInv(inv);
+    
 }

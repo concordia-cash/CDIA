@@ -14,8 +14,6 @@
 #include "hash.h"
 #include "kernel.h"
 #include "key_io.h"
-#include "llmq/quorums_chainlocks.h"
-#include "masternodeman.h"
 #include "policy/feerate.h"
 #include "policy/policy.h"
 #include "rpc/server.h"

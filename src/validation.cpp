@@ -1242,9 +1242,6 @@ DisconnectResult DisconnectBlock(CBlock& block, const CBlockIndex* pindex, CCoin
     for (int i = block.vtx.size() - 1; i >= 0; i--) {
         const CTransaction& tx = *block.vtx[i];
 
-        if (!DisconnectZerocoinTx(tx))
-            return DISCONNECT_FAILED;
-
         const uint256& hash = tx.GetHash();
 
         // if tx is a budget collateral tx, remove relative object

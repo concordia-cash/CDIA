@@ -2,14 +2,6 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#include "masternode-sync.h"
-
-#include "llmq/quorums_blockprocessor.h"
-#include "llmq/quorums_chainlocks.h"
-#include "llmq/quorums_dkgsessionmgr.h"
-#include "llmq/quorums_signing.h"
-#include "llmq/quorums_signing_shares.h"
-#include "masternodeman.h"  // for mnodeman
 #include "net_processing.h" // for Misbehaving
 #include "netmessagemaker.h"
 #include "spork.h"   // for sporkManager
@@ -52,51 +44,6 @@ bool CMasternodeSync::MessageDispatcher(CNode* pfrom, std::string& strCommand, C
         return true;
     }
 
-    if (strCommand == NetMsgType::QFCOMMITMENT) {
-        // Only process qfc if v6.0.0 is enforced.
-        if (!deterministicMNManager->IsDIP3Enforced()) return true; // nothing to do.
-        int retMisbehavingScore{0};
-        llmq::quorumBlockProcessor->ProcessMessage(pfrom, vRecv, retMisbehavingScore);
-        if (retMisbehavingScore > 0) {
-            WITH_LOCK(cs_main, Misbehaving(pfrom->GetId(), retMisbehavingScore));
-        }
-        return true;
-    }
-
-    if (strCommand == NetMsgType::QCONTRIB
-        || strCommand == NetMsgType::QCOMPLAINT
-        || strCommand == NetMsgType::QJUSTIFICATION
-        || strCommand == NetMsgType::QPCOMMITMENT) {
-        if (!llmq::quorumDKGSessionManager->ProcessMessage(pfrom, strCommand, vRecv)) {
-            WITH_LOCK(cs_main, Misbehaving(pfrom->GetId(), 100));
-        }
-        return true;
-    }
-    if (strCommand == NetMsgType::QSIGSHARESINV || strCommand == NetMsgType::QGETSIGSHARES || strCommand == NetMsgType::QBSIGSHARES || strCommand == NetMsgType::QSIGSESANN || strCommand == NetMsgType::QSIGSHARE) {
-        llmq::quorumSigSharesManager->ProcessMessage(pfrom, strCommand, vRecv, *g_connman);
-        return true;
-    }
-    if (strCommand == NetMsgType::QSIGREC) {
-        llmq::quorumSigningManager->ProcessMessage(pfrom, strCommand, vRecv, *g_connman);
-        return true;
-    }
-
-    if (strCommand == NetMsgType::CLSIG) {
-        llmq::chainLocksHandler->ProcessMessage(pfrom, strCommand, vRecv, *g_connman);
-    }
-
-    if (strCommand == NetMsgType::GETMNLIST) {
-        // Get Masternode list or specific entry
-        CTxIn vin;
-        vRecv >> vin;
-        int banScore = mnodeman.ProcessGetMNList(pfrom, vin);
-        if (banScore > 0) {
-            LOCK(cs_main);
-            Misbehaving(pfrom->GetId(), banScore);
-        }
-        return true;
-    }
-
     if (strCommand == NetMsgType::SPORK) {
         // as there is no completion message, this is using a SPORK_INVALID as final message for now.
         // which is just a hack, should be replaced with another message, guard it until the protocol gets deployed on mainnet and
@@ -121,41 +68,6 @@ bool CMasternodeSync::MessageDispatcher(CNode* pfrom, std::string& strCommand, C
             }
         }
         return true;
-    }
-
-    if (strCommand == NetMsgType::SYNCSTATUSCOUNT) {
-        // Nothing to do.
-        if (g_tiertwo_sync_state.GetSyncPhase() >= MASTERNODE_SYNC_FINISHED) return true;
-
-        // Sync status count
-        int nItemID;
-        int nCount;
-        vRecv >> nItemID >> nCount;
-
-        // Update stats
-        ProcessSyncStatusMsg(nItemID, nCount);
-
-        // this means we will receive no further communication on the first sync
-        switch (nItemID) {
-            case MASTERNODE_SYNC_LIST: {
-                UpdatePeerSyncState(pfrom->GetId(), NetMsgType::GETMNLIST, GetNextAsset(nItemID));
-                return true;
-            }
-            case MASTERNODE_SYNC_MNW: {
-                UpdatePeerSyncState(pfrom->GetId(), NetMsgType::GETMNWINNERS, GetNextAsset(nItemID));
-                return true;
-            }
-            case MASTERNODE_SYNC_BUDGET_PROP: {
-                // TODO: This could be a MASTERNODE_SYNC_BUDGET_FIN as well, possibly should decouple the finalization budget sync
-                //  from the MASTERNODE_SYNC_BUDGET_PROP (both are under the BUDGETVOTESYNC message)
-                UpdatePeerSyncState(pfrom->GetId(), NetMsgType::BUDGETVOTESYNC, GetNextAsset(nItemID));
-                return true;
-            }
-            case MASTERNODE_SYNC_BUDGET_FIN: {
-                // No need to handle this one, is handled by the proposals sync message for now..
-                return true;
-            }
-        }
     }
 
     return false;

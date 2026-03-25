@@ -103,14 +103,29 @@ bool Stake(const CBlockIndex* pindexPrev, CStakeInput* stakeInput, unsigned int 
 {
     if (!stakeInput) return false;
 
-    // Get the new time slot (and verify it's not the same as previous block)
-    const bool fRegTest = Params().IsRegTestNet();
-    nTimeTx = (fRegTest ? GetAdjustedTime() : GetCurrentTimeSlot());
-    if (nTimeTx <= pindexPrev->nTime && !fRegTest) return false;
+    const auto& params = Params();
+    const auto& consensus = params.GetConsensus();
+    const int nTimeSlotLength = consensus.nTimeSlotLength;
+    const int64_t minPastBlockTime = pindexPrev->MinPastBlockTime();
+    const int64_t maxFutureBlockTime = pindexPrev->MaxFutureBlockTime();
 
-    // Verify Proof Of Stake
-    CStakeKernel stakeKernel(pindexPrev, stakeInput, nBits, nTimeTx);
-    return stakeKernel.CheckKernelHash(true);
+    nTimeTx = (minPastBlockTime / nTimeSlotLength) * nTimeSlotLength;
+
+    while(nTimeTx <= minPastBlockTime) {
+        nTimeTx += nTimeSlotLength;
+    }
+
+    while(nTimeTx <= maxFutureBlockTime) {
+        // Verify Proof Of Stake
+        CStakeKernel stakeKernel(pindexPrev, stakeInput, nBits, nTimeTx);
+        return stakeKernel.CheckKernelHash(true);
+
+        if(stakeKernel.CheckKernelHash(true)) return true;
+
+        nTimeTx += nTimeSlotLength;
+    }
+
+    return false;
 }
 
 
@@ -139,9 +154,6 @@ bool CheckProofOfStake(const CBlock& block, std::string& strError, const CBlockI
         strError = "kernel hash check fails";
         return false;
     }
-
-    // zPoS disabled (ContextCheck) before blocks V7, and the tx input signature is in CoinSpend
-    if (stakeInput->IsZPIV()) return true;
 
     // Verify tx input signature
     CTxOut stakePrevout;

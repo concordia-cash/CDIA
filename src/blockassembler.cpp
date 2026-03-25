@@ -115,7 +115,7 @@ CMutableTransaction CreateCoinbaseTx(const CScript& scriptPubKeyIn, CBlockIndex*
 
     //Masternode and general budget payments
     CMutableTransaction txDummy;    // POW blocks have no coinstake
-    FillBlockPayee(txCoinbase, txDummy, pindexPrev, false);
+    // FillBlockPayee(txCoinbase, txDummy, pindexPrev, false);
 
     // If no payee was detected, then the whole block value goes to the first output.
     if (txCoinbase.vout.size() == 1) {

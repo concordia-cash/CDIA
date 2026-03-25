@@ -132,8 +132,6 @@ class GovernanceInvalidBudgetTest(ConcordiaTestFramework):
 
         # activate sporks
         self.log.info("Masternodes enabled. Activating sporks.")
-        self.activate_spork(self.minerAPos, "SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT")
-        self.activate_spork(self.minerAPos, "SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT")
         self.activate_spork(self.minerAPos, "SPORK_13_ENABLE_SUPERBLOCKS")
 
 

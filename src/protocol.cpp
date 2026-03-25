@@ -41,32 +41,6 @@ const char* FILTERCLEAR = "filterclear";
 const char* SENDHEADERS = "sendheaders";
 const char* SPORK = "spork";
 const char* GETSPORKS = "getsporks";
-const char* MNBROADCAST = "mnb";
-const char* MNBROADCAST2 = "mnb2"; // BIP155 support
-const char* MNPING = "mnp";
-const char* MNWINNER = "mnw";
-const char* GETMNWINNERS = "mnget";
-const char* BUDGETPROPOSAL = "mprop";
-const char* BUDGETVOTE = "mvote";
-const char* BUDGETVOTESYNC = "mnvs";
-const char* FINALBUDGET = "fbs";
-const char* FINALBUDGETVOTE = "fbvote";
-const char* SYNCSTATUSCOUNT = "ssc";
-const char* GETMNLIST = "dseg";
-const char* QFCOMMITMENT = "qfcommit";
-const char* QSENDRECSIGS = "qsendrecsigs";
-const char* MNAUTH = "mnauth";
-const char* QCONTRIB = "qcontrib";
-const char* QCOMPLAINT = "qcomplaint";
-const char* QJUSTIFICATION = "qjustify";
-const char* QPCOMMITMENT = "qpcommit";
-const char* QSIGSESANN = "qsigsesann";
-const char* QSIGSHARESINV = "qsigsinv";
-const char* QGETSIGSHARES = "qgetsigs";
-const char* QBSIGSHARES = "qbsigs";
-const char* QSIGREC = "qsigrec";
-const char* QSIGSHARE = "qsigshare";
-const char* CLSIG = "clsig";
 }; // namespace NetMsgType
 
 

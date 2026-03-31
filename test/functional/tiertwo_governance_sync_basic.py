@@ -188,10 +188,6 @@ class MasternodeGovernanceBasicTest(ConcordiaTier2TestFramework):
         self.check_mns_status(self.remoteDMN1, self.proRegTx1)
         self.log.info("DMN1 active")
 
-        # activate sporks
-        self.activate_spork(self.minerPos, "SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT")
-        self.activate_spork(self.minerPos, "SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT")
-        self.activate_spork(self.minerPos, "SPORK_13_ENABLE_SUPERBLOCKS")
         nextSuperBlockHeight = self.miner.getnextsuperblock()
 
         # Submit first proposal

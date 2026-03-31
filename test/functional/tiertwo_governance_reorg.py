@@ -88,12 +88,6 @@ class GovernanceReorgTest(ConcordiaTestFramework):
         self.wait_until_mn_enabled(self.mnOneCollateral.hash, 120, [mn1, mn2])
         self.wait_until_mn_enabled(self.mnOneCollateral.hash, 120, [mn1, mn2])
 
-        # activate sporks
-        self.log.info("Masternodes enabled. Activating sporks.")
-        self.activate_spork(self.minerAPos, "SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT")
-        self.activate_spork(self.minerAPos, "SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT")
-        self.activate_spork(self.minerAPos, "SPORK_13_ENABLE_SUPERBLOCKS")
-
         # Create a proposal and vote on it
         next_superblock = minerA.getnextsuperblock()
         payee = minerA.getnewaddress()

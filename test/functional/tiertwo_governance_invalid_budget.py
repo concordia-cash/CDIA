@@ -130,10 +130,6 @@ class GovernanceInvalidBudgetTest(ConcordiaTestFramework):
         self.wait_until_mn_enabled(self.mnOneCollateral.hash, 120, [self.mn1, self.mn2])
         self.wait_until_mn_enabled(self.mnOneCollateral.hash, 120, [self.mn1, self.mn2])
 
-        # activate sporks
-        self.log.info("Masternodes enabled. Activating sporks.")
-        self.activate_spork(self.minerAPos, "SPORK_13_ENABLE_SUPERBLOCKS")
-
 
 if __name__ == '__main__':
     GovernanceInvalidBudgetTest().main()

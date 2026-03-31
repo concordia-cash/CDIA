@@ -14,15 +14,9 @@
 #define MAKE_SPORK_DEF(name, defaultValue) CSporkDef(name, defaultValue, #name)
 
 std::vector<CSporkDef> sporkDefs = {
-    MAKE_SPORK_DEF(SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT,   4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_13_ENABLE_SUPERBLOCKS,             4070908800ULL), // OFF
     MAKE_SPORK_DEF(SPORK_14_NEW_PROTOCOL_ENFORCEMENT,       4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2,     4070908800ULL), // OFF
     MAKE_SPORK_DEF(SPORK_19_COLDSTAKING_MAINTENANCE,        4070908800ULL), // OFF
     MAKE_SPORK_DEF(SPORK_20_SAPLING_MAINTENANCE,            4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_21_LEGACY_MNS_MAX_HEIGHT,          4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_22_LLMQ_DKG_MAINTENANCE,           4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_23_CHAINLOCKS_ENFORCEMENT,         4070908800ULL), // OFF
 };
 
 CSporkManager sporkManager;
@@ -51,21 +45,6 @@ void CSporkManager::LoadSporksFromDB()
         if (!pSporkDB->ReadSpork(sporkDef.sporkId, spork)) {
             LogPrintf("%s : no previous value for %s found in database\n", __func__, sporkDef.name);
             continue;
-        }
-
-        // TODO: Temporary workaround for v5.0 clients to ensure up-to-date protocol version spork
-        if (spork.nSporkID == SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) {
-            LogPrintf("%s : Spork 15 signed at %d\n", __func__, spork.nTimeSigned);
-            // 1578338986 is the timestamp that spork 15 was last signed at for mainnet for the previous
-            // protocol bump. If the timestamp in the DB is equal or lower than this, we know that
-            // the value is stale and should ignore it to prevent un-necessary disconnections in the
-            // version handshake process. This value is also suitable for testnet as the timestamp
-            // for this spork on that network was signed shortly after this.
-            if (spork.nTimeSigned <= 1578338986 ) {
-                LogPrintf("%s : Stale spork 15 detected, clearing...\n", __func__);
-                CSporkManager::Clear();
-                return;
-            }
         }
 
         // add spork to memory

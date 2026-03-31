@@ -22,27 +22,6 @@ static void UpdateLastTime(const uint256& hash, int64_t& last, std::map<uint256,
     }
 }
 
-void TierTwoSyncState::AddedMasternodeList(const uint256& hash)
-{
-    UpdateLastTime(hash, lastMasternodeList, mapSeenSyncMNB);
-}
-
-void TierTwoSyncState::AddedMasternodeWinner(const uint256& hash)
-{
-    UpdateLastTime(hash, lastMasternodeWinner, mapSeenSyncMNW);
-}
-
-void TierTwoSyncState::AddedBudgetItem(const uint256& hash)
-{
-    UpdateLastTime(hash, lastBudgetItem, mapSeenSyncBudget);
-}
-
 void TierTwoSyncState::ResetData()
 {
-    lastMasternodeList = 0;
-    lastMasternodeWinner = 0;
-    lastBudgetItem = 0;
-    mapSeenSyncMNB.clear();
-    mapSeenSyncMNW.clear();
-    mapSeenSyncBudget.clear();
 }

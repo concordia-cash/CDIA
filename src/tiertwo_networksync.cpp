@@ -61,10 +61,7 @@ bool CMasternodeSync::MessageDispatcher(CNode* pfrom, std::string& strCommand, C
             // This could happen because of the message thread is requesting the sporks alone..
             // So.. for now, can just update the peer status and move it to the next state if the end message arrives
             if (spork.nSporkID == SPORK_INVALID) {
-                if (g_tiertwo_sync_state.GetSyncPhase() < MASTERNODE_SYNC_LIST) {
-                    // future note: use internal cs for RequestedMasternodeAssets.
-                    g_tiertwo_sync_state.SetCurrentSyncPhase(MASTERNODE_SYNC_LIST);
-                }
+                
             }
         }
         return true;
@@ -126,22 +123,10 @@ void CMasternodeSync::SyncRegtest(CNode* pnode)
 {
     // skip mn list and winners sync if legacy mn are obsolete
     int syncPhase = g_tiertwo_sync_state.GetSyncPhase();
-    if (deterministicMNManager->LegacyMNObsolete() &&
-            (syncPhase == MASTERNODE_SYNC_LIST || syncPhase == MASTERNODE_SYNC_MNW)) {
-        g_tiertwo_sync_state.SetCurrentSyncPhase(MASTERNODE_SYNC_BUDGET);
-        syncPhase = g_tiertwo_sync_state.GetSyncPhase();
-    }
-
+    
     // Initial sync, verify that the other peer answered to all of the messages successfully
     if (syncPhase == MASTERNODE_SYNC_SPORKS) {
         RequestDataTo(pnode, NetMsgType::GETSPORKS, false);
-    } else if (syncPhase == MASTERNODE_SYNC_LIST) {
-        RequestDataTo(pnode, NetMsgType::GETMNLIST, false, CTxIn());
-    } else if (syncPhase == MASTERNODE_SYNC_MNW) {
-        RequestDataTo(pnode, NetMsgType::GETMNWINNERS, false, mnodeman.CountEnabled());
-    } else if (syncPhase == MASTERNODE_SYNC_BUDGET) {
-        // sync masternode votes
-        RequestDataTo(pnode, NetMsgType::BUDGETVOTESYNC, false, uint256());
     } else if (syncPhase == MASTERNODE_SYNC_FINISHED) {
         LogPrintf("REGTEST SYNC FINISHED!\n");
     }

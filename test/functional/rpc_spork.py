@@ -32,31 +32,31 @@ class PIVX_RPCSporkTest(ConcordiaTestFramework):
     def run_test(self):
         self.log_title()
         set_node_times(self.nodes, self.mocktime)
-        sporkName = "SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT"
+        sporkName = "SPORK_14_NEW_PROTOCOL_ENFORCEMENT"
 
-        # 0 - check SPORK 8 status from node 1 (must be inactive)
+        # 0 - check SPORK 14 status from node 1 (must be inactive)
         assert_equal(False, self.is_spork_active(1, sporkName))
 
-        # 1 - activate SPORK 8 with nodes[0]
+        # 1 - activate SPORK 14 with nodes[0]
         assert_equal("success", self.activate_spork(0, sporkName))
         sleep(1)
-        # check SPORK 8 status from nodes[1] (must be active)
+        # check SPORK 14 status from nodes[1] (must be active)
         assert_equal(True, self.is_spork_active(1, sporkName))
 
-        # 2 - Adjust time to 1 sec in the future and deactivate SPORK 8 with node[0]
+        # 2 - Adjust time to 1 sec in the future and deactivate SPORK 14 with node[0]
         self.mocktime += 1
         set_node_times(self.nodes, self.mocktime)
         assert_equal("success", self.deactivate_spork(0, sporkName))
         sleep(1)
-        # check SPORK 8 value from nodes[1] (must be inactive again)
+        # check SPORK 14 value from nodes[1] (must be inactive again)
         assert_equal(False, self.is_spork_active(1, sporkName))
 
-        # 3 - Adjust time to 1 sec in the future and set new value (mocktime) for SPORK 8 with node[0]
+        # 3 - Adjust time to 1 sec in the future and set new value (mocktime) for SPORK 14 with node[0]
         self.mocktime += 1
         set_node_times(self.nodes, self.mocktime)
         assert_equal("success", self.set_spork(0, sporkName, self.mocktime))
         sleep(1)
-        # check SPORK 8 value from nodes[1] (must be equal to mocktime)
+        # check SPORK 14 value from nodes[1] (must be equal to mocktime)
         assert_equal(self.mocktime, self.get_spork(1, sporkName))
 
         # 4 - Stop nodes and check value again after restart

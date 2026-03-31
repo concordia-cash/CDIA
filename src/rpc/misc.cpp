@@ -169,9 +169,6 @@ UniValue mnsync(const JSONRPCRequest& request)
             "\nResult ('status' mode):\n"
             "{\n"
             "  \"IsBlockchainSynced\": true|false,    (boolean) 'true' if blockchain is synced\n"
-            "  \"lastMasternodeList\": xxxx,        (numeric) Timestamp of last MN list message\n"
-            "  \"lastMasternodeWinner\": xxxx,      (numeric) Timestamp of last MN winner message\n"
-            "  \"lastBudgetItem\": xxxx,            (numeric) Timestamp of last MN budget message\n"
             "  \"lastFailure\": xxxx,           (numeric) Timestamp of last failed sync\n"
             "  \"nCountFailures\": n,           (numeric) Number of failed syncs (total)\n"
             "  \"sumMasternodeList\": n,        (numeric) Number of MN list messages (total)\n"
@@ -197,9 +194,6 @@ UniValue mnsync(const JSONRPCRequest& request)
         UniValue obj(UniValue::VOBJ);
 
         obj.pushKV("IsBlockchainSynced", g_tiertwo_sync_state.IsBlockchainSynced());
-        obj.pushKV("lastMasternodeList", g_tiertwo_sync_state.GetlastMasternodeList());
-        obj.pushKV("lastMasternodeWinner", g_tiertwo_sync_state.GetlastMasternodeWinner());
-        obj.pushKV("lastBudgetItem", g_tiertwo_sync_state.GetlastBudgetItem());
         obj.pushKV("lastFailure", masternodeSync.lastFailure);
         obj.pushKV("nCountFailures", masternodeSync.nCountFailures);
         obj.pushKV("sumMasternodeList", masternodeSync.sumMasternodeList);

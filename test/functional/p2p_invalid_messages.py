@@ -52,7 +52,7 @@ class InvReceiver(P2PInterface):
 
     def on_getdata(self, message):
         for inv in message.inv:
-            if inv.type == 15: # MNPING
+            if inv.type == 15: 
                 self.send_message(self.vec_mnp[inv.hash])
                 self.getdata_count+=1
 

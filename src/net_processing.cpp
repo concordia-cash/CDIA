@@ -1171,7 +1171,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         // available. If not, ask the first peer connected for them.
         // TODO: Move this to an instant broadcast of the sporks.
         bool fMissingSporks = !pSporkDB->SporkExists(SPORK_14_NEW_PROTOCOL_ENFORCEMENT) ||
-                              !pSporkDB->SporkExists(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) ||
                               !pSporkDB->SporkExists(SPORK_19_COLDSTAKING_MAINTENANCE) ||
                               !pSporkDB->SporkExists(SPORK_20_SAPLING_MAINTENANCE);
 
@@ -1222,24 +1221,6 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         LOCK(cs_main);
         Misbehaving(pfrom->GetId(), 1);
         return false;
-    }
-
-    else if (strCommand == NetMsgType::QSENDRECSIGS) {
-        bool b;
-        vRecv >> b;
-        if (pfrom->m_wants_recsigs == b) return true;
-        // Only accept recsigs messages every 20 min to prevent spam.
-        int64_t nNow = GetAdjustedTime();
-        if (pfrom->m_last_wants_recsigs_recv > 0 &&
-            nNow - pfrom->m_last_wants_recsigs_recv < 20 * 60) {
-            LOCK(cs_main);
-            Misbehaving(pfrom->GetId(), 20, "sendrecssigs msg is only accepted every 20 minutes");
-            return false;
-        }
-        pfrom->m_wants_recsigs = b;
-        pfrom->m_last_wants_recsigs_recv = nNow;
-        
-        return true;
     }
 
     if (strCommand != NetMsgType::GETSPORKS &&

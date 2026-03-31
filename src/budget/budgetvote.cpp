@@ -31,7 +31,6 @@ CBudgetVote::CBudgetVote(const CTxIn& vinIn, const uint256& nProposalHashIn, Vot
 
 void CBudgetVote::Relay() const
 {
-    
 }
 
 uint256 CBudgetVote::GetHash() const

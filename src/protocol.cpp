@@ -74,37 +74,7 @@ const static std::string allNetMessageTypes[] = {
     "filtered block",  // Should never occur
     "ix",              // deprecated
     "txlvote",         // deprecated
-    NetMsgType::SPORK, // --- tiertwoNetMessageTypes start here ---
-    NetMsgType::MNWINNER,
-    "mnodescanerr",
-    NetMsgType::BUDGETVOTE,
-    NetMsgType::BUDGETPROPOSAL,
-    NetMsgType::FINALBUDGET,
-    NetMsgType::FINALBUDGETVOTE,
-    "mnq",
-    NetMsgType::MNBROADCAST,
-    NetMsgType::MNPING,
-    "dstx", // deprecated
-    NetMsgType::GETMNWINNERS,
-    NetMsgType::GETMNLIST,
-    NetMsgType::BUDGETVOTESYNC,
-    NetMsgType::GETSPORKS,
-    NetMsgType::SYNCSTATUSCOUNT,
-    NetMsgType::MNBROADCAST2,
-    NetMsgType::QFCOMMITMENT,
-    NetMsgType::QSENDRECSIGS,
-    NetMsgType::MNAUTH,
-    NetMsgType::QCONTRIB,
-    NetMsgType::QCOMPLAINT,
-    NetMsgType::QJUSTIFICATION,
-    NetMsgType::QPCOMMITMENT,
-    NetMsgType::QSIGSESANN,
-    NetMsgType::QSIGSHARESINV,
-    NetMsgType::QGETSIGSHARES,
-    NetMsgType::QBSIGSHARES,
-    NetMsgType::QSIGREC,
-    NetMsgType::QSIGSHARE,
-    NetMsgType::CLSIG,
+    NetMsgType::SPORK,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes + ARRAYLEN(allNetMessageTypes));
 const static std::vector<std::string> tiertwoNetMessageTypesVec(std::find(allNetMessageTypesVec.begin(), allNetMessageTypesVec.end(), NetMsgType::SPORK), allNetMessageTypesVec.end());

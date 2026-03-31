@@ -59,13 +59,6 @@ class TiertwoReorgMempoolTest(ConcordiaTestFramework):
         nodeB = self.nodes[1]
         free_idx = 1  # unique id for masternodes. first available.
 
-        # Enforce mn payments and reject legacy mns at block 202
-        self.activate_spork(0, "SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT")
-        assert_equal("success", self.set_spork(0, "SPORK_21_LEGACY_MNS_MAX_HEIGHT", 201))
-        time.sleep(1)
-        assert_equal([201] * self.num_nodes, [self.get_spork(x, "SPORK_21_LEGACY_MNS_MAX_HEIGHT")
-                                              for x in range(self.num_nodes)])
-
         # Mine 201 blocks
         self.log.info("Mining...")
         nodeA.generate(25)

@@ -30,16 +30,6 @@ void enableMnSyncAndSuperblocksPayment()
 {
     // force mnsync complete
     g_tiertwo_sync_state.SetCurrentSyncPhase(MASTERNODE_SYNC_FINISHED);
-
-    // enable SPORK_13
-    int64_t nTime = GetTime() - 10;
-    CSporkMessage spork(SPORK_13_ENABLE_SUPERBLOCKS, nTime + 1, nTime);
-    sporkManager.AddOrUpdateSporkMessage(spork);
-    BOOST_CHECK(sporkManager.IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS));
-
-    spork = CSporkMessage(SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT, nTime + 1, nTime);
-    sporkManager.AddOrUpdateSporkMessage(spork);
-    BOOST_CHECK(sporkManager.IsSporkActive(SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT));
 }
 
 BOOST_AUTO_TEST_CASE(budget_value)
@@ -109,11 +99,6 @@ BOOST_FIXTURE_TEST_CASE(block_value, TestnetSetup)
     BOOST_CHECK(!IsBlockValueValid(nHeight, nExpectedRet, nBlockReward+propAmt+1, nBudgetAmtRet));
     BOOST_CHECK_EQUAL(nExpectedRet, nBlockReward + propAmt);
     BOOST_CHECK_EQUAL(nBudgetAmtRet, propAmt);
-
-    // disable SPORK_13
-    const CSporkMessage& spork2 = CSporkMessage(SPORK_13_ENABLE_SUPERBLOCKS, 4070908800ULL, GetTime());
-    sporkManager.AddOrUpdateSporkMessage(spork2);
-    BOOST_CHECK(!sporkManager.IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS));
 
     // check with spork disabled
     nExpectedRet = nBlockReward;
